@@ -14,15 +14,15 @@
     }
 
     .header {
-  position: sticky;
-  top: 0;
-  text-align: center;
-  padding: 30px 10px;
-  background: rgba(17, 18, 24, 0.6);
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid #1f1f25;
-  z-index: 10;
-}
+      position: sticky;
+      top: 0;
+      text-align: center;
+      padding: 30px 10px;
+      background: rgba(17, 18, 24, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid #1f1f25;
+      z-index: 10;
+    }
 
     h1 { margin: 0; font-size: 32px; color: #ffffff; }
     h2 { margin: 0; font-size: 20px; color: #9bc6ff; }
@@ -86,10 +86,10 @@
     }
 
     .subtext { font-size: 13px; color: #b5b5b5; margin-top: 6px; }
-
   </style>
 </head>
 <body>
+
   <div class="header">
     <h1>Canteen Ordering System</h1>
     <h2>Project Flow + Techs Overview</h2>
@@ -97,6 +97,7 @@
 
   <div class="wrapper">
 
+    <!-- Student Flow -->
     <div class="section">
       <div class="title">1. Student Flow</div>
       <div class="item">1. Open app → View canteens</div>
@@ -106,6 +107,7 @@
       <div class="item">5. Track order: Placed → Accepted → Preparing → Ready → Picked</div>
     </div>
 
+    <!-- Shopkeeper Flow -->
     <div class="section">
       <div class="title">2. Shopkeeper Flow</div>
       <div class="item">• See incoming orders (via 5s polling)</div>
@@ -116,6 +118,7 @@
       <div class="item">• Set items In Stock / Sold Out</div>
     </div>
 
+    <!-- Technologies -->
     <div class="section">
       <div class="title">3. Technologies We Use</div>
 
@@ -131,7 +134,7 @@
         <div class="tech-box">
           <b>Backend</b><br>
           Node.js<br>Express.js<br>Express Router<br>
-          <div class="subtext">Handles endpoints, order logic, auth</div>
+          <div class="subtext">Endpoints, auth, orders, payments</div>
         </div>
 
         <div class="arrow">→</div>
@@ -139,7 +142,7 @@
         <div class="tech-box">
           <b>Database</b><br>
           MongoDB Atlas<br>Mongoose<br>
-          <div class="subtext">Stores users, items, orders, canteens</div>
+          <div class="subtext">Users, menu, orders, payments</div>
         </div>
       </div>
 
@@ -147,7 +150,7 @@
         <div class="tech-box">
           <b>Hosting</b><br>
           Vercel (Frontend)<br>Railway (Backend)<br>
-          <div class="subtext">Easy deploy, free-tier friendly</div>
+          <div class="subtext">Free-tier deployment</div>
         </div>
 
         <div class="arrow">→</div>
@@ -155,18 +158,53 @@
         <div class="tech-box">
           <b>Extra Tools</b><br>
           GitHub (Code)<br>Polling (Realtime updates)<br>
-          <div class="subtext">No WebSockets needed for MVP</div>
+          <div class="subtext">Simple & reliable for expo demo</div>
         </div>
       </div>
-
     </div>
 
+    <!-- Backend Responsibilities (NEW) -->
     <div class="section">
-      <div class="title">4. Project Timeline (1 Month)</div>
-      <div class="item"><b>Week 1:</b> Student UI + Menu + Cart + Order API</div>
-      <div class="item"><b>Week 2:</b> Shopkeeper Dashboard + Accept/Reject + Status updates</div>
-      <div class="item"><b>Week 3:</b> Dark UI + History Page + Cleanup</div>
-      <div class="item"><b>Week 4:</b> Deploy + Documentation + Screenshots</div>
+      <div class="title">4. Backend Responsibilities</div>
+      <div class="item">• Build Express server + folder structure</div>
+      <div class="item">• Create APIs for Login / Signup (JWT Auth)</div>
+      <div class="item">• Menu APIs: Add, Update, Delete, Toggle Availability</div>
+      <div class="item">• Order APIs: Place Order, Status Update, Fetch Orders</div>
+      <div class="item">• Payment Integration (Razorpay/UPI simulation)</div>
+      <div class="item">• Connect frontend to backend using Fetch API</div>
+      <div class="item">• Handle validation + middleware</div>
+      <div class="item">• Host backend on Railway</div>
+    </div>
+
+    <!-- Team Split (NEW) -->
+    <div class="section">
+      <div class="title">5. Backend Team Split (70% / 30%)</div>
+
+      <div class="item"><b>Developer A (70%)</b><br>
+      • Setup Express project<br>
+      • User Auth (JWT + hashing)<br>
+      • Orders System<br>
+      • Payment Integration<br>
+      • Deployment + environment setup<br>
+      • Core testing</div>
+
+      <div class="item"><b>Developer B (30%)</b><br>
+      • Menu CRUD APIs<br>
+      • Cloudinary image upload<br>
+      • Basic input validation<br>
+      • Fetch menu endpoints<br>
+      • Documentation + API list<br>
+      • Assist with frontend testing</div>
+    </div>
+
+    <!-- Backend Roadmap (NEW) -->
+    <div class="section">
+      <div class="title">6. Backend Roadmap (30-Day Expo Timeline)</div>
+
+      <div class="item"><b>Week 1:</b> Auth + Project Setup</div>
+      <div class="item"><b>Week 2:</b> Menu CRUD + Cloudinary</div>
+      <div class="item"><b>Week 3:</b> Order System + Status Updates</div>
+      <div class="item"><b>Week 4:</b> Payment + Deployment + Final Testing</div>
     </div>
 
   </div>
