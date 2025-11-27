@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+    
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:#FDFBF7;
+  color: #222;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+.header {
+  top: 0;
+  position: sticky;
+  width: 100%;               
+  display: flex;
+  align-items: center;  
+  gap: 10px;  
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 99;
+}
+
+.header h2 {
+  color: #FF7043;
+  padding: 20px;
+  font-size: 40px;
+}
+
+.shortcut{
+    display: grid;
+    width: 80vh;
+    height: 50px;
+    grid-template-columns: repeat(3,1fr);
+    background: none;
+    margin-left: 30px;
+    margin-left: 60px;
+    gap: 40px   ;
+
+}
+.shortcut button {
+    color: rgb(0, 0, 0);
+    background: none;              
+    border: none;
+    font-size: inherit;   
+    font-size: 1.5rem;         
+    font-weight: 900;        
+    cursor: pointer;
+    transition: 0.25s ease;
+    padding-left: 10px;
+    /* border: 2px solid black; */
+
+}
+button:hover {
+  transform: scale(1.2);
+}
+
+.mbutton button{
+    color: white;
+    background: #FF7043;
+    width: 190px;
+    height: 60px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-left: 40px;
+    border: 2px #FF7043 solid ;
+    transition: 0.25s ease;
+}
+.mbutton button:nth-child(2) {
+    background: white;
+    color: #FF7043;
+    border: 2px solid #FF7043;
+}
+
+.mbutton button:nth-child(1):hover {
+    background: #ffffff;  
+    color: #FF7043;    
+    border-color: #ff845f;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mbutton button:nth-child(2):hover {
+    background: #FF7043;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  grid-template-rows: auto auto auto;
+  gap: 20px 40px;
+  width: 100%;
+  margin-left: 70px;
+  margin-top: 60px;
+  align-items: start;
+}
+
+.main h1 {
+  grid-row: 1;
+  grid-column: 1;
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.main h2 {
+  grid-row: 2;
+  grid-column: 1;
+  font-size: 1.3rem;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+.main button {
+  grid-row: 3;
+  grid-column: 1;
+  margin-top: 0;
+  width: 200px;
+  height: 60px;
+  border-radius: 20px;
+  background: #FF7043;
+  color: white;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.box {
+  grid-row: 1 / span 3;
+  grid-column: 2;
+  align-self: start;
+}
+
+.box img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  object-fit: cover;
+  display: block;
+
+  box-shadow:
+    0 30px 80px rgba(255,112,67,0.38),   
+    0 12px 30px rgba(255,112,67,0.20); 
+  transition: box-shadow 200ms ease;
+}
+
+.box img:hover {
+  box-shadow:
+    0 40px 110px rgba(255,112,67,0.48),
+    0 16px 40px rgba(255,112,67,0.24);
+}
+
+.footer {
+  width: 100%;
+  background: #ffffff;
+
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
+.footer-stats {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 120px;                     
+    margin-bottom: 20px;
+    /* border: 2px solid black; */
+}
+
+.stat h3 {
+        /* border: 2px solid black; */
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.stat p {
+    text-align: center;
+        /* border: 2px solid black; */
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+.footer-copy {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin-top: 10px;
+}
+/* TODO If some1 can resize it to mobile view make it  */
+/* @media (max-width: 768px) {
+  .footer-stats {
+    gap: 40px;
+  }
+
+  .stat h3 {
+    font-size: 1.4rem;
+  }
+
+  .stat p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 0 25px;
+  }
+
+  .footer-stats {
+    gap: 30px;
+  }
+
+  .stat h3 {
+    font-size: 1.3rem;
+  }
+
+  .stat p {
+    font-size: 0.8rem;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+  }
+} */
