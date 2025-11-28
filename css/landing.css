@@ -216,87 +216,34 @@ button:hover {
 /* TODO If some1 can resize it to mobile view make it  */
 @media (max-width: 768px) {
 
+  /* CENTER THE ORDER NOW BUTTON */
+  .main button {
+    display: block;
+    margin: 0 auto;
+    width: 75%;        /* slightly wider */
+    height: 55px;
+    border-radius: 18px;
+    font-size: 1.1rem;
+  }
+
+  /* MAKE IMAGE A BIT BIGGER */
+  .box img {
+    max-width: 380px;  /* was smaller before */
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* FOOTER TO VERY BOTTOM */
   body {
-    overflow-x: hidden;
-    overflow-y: auto;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
-  /* CENTER HEADER PROPERLY */
-  .header {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 0;
-    gap: 10px;
-    text-align: center;
-  }
-
-  /* MENU CENTER */
-  .shortcut {
-    margin-left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    padding: 0;
-  }
-
-  .shortcut button {
-    font-size: 1rem;
-  }
-
-  /* LOGIN BUTTON CENTER */
-  .mbutton {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 0;
-  }
-  .mbutton button {
-    margin: 0 !important;
-    width: 135px;
-    height: 45px;
-  }
-
-  /* MAIN SECTION */
-  .main {
-    grid-template-columns: 1fr !important;
-    margin-left: 0 !important;
-    padding: 0 20px;
-    margin-top: 25px;
-    gap: 20px;
-  }
-
-  /* CENTER ORDER NOW */
-  .main button {
-    width: 70%;
-    height: 55px;
-    display: block;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    border-radius: 18px;
-  }
-
-  /* IMAGE BIGGER + CENTERED */
-  .box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .box img {
-    width: 100%;
-    max-width: 380px;
-  }
-
-  /* FOOTER TO BOTTOM */
   .footer {
     margin-top: auto;
     position: relative !important;
     width: 100%;
-    padding: 25px 0;
   }
 }
