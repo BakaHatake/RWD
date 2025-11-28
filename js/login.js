@@ -1,32 +1,21 @@
-document.getElementById("loginButton").addEventListener("click", loginuser);
+let loginTab = document.getElementById('loginTab');
+let signupTab = document.getElementById('signupTab');
 
-async function loginuser() {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+let loginBtn = document.getElementById('loginButton');
+let signupBtn = document.getElementById('signupButton');
 
-    if (!email || !password) {
-        alert("Bro fill the fields.");
-        return;
-    }
+loginTab.addEventListener('click', () => {
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+     console.log("clicked");
+    loginBtn.style.display = "block";
+    signupBtn.style.display = "none";
+});
 
-    try {
-        const res = await fetch("https://rwd.up.railway.app/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
-        });
-
-        const data = await res.json();   
-
-        if (res.status === 200 && data.success) {
-            alert("Login successful");
-            window.location.href = "flow.html";
-        } else {
-            alert(data.message || "Invalid credentials");
-        }
-
-    } catch (err) {
-        console.error(err);
-        alert("Bro your server fainted. Try again later.");
-    }
-}
+signupTab.addEventListener('click', () => {
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
+    console.log("clicked");
+    signupBtn.style.display = "block";
+    loginBtn.style.display = "none";
+});
