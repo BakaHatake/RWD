@@ -214,32 +214,41 @@ button:hover {
     margin-top: 10px;
 }
 /* TODO If some1 can resize it to mobile view make it  */
-/* ===== MOBILE LAYOUT THAT MATCHES YOUR SCREENSHOT #2 PERFECTLY ===== */
+/* ===== ULTRA CLEAN MOBILE LAYOUT FIX (FINAL VERSION WITH TRUE BOTTOM FOOTER) ===== */
 @media (max-width: 768px) {
 
-  /* BODY NORMAL, NO FLEX NONSENSE */
+  /* Make body behave as a flexible full-height container */
   html, body {
-    height: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 100%;
   }
 
-  /* HEADER — EXACT SAME SPACING AS YOUR GOOD VERSION */
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* HEADER FIX */
   .header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px 0;     /* SAME as your screenshot 2 */
-    gap: 10px;
+    padding: 15px 0;
+    gap: 12px;
   }
 
   .header h2 {
     font-size: 28px;
+    margin: 0;
+    padding: 0;
   }
 
-  /* NAV CENTER — UNCHANGED */
+  /* NAV CENTER */
   .shortcut {
+    width: 100%;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -247,28 +256,46 @@ button:hover {
     padding: 0;
   }
 
-  /* LOGIN BUTTONS — UNCHANGED */
+  .shortcut button {
+    font-size: 1rem;
+  }
+
+  /* LOGIN BUTTONS CENTER */
   .mbutton {
+    width: 100%;
     display: flex;
     justify-content: center;
     gap: 12px;
     margin: 0;
+    padding: 0;
   }
 
-  /* MAIN — KEEP SAME SPACING AS YOUR GOOD VERSION */
+  .mbutton button {
+    margin: 0 !important;
+    width: 135px;
+    height: 45px;
+    font-size: 1rem;
+    border-radius: 16px;
+  }
+
+  /* MAIN SECTION */
   .main {
     grid-template-columns: 1fr !important;
     margin-left: 0 !important;
     padding: 0 20px;
-    margin-top: 30px;   /* matches screenshot #2 spacing */
+    text-align: left;
+    margin-top: 20px;
     gap: 20px;
+
+    /* IMPORTANT: let main expand but not crush footer */
+    flex: 1 0 auto;
   }
 
   .main h1 {
     font-size: 2.4rem;
   }
 
-  /* ORDER NOW CENTERED — ONLY CHANGE YOU REQUESTED */
+  /* CENTER ORDER NOW BUTTON */
   .main button {
     display: block;
     margin: 0 auto;
@@ -278,40 +305,52 @@ button:hover {
     border-radius: 18px;
   }
 
-  /* IMAGE BIGGER — YOUR REQUEST */
+  /* IMAGE FIX – BIGGER & LESS GAP */
   .box {
+    grid-row: auto;
+    grid-column: 1;
     display: flex;
     justify-content: center;
-    margin-top: 5px;   /* slight pull down for cleaner spacing */
+    margin-top: -5px;
   }
 
   .box img {
-    max-width: 430px;  /* bigger image */
     width: 100%;
+    max-width: 430px;
+    display: block;
+    margin: 0 auto;
   }
 
-  /* FOOTER — NOW SITS AT TRUE BOTTOM INSIDE PAGE, NOT FLOATING */
+  /* TRUE BOTTOM FOOTER */
   .footer {
+    flex-shrink: 0;              /* prevents footer from floating */
+    position: relative !important;
     width: 100%;
     padding: 25px 0;
-    position: relative;
-    margin-top: 40px;   /* keeps it INSIDE the layout, not outside */
+    margin-top: 0 !important;    /* removed the gap */
   }
 
   .footer-stats {
-    display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 30px;
   }
 
+  .stat h3 {
+    font-size: 1.3rem;
+  }
+
+  .stat p {
+    font-size: 0.85rem;
+  }
+
   .footer-copy {
-    text-align: center;
-    opacity: 0.7;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-size: 0.8rem;
   }
 }
 
-/* SMALL DEVICES */
+/* VERY SMALL SCREENS */
 @media (max-width: 480px) {
 
   .main h1 {
@@ -320,5 +359,9 @@ button:hover {
 
   .box img {
     max-width: 300px;
+  }
+
+  .main button {
+    width: 75%;
   }
 }
