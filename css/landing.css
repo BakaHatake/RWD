@@ -214,10 +214,9 @@ button:hover {
     margin-top: 10px;
 }
 /* TODO If some1 can resize it to mobile view make it  */
-/* ===== ULTRA CLEAN MOBILE LAYOUT FIX (FINAL VERSION WITH TRUE BOTTOM FOOTER) ===== */
 @media (max-width: 768px) {
 
-  /* Make body behave as a flexible full-height container */
+  
   html, body {
     height: 100%;
   }
@@ -230,7 +229,7 @@ button:hover {
     flex-direction: column;
   }
 
-  /* HEADER FIX */
+  
   .header {
     flex-direction: column;
     align-items: center;
@@ -246,7 +245,7 @@ button:hover {
     padding: 0;
   }
 
-  /* NAV CENTER */
+  
   .shortcut {
     width: 100%;
     display: flex;
@@ -260,7 +259,7 @@ button:hover {
     font-size: 1rem;
   }
 
-  /* LOGIN BUTTONS CENTER */
+  
   .mbutton {
     width: 100%;
     display: flex;
@@ -278,7 +277,7 @@ button:hover {
     border-radius: 16px;
   }
 
-  /* MAIN SECTION */
+  
   .main {
     grid-template-columns: 1fr !important;
     margin-left: 0 !important;
@@ -287,7 +286,7 @@ button:hover {
     margin-top: 20px;
     gap: 20px;
 
-    /* IMPORTANT: let main expand but not crush footer */
+  
     flex: 1 0 auto;
   }
 
@@ -295,7 +294,7 @@ button:hover {
     font-size: 2.4rem;
   }
 
-  /* CENTER ORDER NOW BUTTON */
+  
   .main button {
     display: block;
     margin: 0 auto;
@@ -305,7 +304,7 @@ button:hover {
     border-radius: 18px;
   }
 
-  /* IMAGE FIX – BIGGER & LESS GAP */
+  
   .box {
     grid-row: auto;
     grid-column: 1;
@@ -321,13 +320,13 @@ button:hover {
     margin: 0 auto;
   }
 
-  /* TRUE BOTTOM FOOTER */
+  
   .footer {
-    flex-shrink: 0;              /* prevents footer from floating */
+    flex-shrink: 0;              
     position: relative !important;
     width: 100%;
     padding: 25px 0;
-    margin-top: 0 !important;    /* removed the gap */
+    margin-top: 0 !important;    
   }
 
   .footer-stats {
@@ -350,7 +349,7 @@ button:hover {
   }
 }
 
-/* VERY SMALL SCREENS */
+
 @media (max-width: 480px) {
 
   .main h1 {
