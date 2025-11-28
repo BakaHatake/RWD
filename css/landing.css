@@ -214,15 +214,22 @@ button:hover {
     margin-top: 10px;
 }
 /* TODO If some1 can resize it to mobile view make it  */
-/* ===== ULTRA CLEAN MOBILE LAYOUT FIX ===== */
+/* ======================= */
+/*     FULL MOBILE FIX     */
+/* ======================= */
+
 @media (max-width: 768px) {
 
+  /* GENERAL */
   body {
     overflow-x: hidden;
     overflow-y: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* HEADER FIX */
+  /* HEADER */
   .header {
     flex-direction: column;
     align-items: center;
@@ -238,7 +245,7 @@ button:hover {
     padding: 0;
   }
 
-  /* NAVIGATION CENTER FIX */
+  /* NAV MENU */
   .shortcut {
     width: 100%;
     display: flex;
@@ -252,7 +259,7 @@ button:hover {
     font-size: 1rem;
   }
 
-  /* LOGIN BUTTONS FIX */
+  /* LOGIN BUTTONS */
   .mbutton {
     width: 100%;
     display: flex;
@@ -270,38 +277,49 @@ button:hover {
     border-radius: 16px;
   }
 
-  /* MAIN SECTION FIX */
+  /* MAIN SECTION */
   .main {
     grid-template-columns: 1fr !important;
     margin-left: 0 !important;
     padding: 0 20px;
-    text-align: left;
     margin-top: 20px;
     gap: 20px;
+    text-align: left;
   }
 
   .main h1 {
     font-size: 2.4rem;
   }
 
+  /* MAIN BUTTON CENTERED */
+  .main button {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    height: 55px;
+    font-size: 1.1rem;
+    border-radius: 18px;
+  }
+
   /* IMAGE FIX */
   .box {
-    grid-row: auto;
-    grid-column: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   .box img {
     width: 100%;
-    max-width: 340px;
+    max-width: 390px;
+    display: block;
+    margin: 0 auto;
   }
 
-  /* FOOTER FIX */
+  /* FOOTER STICK TO BOTTOM */
   .footer {
-    position: relative !important;
+    margin-top: auto;
     width: 100%;
-    margin-top: 40px;
+    position: relative !important;
     padding: 25px 0;
   }
 
@@ -325,13 +343,22 @@ button:hover {
   }
 }
 
-/* VERY SMALL DEVICES */
+/* EXTRA SMALL DEVICES */
 @media (max-width: 480px) {
+
+  .header h2 {
+    font-size: 24px;
+  }
+
   .main h1 {
     font-size: 2rem;
   }
-  
+
   .box img {
     max-width: 260px;
+  }
+
+  .main button {
+    width: 75%;
   }
 }
