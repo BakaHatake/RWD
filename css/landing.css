@@ -214,15 +214,15 @@ button:hover {
     margin-top: 10px;
 }
 /* TODO If some1 can resize it to mobile view make it  */
-/* ===== ULTRA CLEAN MOBILE LAYOUT FIX ===== */
+/* ===== ULTRA CLEAN MOBILE LAYOUT FIX (FINAL VERSION) ===== */
 @media (max-width: 768px) {
 
   body {
     overflow-x: hidden;
     overflow-y: auto;
-    min-height: 100vh;        /* enables footer bottom */
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;   /* enables footer bottom */
+    flex-direction: column;
   }
 
   /* HEADER FIX */
@@ -241,7 +241,7 @@ button:hover {
     padding: 0;
   }
 
-  /* NAVIGATION CENTER FIX */
+  /* NAV CENTER */
   .shortcut {
     width: 100%;
     display: flex;
@@ -255,7 +255,7 @@ button:hover {
     font-size: 1rem;
   }
 
-  /* LOGIN BUTTONS FIX */
+  /* LOGIN BUTTONS CENTER */
   .mbutton {
     width: 100%;
     display: flex;
@@ -273,7 +273,7 @@ button:hover {
     border-radius: 16px;
   }
 
-  /* MAIN SECTION FIX */
+  /* MAIN SECTION */
   .main {
     grid-template-columns: 1fr !important;
     margin-left: 0 !important;
@@ -290,29 +290,32 @@ button:hover {
   /* CENTER ORDER NOW BUTTON */
   .main button {
     display: block;
-    margin: 0 auto;       /* centers button */
+    margin: 0 auto;
     width: 70%;
     height: 55px;
     font-size: 1.1rem;
     border-radius: 18px;
   }
 
-  /* IMAGE FIX */
+  /* IMAGE FIX – BIGGER & LESS GAP */
   .box {
     grid-row: auto;
     grid-column: 1;
     display: flex;
     justify-content: center;
+    margin-top: -5px;       /* reduces gap above image */
   }
 
   .box img {
     width: 100%;
-    max-width: 340px;
+    max-width: 430px;       /* bigger image */
+    display: block;
+    margin: 0 auto;
   }
 
-  /* FOOTER FIX (BOTTOM) */
+  /* FOOTER FIX – STILL BOTTOM BUT LESS GAP ABOVE */
   .footer {
-    margin-top: auto !important;
+    margin-top: 20px !important;   /* reduces big empty space */
     position: relative !important;
     width: 100%;
     padding: 25px 0;
@@ -338,7 +341,7 @@ button:hover {
   }
 }
 
-/* VERY SMALL DEVICES */
+/* VERY SMALL SCREENS */
 @media (max-width: 480px) {
 
   .main h1 {
@@ -346,7 +349,7 @@ button:hover {
   }
 
   .box img {
-    max-width: 260px;
+    max-width: 300px;
   }
 
   .main button {
