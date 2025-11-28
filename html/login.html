@@ -4,58 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <div class="main-container">
-    <div class="left-section">
-        
-        <div class="switch-container">
-    <button id="loginTab" class="tab active">Log In</button>
-    <button id="signupTab" class="tab">Sign Up</button>
+
+        <div class="left-section">
+
+            <div class="switch-container">
+                <button id="loginTab" class="tab active">Log In</button>
+                <button id="signupTab" class="tab">Sign Up</button>
+            </div>
+
+            <h2>Welcome back!</h2>
+
+            <div class="input-sec">
+                <div class="input-group">
+                    <label for="email">College Email ID</label><br>
+                    <input type="email" id="email" placeholder="your.email@college.edu">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+
+                <br>
+
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <div class="button-group">
+                    <button id="loginButton" class="action-button">Log In</button>
+                    <button id="signupButton" class="action-button" style="display:none;">Sign Up</button>
+                </div>
+            </div>
         </div>
 
-        <h2>Welcome back!</h2>
-        <div class="input-sec">
-            <div class="input-group">
-                <label id="space" for="email">College Email ID</label><br>
-                <input type="email" id="email" placeholder="your.email@college.edu">
-            </div>
-            <div class="input-group">
-                <label id="space" for="password">Password</label><br>
-                <input type="password" id="password" placeholder="Enter your password">
-            </div><br>
-            <div class="forgot-password">
-                <a href="+">Forgot Password?</a>
-            </div>
-            <div class="button-group">
-                <button id="loginButton" class="action-button">Log In</button>
-                <button id="signupButton" class="action-button" style="display:none;">xdqw</button>
-        </div>
-        </div>
-    </div>
-
-    <div class="right-section">
-        <div class="clock">
-    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="right-section">
+            <div class="clock">
+               <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"></circle>
         <polyline points="12 6 12 12 16 14"></polyline>
     </svg>
-</div>
-    <h2 class="ready">Ready to order?</h2>
+            </div>
 
-    <p class="desc">
-        Your favorite meals<br>
-        are just a click away.<br>
-        Skip the queue today.
-    </p>
+            <h2 class="ready">Ready to order?</h2>
 
+            <p class="desc">
+                Your favorite meals<br>
+                are just a click away.<br>
+                Skip the queue today.
+            </p>
+        </div>
     </div>
-    </div>
-    
 
-
-    
+<script src="../css/login.js"></script>
 </body>
 </html>
