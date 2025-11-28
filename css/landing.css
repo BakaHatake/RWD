@@ -214,61 +214,124 @@ button:hover {
     margin-top: 10px;
 }
 /* TODO If some1 can resize it to mobile view make it  */
-/* ===== FIX HEADER + MAIN-GAP FOR MOBILE ===== */
+/* ===== ULTRA CLEAN MOBILE LAYOUT FIX ===== */
 @media (max-width: 768px) {
 
   body {
-    overflow: visible; /* fixes the massive empty gap */
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   /* HEADER FIX */
   .header {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 12px 0;
-    gap: 10px;
+    justify-content: center;
+    text-align: center;
+    padding: 15px 0;
+    gap: 12px;
   }
 
+  .header h2 {
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* NAVIGATION CENTER FIX */
   .shortcut {
-    margin-left: 0;
     width: 100%;
-    padding: 0 20px;
-    justify-content: center;
     display: flex;
-    gap: 25px;
+    justify-content: center;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
   }
 
   .shortcut button {
     font-size: 1rem;
   }
 
+  /* LOGIN BUTTONS FIX */
   .mbutton {
-    margin-left: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
-    gap: 10px;
-    width: 100%;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
   }
 
   .mbutton button {
-    margin-left: 0 !important;
-    width: 130px;
+    margin: 0 !important;
+    width: 135px;
     height: 45px;
     font-size: 1rem;
+    border-radius: 16px;
   }
 
-  /* MAIN FIX */
+  /* MAIN SECTION FIX */
   .main {
-    margin-left: 0;
+    grid-template-columns: 1fr !important;
+    margin-left: 0 !important;
     padding: 0 20px;
+    text-align: left;
     margin-top: 20px;
-    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .main h1 {
+    font-size: 2.4rem;
+  }
+
+  /* IMAGE FIX */
+  .box {
+    grid-row: auto;
+    grid-column: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .box img {
+    width: 100%;
+    max-width: 340px;
   }
 
   /* FOOTER FIX */
   .footer {
-    position: relative !important; 
-    margin-top: 40px; /* moves it right below main */
+    position: relative !important;
+    width: 100%;
+    margin-top: 40px;
+    padding: 25px 0;
+  }
+
+  .footer-stats {
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .stat h3 {
+    font-size: 1.3rem;
+  }
+
+  .stat p {
+    font-size: 0.85rem;
+  }
+
+  .footer-copy {
+    margin-top: 15px;
+    font-size: 0.8rem;
+  }
+}
+
+/* VERY SMALL DEVICES */
+@media (max-width: 480px) {
+  .main h1 {
+    font-size: 2rem;
+  }
+  
+  .box img {
+    max-width: 260px;
   }
 }
