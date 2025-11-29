@@ -235,7 +235,7 @@ input {
 .signup-input {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 25px 35px;       
+    gap: 25px 5px;       
     width: 100%;         
     /* max-width: 900px;     */
     margin-top: 20px;
@@ -249,7 +249,7 @@ input {
 }
 
 .signup-input .field input {
-    width: 100%;
+    width: 80%;
     padding: 12px 15px;
     border: 1px solid #d3d3d3;
     border-radius: 8px;
@@ -259,6 +259,7 @@ input {
 
 .signup-input{
     margin-bottom: 20px;
+    margin-left:4%;
     
 }
 .field input:focus {
@@ -266,13 +267,43 @@ input {
     box-shadow: 0 0 4px rgba(255, 122, 61, 0.4);
 }
 .signup-input .field select {
-    width: 100%;
+    width: 80%;
     padding: 12px 15px;
     border: 1px solid #d3d3d3;
     border-radius: 8px;
     font-size: 14px;
     outline: none;
     background: white;
+}
+.button-group1 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    width:100%;
+    margin-left:100px;
+}
+
+.button-group1 button:hover {
+    background:white;
+    color: #FF7043;
+    border: 1px solid #FF7043;
+    transform: scale(1.05);
+}
+.button-group1 button:active {
+    transform: scale(0.95);
+}
+#signup p a{
+    text-decoration: none;
+    color: #FF7043;
+    font-weight:300;
+    margin-left:35%;
+    margin-top: 6%;
+    cursor: pointer;
+}
+#signup p a:hover{
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
