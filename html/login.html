@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
     <div class="main-container">
@@ -16,7 +16,7 @@
                 <button id="loginTab" class="tab active">Log In</button>
                 <button id="signupTab" class="tab">Sign Up</button>
             </div>
-
+            <div id="login">
             <h2>Welcome back!</h2>
 
             <div class="input-sec">
@@ -39,9 +39,66 @@
                 <div class="button-group">
                     <button id="loginButton" class="action-button">Log In</button>
                     <button id="signupButton" class="action-button" style="display:none;">Sign Up</button>
+                    </div>
                 </div>
             </div>
+
+
+
+             <div id="signup" style="display:none;">
+
+        <h2>Create student profile</h2>
+<div class="signup-input">
+
+    <div class="field">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="John Doe">
+    </div>
+
+    <div class="field">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" placeholder="+1 (555) 000-0000">
+    </div>
+
+    <div class="field">
+        <label for="email">College Email ID</label>
+        <input type="email" id="email" placeholder="student@college.edu">
+    </div>
+
+    <div class="field">
+        <label for="roll">Student Roll No</label>
+        <input type="text" id="roll" placeholder="STU202400123">
+    </div>
+
+    <div class="field">
+        <label for="gender">Gender</label>
+        <input type="text" id="gender" placeholder="Gender">
+    </div>
+
+    <div class="field">
+        <label for="campus">Campus Name</label>
+        <input type="text" id="campus" placeholder="AIT Campus">
+    </div>
+
+    <div class="field">
+        <label for="password">Create Password</label>
+        <input type="password" id="password" placeholder="Min. 8 characters">
+    </div>
+
+    <div class="field">
+        <label for="confirmpass">Confirm Password</label>
+        <input type="password" id="confirmpass" placeholder="Re-enter password">
+    </div>
+
+</div>
+
+
+       </div>
         </div>
+
+
+
+
 
         <div class="right-section">
             <div class="clock">
@@ -59,11 +116,12 @@
                 Skip the queue today.
             </p>
         </div>
-    </div>
+   </div>
+
 
 
 </body>
-<script src="../js/login.js"></script>
+<script src="/js/login.js"></script>
 <script src="/js/blogin.js"></script>
 </html>
 

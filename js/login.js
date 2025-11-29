@@ -1,6 +1,7 @@
 let loginTab = document.getElementById('loginTab');
 let signupTab = document.getElementById('signupTab');
-
+let login =document.getElementById('login');
+let signup =document.getElementById('signup');
 let loginBtn = document.getElementById('loginButton');
 let signupBtn = document.getElementById('signupButton');
 
@@ -8,14 +9,18 @@ loginTab.addEventListener('click', () => {
     loginTab.classList.add("active");
     signupTab.classList.remove("active");
      console.log("clicked");
-    loginBtn.style.display = "block";
-    signupBtn.style.display = "none";
+     login.style.display="block";
+     signup.style.display="none";
+    // loginBtn.style.display = "block";
+    // signupBtn.style.display = "none";
 });
 
 signupTab.addEventListener('click', () => {
     signupTab.classList.add("active");
     loginTab.classList.remove("active");
     console.log("clicked");
-    signupBtn.style.display = "block";
-    loginBtn.style.display = "none";
+    login.style.display="none";
+    signup.style.display="block";
+    // signupBtn.style.display = "block";
+    // loginBtn.style.display = "none";
 });
