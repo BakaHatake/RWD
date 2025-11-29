@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Canteen Ordering Flow — Project Overview</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0b0b0d;
+      color: #e2e2e2;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      text-align: center;
+      padding: 30px 10px;
+      background: rgba(17, 18, 24, 0.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid #1f1f25;
+      z-index: 10;
+    }
+
+    h1 { margin: 0; font-size: 32px; color: #ffffff; }
+    h2 { margin: 0; font-size: 20px; color: #9bc6ff; }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      background: #14141a;
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid #22222b;
+    }
+
+    .title {
+      font-size: 22px;
+      margin-bottom: 15px;
+      padding-left: 10px;
+      border-left: 4px solid #4a90e2;
+      color: #a8ccff;
+    }
+
+    .item {
+      background: #0f0f13;
+      border: 1px solid #2a2a33;
+      margin: 10px 0;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #e4e4e4;
+    }
+
+    .tech-flow {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .tech-box {
+      display: inline-block;
+      background: #111118;
+      border: 1px solid #32323d;
+      padding: 18px 25px;
+      margin: 12px;
+      border-radius: 12px;
+      min-width: 260px;
+      font-size: 16px;
+      color: #d2d2ff;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+
+    .arrow {
+      display: inline-block;
+      font-size: 28px;
+      color: #4a90e2;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .subtext { font-size: 13px; color: #b5b5b5; margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Canteen Ordering System</h1>
+    <h2>Project Flow + Techs Overview</h2>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- Student Flow -->
+    <div class="section">
+      <div class="title">1. Student Flow</div>
+      <div class="item">1. Open app → View canteens</div>
+      <div class="item">2. Choose canteen → View menu</div>
+      <div class="item">3. Add items to cart</div>
+      <div class="item">4. Checkout → Pickup slot → Payment (UPI/Cash)</div>
+      <div class="item">5. Track order: Placed → Accepted → Preparing → Ready → Picked</div>
+    </div>
+
+    <!-- Shopkeeper Flow -->
+    <div class="section">
+      <div class="title">2. Shopkeeper Flow</div>
+      <div class="item">• See incoming orders (via 5s polling)</div>
+      <div class="item">• Accept or Reject order</div>
+      <div class="item">• Mark Preparing after accepting</div>
+      <div class="item">• Mark Ready when food is done</div>
+      <div class="item">• Mark Picked when student collects</div>
+      <div class="item">• Set items In Stock / Sold Out</div>
+    </div>
+
+    <!-- Technologies -->
+    <div class="section">
+      <div class="title">3. Technologies We Use</div>
+
+      <div class="tech-flow">
+        <div class="tech-box">
+          <b>Frontend</b><br>
+          HTML<br>CSS<br>JavaScript<br>
+          <div class="subtext">Handles UI + Fetch API requests</div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="tech-box">
+          <b>Backend</b><br>
+          Node.js<br>Express.js<br>Express Router<br>
+          <div class="subtext">Endpoints, auth, orders, payments</div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="tech-box">
+          <b>Database</b><br>
+          MongoDB Atlas<br>Mongoose<br>
+          <div class="subtext">Users, menu, orders, payments</div>
+        </div>
+      </div>
+
+      <div class="tech-flow" style="margin-top:30px;">
+        <div class="tech-box">
+          <b>Hosting</b><br>
+          Vercel (Frontend)<br>Railway (Backend)<br>
+          <div class="subtext">Free-tier deployment</div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="tech-box">
+          <b>Extra Tools</b><br>
+          GitHub (Code)<br>Polling (Realtime updates)<br>
+          <div class="subtext">Simple & reliable for expo demo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backend Responsibilities (NEW) -->
+    <div class="section">
+      <div class="title">4. Backend Responsibilities</div>
+      <div class="item">• Build Express server + folder structure</div>
+      <div class="item">• Create APIs for Login / Signup (JWT Auth)</div>
+      <div class="item">• Menu APIs: Add, Update, Delete, Toggle Availability</div>
+      <div class="item">• Order APIs: Place Order, Status Update, Fetch Orders</div>
+      <div class="item">• Payment Integration (Razorpay/UPI simulation)</div>
+      <div class="item">• Connect frontend to backend using Fetch API</div>
+      <div class="item">• Handle validation + middleware</div>
+      <div class="item">• Host backend on Railway</div>
+    </div>
+
+    <!-- Team Split (NEW) -->
+    <div class="section">
+      <div class="title">5. Backend Team Split (70% / 30%)</div>
+
+      <div class="item"><b>Developer A (70%)</b><br>
+      • Setup Express project<br>
+      • User Auth (JWT + hashing)<br>
+      • Orders System<br>
+      • Payment Integration<br>
+      • Deployment + environment setup<br>
+      • Core testing</div>
+
+      <div class="item"><b>Developer B (30%)</b><br>
+      • Menu CRUD APIs<br>
+      • Cloudinary image upload<br>
+      • Basic input validation<br>
+      • Fetch menu endpoints<br>
+      • Documentation + API list<br>
+      • Assist with frontend testing</div>
+    </div>
+
+    <!-- Backend Roadmap (NEW) -->
+    <div class="section">
+      <div class="title">6. Backend Roadmap (30-Day Expo Timeline)</div>
+
+      <div class="item"><b>Week 1:</b> Auth + Project Setup</div>
+      <div class="item"><b>Week 2:</b> Menu CRUD + Cloudinary</div>
+      <div class="item"><b>Week 3:</b> Order System + Status Updates</div>
+      <div class="item"><b>Week 4:</b> Payment + Deployment + Final Testing</div>
+    </div>
+
+  </div>
+</body>
+</html>
