@@ -65,6 +65,6 @@ Shopkeepers can manage orders and update item availability.
 ---
 
 ## Goal
-Deliver a clean and functional canteen ordering system suitable for college expo demonstration...
+Deliver a clean and functional canteen ordering system suitable for college expo demonstration.....
 
 
