@@ -97,6 +97,10 @@ label {
 input {
     margin-top: 8px;
 }
+.input-group .eye {
+    cursor: pointer !important; 
+    user-select: none !important;
+}
 @keyframes shakeError {
     0% { transform: translateX(0); }
     20% { transform: translateX(-4px); }

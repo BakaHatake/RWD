@@ -1,4 +1,5 @@
 document.getElementById("loginButton").addEventListener("click", loginuser);
+
 function triggerErrorAnimation(input) {
     input.classList.remove("error");      
     void input.offsetWidth;              
