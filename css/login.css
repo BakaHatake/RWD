@@ -152,11 +152,12 @@ input {
 }
 
 /* RIGHT SECTION */
-.right-section {
+.right-section,#ssignupright {
+    /* display: none; */
     position: relative;
     width:40%;
     background:
-    url("https://res.cloudinary.com/dvpz1tzam/image/upload/v1764335300/WhatsApp_Image_2025-11-28_at_18.38.04_b0a6dc94_ammzkp.jpg");;
+    url("https://res.cloudinary.com/dvpz1tzam/image/upload/v1764335300/WhatsApp_Image_2025-11-28_at_18.38.04_b0a6dc94_ammzkp.jpg");
     background-size: cover;
     background-position: center;
         filter: brightness(1.1) contrast(1.32) saturate(1.5);
@@ -169,6 +170,18 @@ input {
     background: rgba(0, 0, 0, 0);
     z-index: 1;
     backdrop-filter: brightness(0.9);
+}
+#ssignupright{
+    position: relative;
+}
+#ssignupright h1{
+    position: absolute;
+    z-index:2;
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    top: 20%;
+    left: 35%;
 }
 
 .clock,
@@ -324,7 +337,6 @@ html, body {
     height: 100%;
 }
 
-
 .main-container {
     position: relative;
     width: 100%;
@@ -332,7 +344,6 @@ html, body {
     z-index: -1;
 }
 
-/* Transparent effect layer */
 .main-container::before {
     content: "";
     position: absolute;
@@ -347,20 +358,16 @@ html, body {
     border: none;
 }
 
-
-    /* Hide right side completely */
     .right-section {
         display: none;
     }
 
-    /* Left section full width */
     .left-section {
         width: 100%;
         padding: 20px;
         text-align: center;
     }
 
-    /* Tabs side-by-side but large */
     .switch-container {
         width: 90%;
         margin: 20px auto;
@@ -369,7 +376,7 @@ html, body {
     }
 
     .switch-container .tab {
-        font-size: 18px;      /* Bigger font */
+        font-size: 18px;      
         padding: 14px 0;
     }
 
@@ -385,7 +392,7 @@ html, body {
     #email{
         width: 100%;
         height: 55px;
-        font-size: 14px;     /* bigger */
+        font-size: 14px;     
     }
     #password {
         width: 90%;
