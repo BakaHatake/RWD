@@ -265,8 +265,8 @@ input {
 
     /* Forgot password */
     .forgot-password {
-        margin-left: 60px;
-        margin-top:-70px;
+        margin-left: 51%;
+        padding-top: 9%;
         /* text-align: center; */
         font-size: small;
     }
@@ -277,24 +277,22 @@ input {
     .desc {
         display: none !important;
     }
-}
+
 .button-group{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    /* margin-left:-90px; */
     width: 190px;
     margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .input-group label.email{
     font-size: 14px;
     font-weight: 500;
-    margin-right: 50%;
+    margin-right: 55%;
 }
 .input-group label.password{
     font-size: 14px;
     font-weight: 500;
-    margin-right: 65%;
+    margin-right: 70%;
 }
 .left-section h2{
     font-size: 24px;
@@ -305,4 +303,4 @@ input {
     font-size: 12px;
     color: #aaa;
 }
-
+}
