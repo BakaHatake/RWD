@@ -16,7 +16,7 @@ def serve_html(filename):
     return send_from_directory(HTML_DIR, filename)
 
 @app.route("/css/<path:filename>")
-def serve_css(filename):
+def serve_css(filename): 
     return send_from_directory(CSS_DIR, filename)
 
 @app.route("/js/<path:filename>")
