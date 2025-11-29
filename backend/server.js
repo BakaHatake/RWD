@@ -10,7 +10,7 @@ const auth=require('./routes/auth')
 
 const PORT = process.env.PORT;
 app.get("/", (req, res) => {
-    res.send("Backend working");
+    res.send("Backend working");X
 });
 app.use(bodyParser.json())
 app.use(cors())

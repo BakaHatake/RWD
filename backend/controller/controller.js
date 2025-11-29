@@ -40,7 +40,8 @@ const login2 = async (req, res) => {
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(409).json({
-                message: "Invalid email",
+                type:"email",
+                message: "User does not exist",
                 success: false
             });
         }
@@ -48,13 +49,22 @@ const login2 = async (req, res) => {
         const passMatch = await bcrypt.compare(password, user.password);
         if (!passMatch) {
             return res.status(409).json({
+                type:"pass",
                 message: "Invalid password",
                 success: false
             });
         }
+        const jwtToke=jwt.sign({email:user.email,_id:user._id},
+            process.env.JWT_SECRET,
+            {expiresIn:'24h'}
+
+        )
         return res.status(200).json({
             message: "Login successful",
-            success: true
+            success: true,
+            jwtToke,
+            email,
+            user:user.name
         });
 
     } catch (err) {

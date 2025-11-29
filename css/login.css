@@ -97,6 +97,24 @@ label {
 input {
     margin-top: 8px;
 }
+@keyframes shakeError {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+    100% { transform: translateX(0); }
+}
+
+.error {
+    animation: shakeError 0.3s ease;
+}
+
+.error::placeholder {
+    color: red;
+    transition: color 0.3s ease;
+}
+
 
 /* LOGIN BUTTON */
 .action-button {
@@ -234,7 +252,7 @@ html, body {
     position: relative;
     width: 100%;
     height: auto;
-    z-index: 1;
+    z-index: -1;
 }
 
 /* Transparent effect layer */
@@ -247,8 +265,9 @@ html, body {
     height: 100%;
     /* backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px); */
-    z-index: -1; /* sits behind children */
+    z-index: -1; 
     border-radius: inherit;
+    border: none;
 }
 
 
@@ -309,7 +328,7 @@ html, body {
         font-size: small;
     }
     .forgot-password a{
-        color: rgb(0, 0, 0);
+        color: indianred;
         font-weight: 400;
     }
     /* REMOVE CLOCK + TEXT */
