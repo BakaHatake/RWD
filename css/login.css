@@ -162,7 +162,6 @@ input {
         filter: brightness(1.1) contrast(1.32) saturate(1.5);
 }
 
-/* DARK OVERLAY FIX */
 .right-section::after {
     content: "";
     position: absolute;
@@ -172,7 +171,6 @@ input {
     backdrop-filter: brightness(0.9);
 }
 
-/* CLOCK + TEXT MUST BE ABOVE OVERLAY */
 .clock,
 .ready,
 .desc {
