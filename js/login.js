@@ -5,6 +5,9 @@ let signup =document.getElementById('signup');
 let loginBtn = document.getElementById('loginButton');
 let signupBtn = document.getElementById('signupButton');
 
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+
 loginTab.addEventListener('click', () => {
     loginTab.classList.add("active");
     signupTab.classList.remove("active");
@@ -23,4 +26,10 @@ signupTab.addEventListener('click', () => {
     signup.style.display="block";
     // signupBtn.style.display = "block";
     // loginBtn.style.display = "none";
+});
+
+togglePassword.addEventListener("click",()=>{
+    const isPassword=passwordInput.type==="password"
+    passwordInput.type=isPassword?"Text":"password"
+    togglePassword.textContent = isPassword ? "🙈" : "👁️";
 });

@@ -64,7 +64,8 @@ const login2 = async (req, res) => {
             success: true,
             jwtToke,
             email,
-            user:user.name
+            user:user.name,
+            jwtToke
         });
 
     } catch (err) {

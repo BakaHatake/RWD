@@ -1,4 +1,6 @@
 document.getElementById("loginButton").addEventListener("click", loginuser);
+
+
 function triggerErrorAnimation(input) {
     input.classList.remove("error");      
     void input.offsetWidth;              
@@ -24,6 +26,8 @@ async function loginuser() {
         const emailInput = document.getElementById("email");
         const passInput = document.getElementById("password");
         if (res.status === 200 && data.success) {
+            localStorage.setItem("token", data.jwtToke);
+
             window.location.href = "flow.html";
         } 
     else if (res.status === 409) {
