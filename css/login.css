@@ -289,12 +289,12 @@ input {
 .input-group label.email{
     font-size: 14px;
     font-weight: 500;
-    margin-right: 65px;
+    margin-right: 50%;
 }
 .input-group label.password{
     font-size: 14px;
     font-weight: 500;
-    margin-right:110px;
+    margin-right: 65%;
 }
 .left-section h2{
     font-size: 24px;
