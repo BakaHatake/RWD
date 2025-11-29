@@ -152,7 +152,7 @@ input {
 }
 
 /* RIGHT SECTION */
-.right-section,#ssignupright {
+.right-section{
     /* display: none; */
     position: relative;
     width:40%;
@@ -161,6 +161,7 @@ input {
     background-size: cover;
     background-position: center;
         filter: brightness(1.1) contrast(1.32) saturate(1.5);
+        z-index: 0;
 }
 
 .right-section::after {
@@ -171,18 +172,21 @@ input {
     z-index: 1;
     backdrop-filter: brightness(0.9);
 }
-#ssignupright{
-    position: relative;
+#ssignupright {
+    position: relative; /* already in your code, good */
 }
-#ssignupright h1{
+
+#ssignupright h1 {
     position: absolute;
-    z-index:2;
+    z-index: 5; /* stays above overlay */
     color: white;
     font-size: 36px;
     font-weight: 700;
-    top: 20%;
-    left: 35%;
+   top: 30%;           /* your perfect top */
+    left: 50%;          /* center starting point */
+    transform: translateX(-50%);
 }
+
 
 .clock,
 .ready,
@@ -436,24 +440,6 @@ html, body {
     margin-left: auto;
     margin-right: auto;
 }
-.button-group1{
-    width: 100%;
-    margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.last {
-    width: 100%;
-    margin-left: -17%;
-    text-align: center;
-}
-
-.last a {
-    color: indianred;
-    text-decoration: none;
-    font-size: 14px;
-}
-
 .input-group label.email{
     font-size: 14px;
     font-weight: 500;
