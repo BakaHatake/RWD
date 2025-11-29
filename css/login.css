@@ -208,12 +208,7 @@ input {
 .button-group button:active {
     transform: scale(0.95);
 }
-/* ============================
-   MOBILE VIEW (max-width: 768px)
-   ============================ */
-/* ---------- MOBILE RESPONSIVE ---------- */
-/* ===== MOBILE VERSION ===== */
-/* ----- MOBILE RESPONSIVE ----- */
+
 @media (max-width: 768px) {
 
     .main-container {
