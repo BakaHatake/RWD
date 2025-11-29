@@ -98,8 +98,8 @@ input {
     margin-top: 8px;
 }
 .input-group .eye {
-    cursor: pointer !important; 
-    user-select: none !important;
+    cursor: pointer ; 
+    user-select: none ;
 }
 @keyframes shakeError {
     0% { transform: translateX(0); }
@@ -309,13 +309,21 @@ html, body {
     h2{
         color: white;
     }
-    #email,
-    #password {
+    #email{
         width: 100%;
         height: 55px;
         font-size: 14px;     /* bigger */
     }
-
+    #password {
+        width: 90%;
+        height: 55px;
+        font-size: 14px;     
+    }
+    .input-group .eye {
+    width: 10%;
+    cursor: pointer ; 
+    user-select: none ;
+}
     /* Button */
     .action-button {
         width: 80%;
