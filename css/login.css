@@ -231,6 +231,50 @@ input {
     transform: scale(0.95);
 }
 
+
+.signup-input {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 35px;       
+    width: 100%;         
+    /* max-width: 900px;     */
+    margin-top: 20px;
+}
+
+.signup-input .field label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.signup-input .field input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.signup-input{
+    margin-bottom: 20px;
+    
+}
+.field input:focus {
+    border-color: #ff7a3d;
+    box-shadow: 0 0 4px rgba(255, 122, 61, 0.4);
+}
+.signup-input .field select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+}
+
 @media (max-width: 768px) {
         .left-section {
         background: transparent !important;
@@ -379,38 +423,4 @@ html, body {
 }
 }
 
-
-.signup-input {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px 35px;       
-    width: 100%;         
-    /* max-width: 900px;     */
-    margin-top: 20px;
-}
-
-.signup-input .field label {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    display: block;
-}
-
-.signup-input .field input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #d3d3d3;
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-}
-
-.signup-input{
-    margin-bottom: 20px;
-    
-}
-.field input:focus {
-    border-color: #ff7a3d;
-    box-shadow: 0 0 4px rgba(255, 122, 61, 0.4);
-}
 
