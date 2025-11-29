@@ -208,3 +208,86 @@ input {
 .button-group button:active {
     transform: scale(0.95);
 }
+/* ============================
+   MOBILE VIEW (max-width: 768px)
+   ============================ */
+/* ---------- MOBILE RESPONSIVE ---------- */
+/* ===== MOBILE VERSION ===== */
+/* ----- MOBILE RESPONSIVE ----- */
+@media (max-width: 768px) {
+
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    /* Hide right side completely */
+    .right-section {
+        display: none;
+    }
+
+    /* Left section full width */
+    .left-section {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Tabs side-by-side but large */
+    .switch-container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 5px;
+        border-radius: 40px;
+    }
+
+    .switch-container .tab {
+        font-size: 18px;      /* Bigger font */
+        padding: 14px 0;
+    }
+
+    /* Inputs 70% width */
+    .input-sec {
+        margin: 30px auto;
+        width: 70%;
+        gap: 25px;
+    }
+
+    #email,
+    #password {
+        width: 100%;
+        height: 55px;
+        font-size: 18px;     /* bigger */
+    }
+
+    /* Button */
+    .action-button {
+        width: 80%;
+        height: 50px;
+        font-size: 18px;
+        margin: 10px auto;
+    }
+
+    /* Forgot password */
+    .forgot-password {
+        margin-left: 30px;
+        margin-top:-60px;
+        text-align: center;
+    }
+
+    /* REMOVE CLOCK + TEXT */
+    .clock,
+    .ready,
+    .desc {
+        display: none !important;
+    }
+}
+.button-group{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* margin-left:-90px; */
+    width: 190px;
+}
+
+
