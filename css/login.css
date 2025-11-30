@@ -229,6 +229,21 @@ input {
     font-weight: 300;
 
 }
+.title-line {
+  border-top: 1px solid white;  /* The line ABOVE */
+  padding-top: 15px;            /* Space between line & text */
+  width: fit-content;           /* Keeps line short */
+  margin: 0 auto;               /* Center the whole thing */
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  top: 85%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    padding-top:4%;
+}
+
 
 
 
