@@ -89,7 +89,125 @@ const login2 = async (req, res) => {
     }
 };
 
+require("dotenv").config();
+const OTP = require("../models/otp");
+const sendOTPEmail = require("../utils/mailer");
+const { date } = require('joi');
+const forget = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({
+                success: false,
+                message: "Email is required"
+            });
+        }
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User does not exist"
+            });
+        }
+
+        const existing = await OTP.findOne({ email });
+
+        if (existing && existing.expiresAt > Date.now()) {
+            const wait = Math.ceil((existing.expiresAt - Date.now()) / 1000);
+
+            return res.status(429).json({
+                success: false,
+                message: `OTP already sent. Try again in ${wait} seconds.`
+            });
+        }
+
+        const otp = Math.floor(100000 + Math.random() * 900000);
+
+        try {
+            await sendOTPEmail(email, otp);
+        } catch (mailErr) {
+            console.error("EMAIL SEND FAILED:", mailErr);
+            return res.status(500).json({
+                success: false,
+                message: "Failed to send OTP email. Try again later."
+            });
+        }
+
+        await OTP.updateOne(
+            { email },
+            {
+                $set: {
+                    otp,
+                    expiresAt: Date.now() + 5 * 60 * 1000
+                }
+            },
+            { upsert: true }
+        );
+
+        return res.status(200).json({
+            success: true,
+            message: "OTP sent to your email"
+        });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+    }
+};
+const verify=async (req,res)=>{
+    try{
+        const{email,otp}=req.body;
+        if(!email||!otp){
+            return res.status(400).json({
+                success: false,
+                message: "Email and OTP are required"
+            });
+        }
+        const record=await OTP.findOne({email});
+
+        if(!record){
+            return res.status(400).json({
+                success: false,
+                message: "No OTP found. Request a new one."
+            });
+        }
+        if(record.expiresAt<Date.now()){
+            await OTP.deleteOne({ email }); 
+            return res.status(400).json({
+                success: false,
+                message: "OTP expired. Request a new one."
+            });
+        }
+        if (record.otp !== otp) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid OTP"
+            });
+        }
+        await OTP.deleteOne({ email });
+
+        return res.status(200).json({
+            success: true,
+            message: "OTP verified successfully"
+        });
+    }
+    catch (err) {
+        console.error(err);
+        return res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+    }
+}
 module.exports = {
     signup2,
-    login2
+    login2,
+    forget,
+    verify
 };

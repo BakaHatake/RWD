@@ -121,13 +121,8 @@ async function bsignup() {
         hasError = true;
     }
 
-
-    // STOP HERE if required missing
     if (hasError) return;
 
-    // FORMAT VALIDATION ---------------------
-
-    // Name
     const nameregex = /^[A-Za-z ]+$/;
     if (!nameregex.test(name.value.trim())) {
         name.value = "";
@@ -136,7 +131,6 @@ async function bsignup() {
         hasError = true;
     }
 
-    // Phone
     const phonereg = /^[0-9]+$/;
     if (!phonereg.test(phone.value.trim())) {
         phone.value = "";
@@ -145,7 +139,6 @@ async function bsignup() {
         hasError = true;
     }
 
-    // Email format
     if (!email.checkValidity()) {
         email.value = "";
         email.placeholder = "Invalid email Bruh";
@@ -153,7 +146,6 @@ async function bsignup() {
         hasError = true;
     }
 
-    // USN
     const croll = /^[A-Za-z0-9]+$/;
     if (!croll.test(roll.value.trim())) {
         roll.value = "";
@@ -162,7 +154,6 @@ async function bsignup() {
         hasError = true;
     }
 
-    // Campus
     if (campus.value.trim().toLowerCase() !== "ait campus") {
         campus.value = "";
         campus.placeholder = "ONLY AIT Campus Bruh";
@@ -170,7 +161,6 @@ async function bsignup() {
         hasError = true;
     }
 
-    // Password strength
     const strongPass =
         /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -193,8 +183,6 @@ async function bsignup() {
 
     if (hasError) return;
 
-
-    // DATA IS NOW SAFE TO SEND ---------------------
     const bodydata = {
         name: name.value.trim(),
         phone: phone.value.trim(),
@@ -228,6 +216,3 @@ async function bsignup() {
         alert("Server died again. Pray for it.");
     }
 }
-
-
-

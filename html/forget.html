@@ -19,12 +19,13 @@
             <h1>Forgot Password</h>
             <p>Enter your registered email or phone number to receive a verification code.</p>
 
-            <div class="input-group">
-                <label>Email Address or Phone Number</label>
-                <input type="text" placeholder="Enter email or phone number">
-                <button class="btn-secondary">Get OTP</button>
-            </div>
-            <div class="divider">VERIFY</div>
+<div class="input-group">
+    <label>Email Address or Phone Number</label>
+    <input type="text" id="input" placeholder="Enter email or phone number">
+    <button id="otp-btn" class="btn-secondary">Get OTP</button>
+</div>
+
+<div class="divider">VERIFY</div>
 
             <div class="input-group">
                 <label>Enter the 6-Digit Verification Code</label>
@@ -40,6 +41,7 @@
             </div>
 
             <button id="verify-btn" class="btn-primary">Verify & Proceed</button>
-
+<script src="/js/forget.js"></script>
 </body>
+
 </html>
