@@ -1,34 +1,47 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
-const jwt=require('jsonwebtoken')
-const signup2 = async (req, res) => {
-    try {
-        const { name, email, password } = req.body;
+const jwt=require('jsonwebtoken');
 
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
+
+const signup2=async(req,res)=>{
+    try{
+        const{name,phone,usn,gender,email,password}=req.body;
+        const alremail=await User.findOne({email});
+        if(alremail){
             return res.status(409).json({
-                message: "User already exists",
-                success: false
-            });
+                message:"Email already exists",
+                type:"email",
+                success:false
+            })
         }
-
-        const newUser = new User({ name, email, password });
-
-        newUser.password = await bcrypt.hash(password, 10);
-
-        await newUser.save();
-
-        return res.status(201).json({
-            message: "Signup successful",
-            success: true
+        const alrusn=await User.findOne({usn});
+        if(alrusn){
+            return res.status(409).json({
+                message:"USN already exists",
+                type:"usn",
+                success:false
+            })
+        }
+        const hpass=await bcrypt.hash(password,10);
+        const newuser=new User({
+            name,
+            phone,
+            usn,
+            gender,
+            email,
+            password:hpass
         });
-
-    } catch (err) {
+        await newuser.save();
+        res.status(201).json({
+            message:"Singup successful",
+            success:true
+        });
+    }
+    catch(err){
         console.error(err);
-        return res.status(500).json({
-            message: "Signup failed",
-            success: false
+        res.status(500).json({
+            message:"Signup failed",
+            success:false
         });
     }
 };
@@ -65,7 +78,6 @@ const login2 = async (req, res) => {
             jwtToke,
             email,
             user:user.name,
-            jwtToke
         });
 
     } catch (err) {
