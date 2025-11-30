@@ -446,6 +446,23 @@ html, body {
     margin-right: 55%;
     color: white;
 }
+    button-group1{
+    width: 100%;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.last {
+    width: 100%;
+    margin-left: -17%;
+    text-align: center;
+}
+
+.last a {
+    color: indianred;
+    text-decoration: none;
+    font-size: 14px;
+}
 .input-group label.password{
     font-size: 14px;
     font-weight: 500;
