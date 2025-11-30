@@ -2,8 +2,6 @@ let loginTab = document.getElementById('loginTab');
 let signupTab = document.getElementById('signupTab');
 let login =document.getElementById('login');
 let signup =document.getElementById('signup');
-let loginBtn = document.getElementById('loginButton');
-let signupBtn = document.getElementById('signupButton');
 let ssignupright = document.getElementById('ssignupright');
 let logright = document.getElementById('logright');
 const passwordInput = document.getElementById("password");
@@ -17,8 +15,6 @@ loginTab.addEventListener('click', () => {
      signup.style.display="none";
      ssignupright.style.display="none";
      logright.style.display="block";
-    // loginBtn.style.display = "block";
-    // signupBtn.style.display = "none";
 });
 
 signupTab.addEventListener('click', () => {
@@ -29,8 +25,6 @@ signupTab.addEventListener('click', () => {
     signup.style.display="block";
     ssignupright.style.display="block";
     logright.style.display="none";
-    // signupBtn.style.display = "block";
-    // loginBtn.style.display = "none";
 });
 
 togglePassword.addEventListener("click",()=>{

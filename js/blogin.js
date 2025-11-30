@@ -1,6 +1,5 @@
 document.getElementById("loginButton").addEventListener("click", loginuser);
 
-
 function triggerErrorAnimation(input) {
     input.classList.remove("error");      
     void input.offsetWidth;              
@@ -59,3 +58,123 @@ async function loginuser() {
         alert("Bro your server fainted. Try again later.");
     }
 }
+
+document.getElementById("bsignupButton").addEventListener("click", bsignup);
+
+async function bsignup() {
+    const name = document.getElementById("fullname");
+    const phone = document.getElementById("phone");
+    const email = document.getElementById("semail");
+    const roll = document.getElementById("roll");
+    const gender = document.getElementById("gender");
+    const campus = document.getElementById("campus");
+    const pass = document.getElementById("spassword");
+    const cpass = document.getElementById("confirmpass");
+
+    let hasError = false;
+
+    const nameregex = /^[A-Za-z ]+$/;
+    if (name.value.trim() !== "" && !nameregex.test(name.value.trim())) {
+        name.value = "";
+        name.placeholder = "Invalid name Bruh";
+        triggerErrorAnimation(name);
+        hasError = true;
+    }
+
+    const phonereg = /^[0-9]+$/;
+
+if (phone.value.trim() !== "" && !phonereg.test(phone.value.trim())) {
+    phone.value = "";
+    phone.placeholder = "Invalid Number Bruh";
+    triggerErrorAnimation(phone);
+    hasError = true;
+}
+
+
+    if (!email.checkValidity()) {
+        email.value = "";
+        email.placeholder = "Invalid email Bruh";
+        triggerErrorAnimation(email);
+        hasError = true;
+    }
+
+    const croll = /^[A-Za-z0-9]+$/;
+    if (roll.value.trim() !== "" && !croll.test(roll.value.trim())) {
+        roll.value = "";
+        roll.placeholder = "Invalid USN Bruh";
+        triggerErrorAnimation(roll);
+        hasError = true;
+    }
+
+    if (campus.value.trim() !== "" && campus.value.trim().toLowerCase() !== "ait campus") {
+        campus.value = "";
+        campus.placeholder = "ONLY AIT Campus Bruh";
+        triggerErrorAnimation(campus);
+        hasError = true;
+    }
+    if (gender.value === "") {
+    triggerErrorAnimation(gender);
+    return;
+}
+
+
+    const strongPass = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const password = pass.value.trim();
+    const confirmPassword = cpass.value.trim();
+
+    if (!strongPass.test(password)) {
+        pass.value = "";
+        pass.placeholder = "Weak password Bruh";
+        triggerErrorAnimation(pass);
+        hasError = true;
+    }
+
+    if (confirmPassword !== password) {
+        cpass.value = "";
+        cpass.placeholder = "Passwords don't match Bruh";
+        triggerErrorAnimation(cpass);
+        hasError = true;
+    }
+
+    if (hasError) return;
+
+    const bodydata={
+        name:name.value.trim(),
+        phone:phone.value.trim(),
+        email:email.value.trim(),
+        usn:roll.value.trim(),
+        gender:gender.value,
+        campus:campus.value.trim(),
+        password:password
+    }
+    console.log("Sending :",bodydata);
+    try{
+        // const res =await fetch ("http://localhost:8080/auth/signup",
+        const res = await fetch("https://rwd.up.railway.app/auth/signup",
+        {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(bodydata)
+        });
+
+        const data=await res.json();
+        console.log("STATUS",res.status);
+        console.log("DATA",data);
+
+        if(res.status==201){
+            alert("Account Created Successfully!")
+            window.location.href="login.html";
+
+        }
+        else{
+            alert("Server rejected your signup. Fix your data maybe?")
+        }
+
+    }catch(err){
+        console.error(err);
+        alert("Server died again. Pray for it.");
+    }
+
+}
+
+
