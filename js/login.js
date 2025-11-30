@@ -6,6 +6,11 @@ let ssignupright = document.getElementById('ssignupright');
 let logright = document.getElementById('logright');
 const passwordInput = document.getElementById("password");
 const togglePassword = document.getElementById("togglePassword");
+const passwordInput1 = document.getElementById("spassword");
+const togglePassword1 = document.getElementById("togglePassword1");
+const passwordInput2 = document.getElementById("confirmpass");
+const togglePassword2 = document.getElementById("togglePassword2");
+
 
 loginTab.addEventListener('click', () => {
     loginTab.classList.add("active");
@@ -31,4 +36,16 @@ togglePassword.addEventListener("click",()=>{
     const isPassword=passwordInput.type==="password"
     passwordInput.type=isPassword?"Text":"password"
     togglePassword.textContent = isPassword ? "🙈" : "👁️";
+});
+
+togglePassword1.addEventListener("click",()=>{
+    const isPassword=passwordInput1.type==="password"
+    passwordInput1.type=isPassword?"Text":"password"
+    togglePassword1.textContent = isPassword ? "🙈" : "👁️";
+});
+
+togglePassword2.addEventListener("click",()=>{
+    const isPassword=passwordInput2.type==="password"
+    passwordInput2.type=isPassword?"Text":"password"
+    togglePassword2.textContent = isPassword ? "🙈" : "👁️";
 });
