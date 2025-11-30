@@ -73,24 +73,79 @@ async function bsignup() {
 
     let hasError = false;
 
+    // REQUIRED CHECKS ---------------------
+    if (name.value.trim() === "") {
+        triggerErrorAnimation(name);
+        name.placeholder = "Name required Bruh";
+        hasError = true;
+    }
+
+    if (phone.value.trim() === "") {
+        triggerErrorAnimation(phone);
+        phone.placeholder = "Phone required Bruh";
+        hasError = true;
+    }
+
+    if (email.value.trim() === "") {
+        triggerErrorAnimation(email);
+        email.placeholder = "Email required Bruh";
+        hasError = true;
+    }
+
+    if (roll.value.trim() === "") {
+        triggerErrorAnimation(roll);
+        roll.placeholder = "USN required Bruh";
+        hasError = true;
+    }
+
+    if (gender.value === "") {
+        triggerErrorAnimation(gender);
+        hasError = true;
+    }
+
+    if (campus.value.trim() === "") {
+        triggerErrorAnimation(campus);
+        campus.placeholder = "Campus required Bruh";
+        hasError = true;
+    }
+
+    if (pass.value.trim() === "") {
+        triggerErrorAnimation(pass);
+        pass.placeholder = "Password required Bruh";
+        hasError = true;
+    }
+
+    if (cpass.value.trim() === "") {
+        triggerErrorAnimation(cpass);
+        cpass.placeholder = "Confirm password Bruh";
+        hasError = true;
+    }
+
+
+    // STOP HERE if required missing
+    if (hasError) return;
+
+    // FORMAT VALIDATION ---------------------
+
+    // Name
     const nameregex = /^[A-Za-z ]+$/;
-    if (name.value.trim() !== "" && !nameregex.test(name.value.trim())) {
+    if (!nameregex.test(name.value.trim())) {
         name.value = "";
         name.placeholder = "Invalid name Bruh";
         triggerErrorAnimation(name);
         hasError = true;
     }
 
+    // Phone
     const phonereg = /^[0-9]+$/;
+    if (!phonereg.test(phone.value.trim())) {
+        phone.value = "";
+        phone.placeholder = "Invalid Number Bruh";
+        triggerErrorAnimation(phone);
+        hasError = true;
+    }
 
-if (phone.value.trim() !== "" && !phonereg.test(phone.value.trim())) {
-    phone.value = "";
-    phone.placeholder = "Invalid Number Bruh";
-    triggerErrorAnimation(phone);
-    hasError = true;
-}
-
-
+    // Email format
     if (!email.checkValidity()) {
         email.value = "";
         email.placeholder = "Invalid email Bruh";
@@ -98,27 +153,27 @@ if (phone.value.trim() !== "" && !phonereg.test(phone.value.trim())) {
         hasError = true;
     }
 
+    // USN
     const croll = /^[A-Za-z0-9]+$/;
-    if (roll.value.trim() !== "" && !croll.test(roll.value.trim())) {
+    if (!croll.test(roll.value.trim())) {
         roll.value = "";
         roll.placeholder = "Invalid USN Bruh";
         triggerErrorAnimation(roll);
         hasError = true;
     }
 
-    if (campus.value.trim() !== "" && campus.value.trim().toLowerCase() !== "ait campus") {
+    // Campus
+    if (campus.value.trim().toLowerCase() !== "ait campus") {
         campus.value = "";
         campus.placeholder = "ONLY AIT Campus Bruh";
         triggerErrorAnimation(campus);
         hasError = true;
     }
-    if (gender.value === "") {
-    triggerErrorAnimation(gender);
-    return;
-}
 
+    // Password strength
+    const strongPass =
+        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    const strongPass = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     const password = pass.value.trim();
     const confirmPassword = cpass.value.trim();
 
@@ -138,43 +193,41 @@ if (phone.value.trim() !== "" && !phonereg.test(phone.value.trim())) {
 
     if (hasError) return;
 
-    const bodydata={
-        name:name.value.trim(),
-        phone:phone.value.trim(),
-        email:email.value.trim(),
-        usn:roll.value.trim(),
-        gender:gender.value,
-        campus:campus.value.trim(),
-        password:password
-    }
-    console.log("Sending :",bodydata);
-    try{
-        // const res =await fetch ("http://localhost:8080/auth/signup",
-        const res = await fetch("https://rwd.up.railway.app/auth/signup",
-        {
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(bodydata)
+
+    // DATA IS NOW SAFE TO SEND ---------------------
+    const bodydata = {
+        name: name.value.trim(),
+        phone: phone.value.trim(),
+        email: email.value.trim(),
+        usn: roll.value.trim(),
+        gender: gender.value,
+        campus: campus.value.trim(),
+        password: password
+    };
+
+    console.log("Sending :", bodydata);
+
+    try {
+        const res = await fetch("https://rwd.up.railway.app/auth/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(bodydata)
         });
 
-        const data=await res.json();
-        console.log("STATUS",res.status);
-        console.log("DATA",data);
+        const data = await res.json();
 
-        if(res.status==201){
-            alert("Account Created Successfully!")
-            window.location.href="login.html";
-
-        }
-        else{
-            alert("Server rejected your signup. Fix your data maybe?")
+        if (res.status == 201) {
+            alert("Account Created Successfully!");
+            window.location.href = "login.html";
+        } else {
+            alert("Server rejected your signup. Fix your data maybe?");
         }
 
-    }catch(err){
+    } catch (err) {
         console.error(err);
         alert("Server died again. Pray for it.");
     }
-
 }
+
 
 
