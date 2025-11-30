@@ -194,6 +194,7 @@ const verify=async (req,res)=>{
 
         return res.status(200).json({
             success: true,
+            email,
             message: "OTP verified successfully"
         });
     }
@@ -205,9 +206,31 @@ const verify=async (req,res)=>{
         });
     }
 }
+const reset = async (req, res) => {
+    const { email, newPassword, confirmPassword } = req.body;
+
+    if (newPassword !== confirmPassword) {
+        return res.status(400).json({
+            success: false,
+            message: "Passwords do not match"
+        });
+    }
+
+    const hash = await bcrypt.hash(newPassword, 10);
+    await User.updateOne({ email }, { $set: { password: hash } });
+
+    await OTP.deleteOne({ email });
+
+    return res.status(200).json({
+        success: true,
+        message: "Password reset successfully"
+    });
+}
+
 module.exports = {
     signup2,
     login2,
     forget,
-    verify
+    verify,
+    reset
 };

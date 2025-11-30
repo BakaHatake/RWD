@@ -88,7 +88,9 @@ async function verifyOTP() {
 
         if (res.status === 200 && data.success) {
             alert("OTP verified! Proceeding...");
-            window.location.href = "reset.html";
+            localStorage.setItem("resetEmail", email);
+
+            window.location.href = "pass.html";
             return;
         }
 
