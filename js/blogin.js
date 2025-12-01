@@ -27,7 +27,7 @@ async function loginuser() {
         if (res.status === 200 && data.success) {
             localStorage.setItem("token", data.jwtToke);
 
-            window.location.href = "flow.html";
+            window.location.href = "menu.html";
         } 
     else if (res.status === 409) {
     if (data.type === "email") {

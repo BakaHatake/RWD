@@ -1,7 +1,7 @@
 document.getElementById("mbutton").addEventListener("click",()=>{
     const token=localStorage.getItem("token");
         if(token){
-            window.location.href="flow.html";
+            window.location.href="menu.html";
 
         }else{
             window.location.href = "login.html";
