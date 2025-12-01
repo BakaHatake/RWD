@@ -1,7 +1,18 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const jwt=require('jsonwebtoken');
-
+require("dotenv").config();
+const OTP = require("../models/otp");
+const {sendOTPEmail,welcome} = require("../utils/mailer");
+const { date } = require('joi');
+async function randomkey(){
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let key="";
+    for(i=0;i<8;i++){
+        key+=chars[Math.floor(Math.random()*chars.length)];
+    }
+    return key;
+}
 
 const signup2=async(req,res)=>{
     try{
@@ -23,19 +34,22 @@ const signup2=async(req,res)=>{
             })
         }
         const hpass=await bcrypt.hash(password,10);
+        const key1=await randomkey();
         const newuser=new User({
             name,
             phone,
             usn,
             gender,
             email,
-            password:hpass
+            password:hpass,
+            key:key1,
         });
         await newuser.save();
         res.status(201).json({
             message:"Singup successful",
             success:true
         });
+        await welcome(name,phone,usn,gender,email,key1)
     }
     catch(err){
         console.error(err);
@@ -89,10 +103,7 @@ const login2 = async (req, res) => {
     }
 };
 
-require("dotenv").config();
-const OTP = require("../models/otp");
-const sendOTPEmail = require("../utils/mailer");
-const { date } = require('joi');
+
 const forget = async (req, res) => {
     try {
         const { email } = req.body;

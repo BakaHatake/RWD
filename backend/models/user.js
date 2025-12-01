@@ -1,4 +1,5 @@
- const mongoose=require('mongoose')
+ const { string, required } = require('joi');
+const mongoose=require('mongoose')
  const schema=mongoose.Schema;
  const userschema=new schema({
     name:{
@@ -24,6 +25,10 @@
         unique:true,
     },
     password:{
+        type:String,
+        required:true,
+    },
+    key:{
         type:String,
         required:true,
     }
