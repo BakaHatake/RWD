@@ -38,8 +38,6 @@ const search = async (req, res) => {
         const mongoHits = await Item.find({
             $or: [
                 { name: { $regex: regex } },
-                { category: { $regex: regex } },
-                { type: { $regex: regex } }
             ]
         });
         const allItems = await Item.find();
