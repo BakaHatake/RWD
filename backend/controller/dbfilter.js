@@ -44,7 +44,7 @@ const search = async (req, res) => {
         const fuzzyHits = [];
 
         allItems.forEach(item => {
-            const text = `${item.name} ${item.category} ${item.type}`.toLowerCase();
+            const text = `${item.name}`.toLowerCase();
             const score = fuzz.partial_ratio(query, text);
 
             if (score >= 70) {
