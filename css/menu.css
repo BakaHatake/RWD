@@ -55,13 +55,16 @@ body {
     box-shadow: 0 6px 15px rgba(255, 112, 67, 0.4);
 }
 
-.logo svg,
+
 .cart svg,
 .profile-icon svg {
     width: 28px;
     height: 28px;
 }
-
+.logo svg{
+    width: 48px;
+    height: 48px;
+}
 .head {
     margin-top: 20px;
     margin-left: auto;

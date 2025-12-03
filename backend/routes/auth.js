@@ -3,7 +3,8 @@ const { signup2, login2 } = require('../controller/controller');
 const {forget}=require('../controller/controller')
 const {verify}=require('../controller/controller')
 const {reset}=require('../controller/controller')
-const {filter}=require('../controller/dbfilter')
+const {filter,search}=require('../controller/dbfilter')
+
 const router = require('express').Router();
 
 router.post('/login', login, login2);
@@ -12,6 +13,7 @@ router.post('/forget',forget)
 router.post('/verify',verify)
 router.post('/reset',reset)
 router.post('/filter',filter)
+router.post('/search',search)
 module.exports = router;
 
 

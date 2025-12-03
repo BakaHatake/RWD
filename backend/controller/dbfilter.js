@@ -1,5 +1,5 @@
 const Item = require('../models/item');
-
+const fuzz = require("fuzzball");
 const filter = async (req, res) => {
     try {
         const { category } = req.body;
@@ -26,4 +26,48 @@ const filter = async (req, res) => {
     }
 };
 
-module.exports = { filter };
+const search = async (req, res) => {
+    try {
+        const query = (req.body.query || "").trim().toLowerCase();
+        if (!query) {
+            const items = await Item.find();
+            return res.status(200).json({ items, success: true });
+        }
+        const regex = new RegExp(query, "i");
+
+        const mongoHits = await Item.find({
+            $or: [
+                { name: { $regex: regex } },
+                { category: { $regex: regex } },
+                { type: { $regex: regex } }
+            ]
+        });
+        const allItems = await Item.find();
+        const fuzzyHits = [];
+
+        allItems.forEach(item => {
+            const text = `${item.name} ${item.category} ${item.type}`.toLowerCase();
+            const score = fuzz.partial_ratio(query, text);
+
+            if (score >= 70) {
+                fuzzyHits.push(item);
+            }
+        });
+        const final = {};
+        [...mongoHits, ...fuzzyHits].forEach(i => {
+            final[i._id] = i;
+        });
+        return res.status(200).json({
+            success: true,
+            items: Object.values(final)
+        });
+    } catch (err) {
+        console.error("ERROR:", err);
+        return res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+    }
+};
+
+module.exports = { filter,search};

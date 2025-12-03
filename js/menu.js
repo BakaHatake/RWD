@@ -68,9 +68,44 @@ async function filter(text) {
 
         if (res.status === 200 && data.success) {
             renderitems(data.items);
+            scrollToDish();
         }
 
     } catch (err) {
         console.error("Error:", err);
     }
+}
+
+const searchInput = document.querySelector(".search input");
+
+searchInput.addEventListener("input", async () => {
+    const q = searchInput.value.trim();
+
+    try {
+        // const url = "http://localhost:8080/auth/search";
+        const url = "https://rwd.up.railway.app/auth/search";
+
+        const res = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query: q })
+        });
+
+        const data = await res.json();
+        console.log("SEARCH DATA:", data);
+
+        if (res.status === 200 && data.success) {
+            renderitems(data.items);
+        }
+
+    } catch (err) {
+        console.log("ERROR:", err);
+    }
+});
+
+function scrollToDish() {
+    document.getElementById("dish").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
