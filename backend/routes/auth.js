@@ -4,8 +4,8 @@ const {forget}=require('../controller/controller')
 const {verify}=require('../controller/controller')
 const {reset}=require('../controller/controller')
 const {filter,search}=require('../controller/dbfilter')
-const add2cart = require('../controller/add2cart');
-const getCart = require('../controller/getCart');  // example
+const add2cart = require('../controller/cart');
+const getCart = require('../controller/getCart'); 
 
 
 const router = require('express').Router();
