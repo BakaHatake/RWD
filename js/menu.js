@@ -109,3 +109,7 @@ function scrollToDish() {
         block: "start"
     });
 }
+document.getElementById("cart").addEventListener("click", () => {
+    window.location.href = "./cart.html";
+});
+

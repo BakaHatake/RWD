@@ -321,6 +321,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
+    cursor: pointer;
 }
 
 .itemprice h5 {

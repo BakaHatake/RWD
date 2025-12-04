@@ -4,6 +4,9 @@ const {forget}=require('../controller/controller')
 const {verify}=require('../controller/controller')
 const {reset}=require('../controller/controller')
 const {filter,search}=require('../controller/dbfilter')
+const add2cart = require('../controller/add2cart');
+const getCart = require('../controller/getCart');  // example
+
 
 const router = require('express').Router();
 
@@ -14,6 +17,9 @@ router.post('/verify',verify)
 router.post('/reset',reset)
 router.post('/filter',filter)
 router.post('/search',search)
+router.post('/cart', getCart);
+router.post('/add2cart', add2cart);
+
 module.exports = router;
 
 
