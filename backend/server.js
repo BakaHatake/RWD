@@ -12,7 +12,7 @@ const PORT = process.env.PORT;
 app.get("/", (req, res) => {
     res.send("Backend working");
 });
-app.use(bodyParser.json())
+app.use(bodyParser.json())  
 app.use(cors())
 app.use('/auth',auth)
 app.listen(PORT, () => {
