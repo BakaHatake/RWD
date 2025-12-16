@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(255, 168, 67, 0.05);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 
 code {
@@ -16,13 +20,12 @@ code {
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px;
-  background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
   position: sticky;
   top: 0;
   z-index:1000;
-  height: 1%;
-
+  background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -76,17 +79,20 @@ code {
 }
 .hero {
   padding:0;
+  
 }
-
+.hero-logo {
+  width: 72px;
+  height: 72px;
+  background-color: #f47c4f; /* orange */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
 .hero-content {
-  background-color: #a7a39a;
-  background:
-  radial-gradient(
-    circle at center,
-    rgba(255,255,255,0.05) 0%,
-    rgba(0,0,0,0.18) 100%
-  ),
-  #a7a39a;
+  background: #9f9a8f;
   height: 300px;
   padding: 20px;
   /* border-radius: 15px; */
