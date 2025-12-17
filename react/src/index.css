@@ -1,39 +1,34 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(255, 168, 67, 0.05);
+    background-color: rgba(255, 168, 67, 0.05);
     margin: 0;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  border-bottom: 1px solid #e0e0e0;
-  position: sticky;
-  top: 0;
-  z-index:1000;
-  background: rgba(255, 255, 255, 0.55);
+.header {
+    position: sticky;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.55);
     backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
-.logo {
-  color: #FF7043;
-  margin: 0;
-  margin-left: 20px;
-  font-size: 34px;
-
+.title {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FF7043;
+    letter-spacing: -0.5px;
 }
 
 .right {
@@ -60,10 +55,24 @@ code {
     box-shadow: 0 6px 15px rgba(255, 112, 67, 0.4);
 }
 
+
 .cart svg,
 .profile-icon svg {
     width: 28px;
     height: 28px;
+}
+.logo svg{
+    width: 48px;
+    height: 48px;
+}
+.head {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
 }
 
 
@@ -92,22 +101,29 @@ code {
   margin-bottom: 24px;
 }
 .hero-content {
-  background: #9f9a8f;
-  height: 300px;
+  /* background: #9f9a8f; */
+  background-image: url(https://res.cloudinary.com/dxijfcgpw/image/upload/v1764751586/Untitled_20design_20-_202025-09-16T110643.939_tigb9a.jpg);
+  height: 200px;
   padding: 20px;
   /* border-radius: 15px; */
 }
 
 .hero-title {
   margin: 0;
-  font-size: 52px;
+  /* margin-bottom: 20px; */
+  margin-top: -20px;
+  font-size: 40px;
   color:white;
-  font-weight: normal;
+  font-weight: lighter;
+  letter-spacing: 1.3px;
 }
 
 .hero-subtitle {
   margin: 5px 0 15px;
-  color: #555;
+  /* margin-bottom: 30px; */
+  margin-top: 20px;
+  color: #ffffff;
+  font-weight: lighter;
 }
 
 .hero-info {
@@ -127,7 +143,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 45%;
+  margin-bottom: 0%;
 
 }
 
@@ -139,10 +155,104 @@ code {
   border-radius: 20px;
   cursor: pointer;
   height: 50%;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: lighter;
   /* margin-bottom: 45%; */
   
 }
 .open-btn:hover {
   background-color: #27ae60;
 }
+.para{
+  color:rgb(0, 0, 0);
+  font-weight: 750;
+  padding: 10px 10px 10px 10px;
+  margin: 20px;
+  font-size: x-large;
+  margin-bottom: 30px;
+
+}
+.card{
+  border-radius:15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  background-color: white;
+  height: 380px;
+  width: 250px;
+  /* margin: 20px; */
+  cursor: pointer;
+  overflow: hidden;
+} 
+.card:hover {
+  transform: translateY(-7px) ;
+  border: 1px solid #ff7043;
+}
+.acard{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 50px;
+  max-width: 1220px;
+  margin: 20px auto;
+}
+
+.image {
+    width: 100%;
+    height: 220px; 
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: top; 
+    display: block;
+    transition: transform 0.5s ease;
+}
+.card:hover .image img {
+    transform: scale(1.1);
+}
+
+/* .card-body {
+  padding: 10px;
+  text-align: center;
+} */
+ .dish-name{
+  margin-left: 20px;
+  font-weight:200;
+  font-size: large;
+  margin-bottom: 10px;
+ }
+ .paisa{
+  color: #FF7043;
+  margin-left: 20px;
+  /* margin-bottom: 5px; */
+  margin-top: 7px;
+  font-size: larger;
+ }
+ .add-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 80%;
+  background-color: white;
+  color: #FF7043;
+  border: 1.8px solid #FF7043;
+  border-radius: 30px;
+  margin-left: 20px;
+  font-size: large;
+  font-weight: lighter;
+  cursor: pointer;
+ }
+ .add-btn:hover{
+  background-color: #FF7043;
+  color: white;
+ }
+
