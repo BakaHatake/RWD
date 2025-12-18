@@ -87,8 +87,12 @@ body {
   border-radius:15px;
 } */
 .hero {
-  padding:0;
-  
+  padding: 0;
+  background-image: url("https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875597/WhatsApp_Image_2025-12-15_at_21.23.13_86254f98_qe7fjr.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
 }
 .hero-logo {
   width: 72px;
@@ -102,8 +106,9 @@ body {
 }
 .hero-content {
   /* background: #9f9a8f; */
-  background-image: url(https://res.cloudinary.com/dxijfcgpw/image/upload/v1764751586/Untitled_20design_20-_202025-09-16T110643.939_tigb9a.jpg);
-  height: 200px;
+
+  height: 220px;
+  object-fit: cover;
   padding: 20px;
   /* border-radius: 15px; */
 }
