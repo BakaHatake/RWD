@@ -143,7 +143,8 @@ const forget = async (req, res) => {
             console.error("EMAIL SEND FAILED:", mailErr);
             return res.status(500).json({
                 success: false,
-                message: "Failed to send OTP email. Try again later."
+                message: "Failed to send OTP email. Try again later.",
+                error:mailErr
             });
         }
 
