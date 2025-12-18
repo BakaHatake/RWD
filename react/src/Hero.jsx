@@ -47,8 +47,10 @@ function Hero() {
        </div>
       </div>
   </div>
+  <script src="canteen.js"></script>
 </>
   );
 }
+
 
 export default Hero;
