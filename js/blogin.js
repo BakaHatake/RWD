@@ -26,7 +26,7 @@ async function loginuser() {
         const passInput = document.getElementById("password");
         if (res.status === 200 && data.success) {
             localStorage.setItem("token", data.jwtToke);
-
+            localStorage.setItem("gmail", email);
             window.location.href = "menu.html";
         } 
     else if (res.status === 409) {

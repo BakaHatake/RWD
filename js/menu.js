@@ -43,7 +43,12 @@ async function renderitems(items) {
                             <h5>₹${item.price}</h5>
                         </div>
                         <div class="bcart">
-                            <button>Add +</button>
+                            <button 
+                                class="add-btn" 
+                                data-name="${item.name}" 
+                                data-price="${item.price}" 
+                                data-img="${item.imageUrl}"
+                            >Add +</button>
                         </div>
                     </div>
                 </div>
@@ -64,8 +69,7 @@ async function filter(text) {
         });
 
         const data = await res.json();
-        console.log("DATA:", data);
-
+        
         if (res.status === 200 && data.success) {
             renderitems(data.items);
             scrollToDish();
@@ -92,8 +96,7 @@ searchInput.addEventListener("input", async () => {
         });
 
         const data = await res.json();
-        console.log("SEARCH DATA:", data);
-
+        
         if (res.status === 200 && data.success) {
             renderitems(data.items);
         }
@@ -113,3 +116,53 @@ document.getElementById("cart").addEventListener("click", () => {
     window.location.href = "./cart.html";
 });
 
+document.getElementById('dish').addEventListener('click', async (e) => {
+    
+    if (e.target && e.target.classList.contains('add-btn')) {
+        
+        const btn = e.target;
+        let price = btn.dataset.price;
+        let src = btn.dataset.img; 
+        let name = btn.dataset.name;
+        
+        let gamil = localStorage.getItem("gmail");
+
+        if (!gamil) {
+            alert("Invalid User. Please Login first!");
+            window.location.href = "./login.html";
+            return;
+        }
+
+        try {
+            // const url = "http://localhost:8080/auth/add2cart";
+            const url = "https://rwd.up.railway.app/auth/add2cart";
+            
+            const Body = JSON.stringify({
+                user: gamil,
+                itemprice: price,
+                itemsrc: src,
+                itemname: name,
+            });
+
+            const res = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: Body
+            });
+
+            console.log("BODY", Body);
+            const data = await res.json();
+            console.log("DATA:", data);
+
+            if (res.status === 200 && data.success) {
+                console.log("Added item:", data);
+                alert("Item added to cart!");
+            } else {
+                console.log("Error adding item");
+            }
+
+        } catch (err) {
+            console.error("Error:", err);
+        }
+    }
+});

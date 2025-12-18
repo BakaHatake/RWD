@@ -1,14 +1,13 @@
 const mongoose = require("mongoose");
 
 const cartSchema = new mongoose.Schema({
-    username: String,
+    user: { type: String, required: true }, 
     items: [
         {
-            name: String,
-            price: Number,
-            imageUrl: String,
-            available: Boolean,
-            quantity: Number
+            itemname: String,  
+            itemsrc: String,    
+            itemprice: Number,  
+            quantity: { type: Number, default: 1 }
         }
     ]
 });
