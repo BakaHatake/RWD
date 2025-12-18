@@ -80,12 +80,12 @@ body {
 
 
 /* -------- Hero Section -------- */
-.image{
+/* .image{
   width:80px;
   height:70px;
   object-fit:cover;
   border-radius:15px;
-}
+} */
 .hero {
   padding:0;
   
@@ -188,15 +188,16 @@ body {
   border: 1px solid #ff7043;
 }
 .acard{
-  display: flex;
+   /* display: flex; 
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   margin-top: 20px;
   gap: 50px;
-  max-width: 1220px;
-  margin: 20px auto;
+   max-width: 1220px;
+  margin: 20px auto;  */
+  width: 250px;
 }
 
 .image {
@@ -255,4 +256,12 @@ body {
   background-color: #FF7043;
   color: white;
  }
-
+.dish {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  max-width: 1220px;
+  margin: 20px auto;
+}

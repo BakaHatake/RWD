@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
 
-function Hero() {
+function Canteen() {
   const [items, setItems] = useState([]);
-
+  
   useEffect(() => {
-    async function fetchItems() {
-        // const url = "http://localhost:8080/auth/filter";
-      const url = "https://rwd.up.railway.app/auth/filter";
-
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ category: "Main Course" }),
-      });
+      async function fetchItems() {
+          const res = await fetch(
+          // const url = "http://localhost:8080/auth/filter";
+        "https://rwd.up.railway.app/auth/filter",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ category: "Main Course" }),
+        }
+      );
 
       const data = await res.json();
-      setItems(data); // store API data
+      console.log("FULL API RESPONSE 👉", data);
+      setItems(data.items || []);
     }
 
     fetchItems();
@@ -26,8 +28,7 @@ function Hero() {
   return (
     <>
       <div className="para">Main Course Specials</div>
-
-      <div className="dish" id="dish">
+      <div className="dish" >
         {items.map((item) => (
           <div className="acard" key={item._id}>
             <div className="card">
@@ -48,4 +49,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default Canteen;
