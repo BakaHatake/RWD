@@ -60,7 +60,7 @@ body {
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 40px;
+    padding: 10px 22px;
 }
 
 @media(max-width: 900px) {
@@ -420,14 +420,14 @@ body {
     max-width: 100%;
     padding: 16px;
     /* margin: 0 auto; */
-    /* margin-left: -10px; */
+    margin-left: 0px;
   }
   .payment-section{
     width: 100%;
     padding: 0px;
     margin-left: -5px;
   }
-  /* .cart-section{
+  .cart-section{
     margin-left: -10px;
-  } */
+  }
 }
