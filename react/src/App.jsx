@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./navbar";
 import Hero from "./Hero";
 import Canteen from "./Canteen";
-import NotFound from "./notfound";
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
           }
         />
 
-        <Route path="*" element={<NotFound />} />
+        
       </Routes>
     </BrowserRouter>
   );
