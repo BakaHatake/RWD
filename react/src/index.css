@@ -241,6 +241,7 @@ body {
   /* margin-bottom: 5px; */
   margin-top: 7px;
   font-size: larger;
+  font-weight: 600;
  }
  .add-btn{
   display: flex;
