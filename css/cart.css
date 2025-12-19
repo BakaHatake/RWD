@@ -425,9 +425,9 @@ body {
   .payment-section{
     width: 100%;
     padding: 0px;
+    margin-left: -5px;
+  }
+  /* .cart-section{
     margin-left: -10px;
-  }
-  .cart-section{
-    margin-left: -20px;
-  }
+  } */
 }
