@@ -18,12 +18,82 @@ document.addEventListener('DOMContentLoaded', () => {
     let cartItems = []; 
     const userEmail = localStorage.getItem("gmail");
 
-    if (!userEmail) {
-        alert("Please log in to view your cart.");
-        window.location.href = "login.html";
-    } else {
-        loadCart();
-    }
+
+   const chips = document.querySelectorAll(".time-chips .chip");
+   const timeText = document.querySelector(".footer-note .orange-text");
+
+   chips.forEach((chip) => {
+     chip.addEventListener("click", () => {
+       chips.forEach(c => c.classList.remove("active"));
+       chip.classList.add("active");
+       const minutes = chip.textContent.split(" ")[0];
+       timeText.textContent = `${minutes} minutes`;
+  });
+});
+   const dateDropdown = document.getElementById("dateDropdown");
+
+   const dateOptions = [
+     "🗓️ Today",
+     "🗓️ Tomorrow",
+     "🗓️ Day After Tomorrow"
+];
+
+  let index = 0;
+
+// function to update date text
+   function updateDate() {
+     const date = new Date();
+     date.setDate(date.getDate() + index);
+
+     const formattedDate = date.toLocaleDateString("en-IN", {
+       day: "numeric",
+       month: "short"
+  });
+
+     dateDropdown.innerHTML =
+    `   ${dateOptions[index]}, ${formattedDate} <span class="arrow">▼</span>`;
+}
+   updateDate();
+   dateDropdown.addEventListener("click", () => {
+        index = (index + 1) % dateOptions.length;
+     updateDate();
+});
+const timeDropdown = document.getElementById("timeDropdown");
+
+const timeOptions = [
+  "⏰ 9:00 AM",
+  "⏰ 10:00 AM",
+  "⏰ 11:00 AM",
+  "⏰ 12:00 PM",
+  "⏰ 1:00 PM",
+  "⏰ 2:00 PM",
+  "⏰ 3:00 PM",
+  "⏰ 4:00 PM",
+  "⏰ 5:00 PM",
+  "⏰ 6:00 PM"
+];
+
+let timeIndex = 0;
+
+// set default on load
+timeDropdown.innerHTML = `${timeOptions[timeIndex]} <span class="arrow">▼</span>`;
+
+// change time on click
+timeDropdown.addEventListener("click", () => {
+  timeIndex = (timeIndex + 1) % timeOptions.length;
+  timeDropdown.innerHTML =
+    `${timeOptions[timeIndex]} <span class="arrow">▼</span>`;
+});
+
+
+
+
+    // if (!userEmail) {
+    //     alert("Please log in to view your cart.");
+    //     window.location.href = "login.html";
+    // } else {
+    //     loadCart();
+    // }
 
     async function loadCart() {
         try {
