@@ -5,7 +5,7 @@ function Hero() {
     <div className="hero">
       <div className="hero-content">
         <button className="trial-btn" onClick={() => navigate("/pageTwo")}>
-        <svg width="50" height="80" viewBox="0 0 80 130">
+        <svg  width="50" height="80" viewBox="0 0 80 130">
           <circle cx="40" cy="40" r="40" fill="#F47C4F" />
           <path
             d="M45 24 L29 40 L45 56 M29 40 H55"
