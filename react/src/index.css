@@ -296,32 +296,33 @@ body {
 
   /* HEADER */
   .header {
-    height: 70px;
-    padding: 0 15px;
-  }
+        padding: 0 15px;
+        height: 60px;
+        flex-wrap: nowrap;
+    }
 
-  .title {
-    font-size: 0.65rem;
-  }
+    .title {
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-  .right {
-    gap: 15px;
-  }
+    .right {
+        gap: 10px;
+    }
 
-  .profile-icon {
-    width: 40px;
-    height: 40px;
-  }
+    .logo svg,
+    .cart svg,
+    .profile-icon svg {
+        width: 24px;
+        height: 24px;
+    }
 
-  .profile-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .logo svg {
-    width: 35px;
-    height: 40px;
-  }
+    .profile-icon {
+        width: 35px;
+        height: 35px;
+    }
 
   /* HERO SECTION */
   .hero {
