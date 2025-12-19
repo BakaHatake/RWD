@@ -393,13 +393,15 @@ body {
   }
 
   .dish-name {
-    font-size: 1rem;
     margin-left: 15px;
+    font-weight:700;
+    font-size: large;
   }
 
   .paisa {
     font-size: 1.1rem;
     margin-left: 15px;
+    font-weight: 600;
   }
 
   .add-btn {
