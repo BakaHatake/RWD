@@ -385,3 +385,49 @@ body {
 .cta-button:hover {
     background: #E65100;
 }
+@media (max-width: 768px) {
+  .footer-note {
+    text-align: center;
+    padding: 14px;
+    line-height: 1.4;
+  }
+
+  .footer-note .orange-text {
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  .dropdown {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .input-row {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .schedule-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    /* margin: 0 auto; */
+    /* margin-left: -10px; */
+  }
+  .payment-section{
+    width: 100%;
+    padding: 0px;
+    margin-left: -10px;
+  }
+  .cart-section{
+    margin-left: -20px;
+  }
+}
