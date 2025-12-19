@@ -88,12 +88,12 @@ timeDropdown.addEventListener("click", () => {
 
 
 
-    // if (!userEmail) {
-    //     alert("Please log in to view your cart.");
-    //     window.location.href = "login.html";
-    // } else {
-    //     loadCart();
-    // }
+    if (!userEmail) {
+        alert("Please log in to view your cart.");
+        window.location.href = "login.html";
+    } else {
+        loadCart();
+    }
 
     async function loadCart() {
         try {
