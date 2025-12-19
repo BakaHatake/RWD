@@ -1,5 +1,6 @@
 function Navbar() {
   return (
+    
     <div className="header">
 
         <div className="logo">
@@ -50,6 +51,7 @@ function Navbar() {
         </div>
 
     </div>
+    
   );
 }
 
