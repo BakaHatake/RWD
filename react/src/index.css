@@ -382,9 +382,10 @@ body {
 
   .card {
     
-    width: 110%;
+    width: 120%;
     max-width: 320px;
     height: 100%;
+    margin-left: -25px;
   }
 
   .image {
