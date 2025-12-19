@@ -1,4 +1,6 @@
-function Navbar() {
+
+ function Navbar() {
+
   return (
     
     <div className="header">
@@ -35,11 +37,13 @@ function Navbar() {
 
         <div className="right">
             <div className="cart" id="cart">
+                
                 <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#FF7043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7.2998 5H22L20 12H8.37675M21 16H9L7 3H4M4 8H2M5 11H2M6 14H2"/>
                     <circle cx="9" cy="20" r="1"/>
                     <circle cx="20" cy="20" r="1"/>
                 </svg>
+                
             </div>
 
             <div className="profile-icon">

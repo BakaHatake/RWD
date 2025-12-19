@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 function Hero() {
+    const navigate = useNavigate();
   return (
     <div className="hero">
       <div className="hero-content">
+        <button className="trial-btn" onClick={() => navigate("/pageTwo")}>
         <svg width="50" height="80" viewBox="0 0 80 130">
           <circle cx="40" cy="40" r="40" fill="#F47C4F" />
           <path
@@ -13,7 +16,7 @@ function Hero() {
             strokeLinejoin="round"
           />
         </svg>
-
+        </button>
         <h1 className="hero-title">Central Mess</h1>
         <p className="hero-subtitle">
           North Indian • South Indian • Lunch & Dinner

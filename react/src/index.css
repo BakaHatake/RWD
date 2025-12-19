@@ -271,3 +271,16 @@ body {
   max-width: 1220px;
   margin: 20px auto;
 }
+.trial-btn {
+  background: transparent;   
+  border: none;
+  padding: 0;                
+  margin: 0;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+
+  display: flex;             
+  align-items: center;
+  justify-content: center;
+}
