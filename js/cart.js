@@ -13,12 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentAsap = document.getElementById('content-asap');
     const contentPreorder = document.getElementById('content-preorder');
     const feeLabelRow = payValues[1].previousElementSibling; 
-
+    
     let currentFee = FEE_ASAP; 
     let cartItems = []; 
     const userEmail = localStorage.getItem("gmail");
-
-
+    
+    if (!userEmail) {
+        alert("Please log in to view your cart.");
+        window.location.href = "login.html";
+    } else {
+        loadCart();
+    }
+    
    const chips = document.querySelectorAll(".time-chips .chip");
    const timeText = document.querySelector(".footer-note .orange-text");
 
@@ -40,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let index = 0;
 
-// function to update date text
    function updateDate() {
      const date = new Date();
      date.setDate(date.getDate() + index);
@@ -75,10 +80,8 @@ const timeOptions = [
 
 let timeIndex = 0;
 
-// set default on load
 timeDropdown.innerHTML = `${timeOptions[timeIndex]} <span class="arrow">▼</span>`;
 
-// change time on click
 timeDropdown.addEventListener("click", () => {
   timeIndex = (timeIndex + 1) % timeOptions.length;
   timeDropdown.innerHTML =
@@ -86,14 +89,42 @@ timeDropdown.addEventListener("click", () => {
 });
 
 
+const timeDropdown1 = document.getElementById("timeDropdown");
+const finalTimeText = document.getElementById("finalTimeText");
+const mealButtons = document.querySelectorAll(".pill-btn");
+
+const mealTimeMap = {
+  Breakfast: "9:00 AM",
+  Lunch: "12:45 PM",
+  Snack: "5:00 PM",
+  Dinner: "Time Up Bruhh!!"
+};
+
+let selectedMeal = "Lunch";
+let selectedTime = mealTimeMap[selectedMeal];
+
+updateUI();
+mealButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    mealButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    selectedMeal = btn.textContent;
+    selectedTime = mealTimeMap[selectedMeal];
+
+    updateUI();
+  });
+});
+function updateUI() {
+  timeDropdown1.innerHTML =
+    `⏰ ${selectedTime} <span class="arrow">▼</span>`;
+
+  finalTimeText.textContent =
+    `${selectedTime} (${selectedMeal})`;
+}
 
 
-    if (!userEmail) {
-        alert("Please log in to view your cart.");
-        window.location.href = "login.html";
-    } else {
-        loadCart();
-    }
+
 
     async function loadCart() {
         try {
