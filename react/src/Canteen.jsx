@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "./navbar"; 
-import "./Canteen.css";
+import "./canteen.css";
 
 function Canteen() {
   const [items, setItems] = useState([]);
