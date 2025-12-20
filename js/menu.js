@@ -173,9 +173,10 @@ document.querySelectorAll(".kcard").forEach(card => {
     const gmail = localStorage.getItem("gmail");
 
     window.location.href =
-      "https://https://rwd-tau.vercel.app/?" +
-      "kitchen=" + encodeURIComponent(kitchen) +
-      "&gmail=" + encodeURIComponent(gmail);
+  "https://rwd-tau.vercel.app/?" +
+  "kitchen=" + encodeURIComponent(kitchen) +
+  "&gmail=" + encodeURIComponent(gmail);
+
 
     // window.location.href =
     //   "http://localhost:5173/?" +
