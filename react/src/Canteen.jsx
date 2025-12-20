@@ -27,6 +27,11 @@ useEffect(() => {
     localStorage.setItem("gmail", gmail);
   }
 }, [gmail]);
+const goToCart = () => {
+  window.location.href = "https://rwd-eight.vercel.app/html/cart.html";
+  // window.location.href = "http://localhost:5173/html/cart.html";
+};
+
   useEffect(() => {
     if (!kitchen) return;
 
@@ -109,7 +114,8 @@ useEffect(() => {
 
   return (
     <>
-      <Navbar />
+      <Navbar onCartClick={goToCart} />
+
 
       <div
         className="hero"
@@ -156,6 +162,7 @@ useEffect(() => {
       )}
     </>
   );
+  
 }
 
 export default Canteen;

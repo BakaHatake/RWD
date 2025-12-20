@@ -1,5 +1,4 @@
-
- function Navbar() {
+function Navbar({ onCartClick }) {
 
   return (
     
@@ -36,7 +35,12 @@
         <div className="title"><h1>Canteen Connect</h1></div>
 
         <div className="right">
-            <div className="cart" id="cart">
+            <div
+          className="cart"
+          id="cart"
+          onClick={onCartClick}
+          style={{ cursor: "pointer" }}
+        >
                 
                 <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#FF7043" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7.2998 5H22L20 12H8.37675M21 16H9L7 3H4M4 8H2M5 11H2M6 14H2"/>
