@@ -1,0 +1,64 @@
+.navbar {
+  height: 72px;
+  padding: 0 24px;
+  background: #fffdf9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-circle {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #FF7043, #ff9f6e);
+  border-radius: 38%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.profile-circle {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(360deg, #FF7043, #ffce6a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+}
+.main-white{
+    margin: 0;
+    padding: 0;
+    height: 500px;
+    width: 100vw;
+    /* border: 0px solid rgb(255, 255, 255); */
+    border-radius: 0px 0px 70px 70px;
+    filter: blur(1px);
+}
+.main-white img{
+    margin: 0;
+    padding: 0;
+    height: 500px;
+    width:100vw;
+    filter: blur(2.5px);
+  border: .2px solid rgb(0, 0, 0);
+    border-radius: 0px 0px 100px 100px;
+}

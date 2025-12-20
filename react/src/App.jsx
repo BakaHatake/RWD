@@ -3,7 +3,7 @@ import Navbar from "./navbar";
 import Hero from "./Hero";
 import Canteen from "./Canteen";
 import PageTwo from "./PageTwo";
-
+import Order from "./orderc";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +20,7 @@ function App() {
           }
         />
       <Route path="/pagetwo" element={<PageTwo />} />
+      <Route path="*" element={<Order />} />
 
       </Routes>
     </BrowserRouter>
