@@ -15,11 +15,8 @@ function App() {
             </>
           }
         />
-      <Route
-          path="/pagetwo"
-          element={<PageTwo />}
-        />
-        
+      <Route path="/pagetwo" element={<PageTwo />} />
+
       </Routes>
     </BrowserRouter>
   );
