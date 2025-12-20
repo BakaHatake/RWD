@@ -83,41 +83,37 @@ body {
   object-fit:cover;
   border-radius:15px;
 } */
+
 .hero {
-  padding: 0;
-  background-image: url("https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875597/WhatsApp_Image_2025-12-15_at_21.23.13_86254f98_qe7fjr.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-
+    width: 100%;
+    height: 300px; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
-.hero-logo {
-  width: 72px;
-  height: 72px;
-  background-color: #f47c4f; 
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-.hero-content {
-  /* background: #9f9a8f; */
 
-  height: 220px;
-  object-fit: cover;
-  padding: 20px;
-  /* border-radius: 15px; */
+.hero-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-title {
-  margin: 0;
-  /* margin-bottom: 20px; */
-  margin-top: -20px;
-  font-size: 40px;
-  color:white;
-  font-weight: lighter;
-  letter-spacing: 1.3px;
+    margin: 0;
+    font-size: 40px;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-transform: uppercase;
 }
 
 .hero-subtitle {

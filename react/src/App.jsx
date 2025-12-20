@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./navbar";
-import Hero from "./Hero";
 import Canteen from "./Canteen";
 import PageTwo from "./PageTwo";
 import Order from "./orderc";
@@ -12,8 +10,6 @@ function App() {
           path="/"
           element={
             <>
-              <Navbar />
-              <Hero />
               <Canteen />
               
             </>
