@@ -27,6 +27,7 @@ async function loginuser() {
         if (res.status === 200 && data.success) {
             localStorage.setItem("token", data.jwtToke);
             localStorage.setItem("gmail", email);
+            localStorage.setItem("key",data.key)
             window.location.href = "menu.html";
         } 
     else if (res.status === 409) {

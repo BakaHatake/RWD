@@ -30,7 +30,9 @@ const mongoose=require('mongoose')
     },
     key:{
         type:String,
+        unique:true,
         required:true,
+
     }
  });
 

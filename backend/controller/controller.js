@@ -7,12 +7,18 @@ const {sendOTPEmail,welcome} = require("../utils/mailer");
 const { date } = require('joi');
 async function randomkey(){
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let key="";
-    for(i=0;i<8;i++){
-        key+=chars[Math.floor(Math.random()*chars.length)];
+
+    while (true) {
+        let key = "";
+        for (let i = 0; i < 8; i++) {
+            key += chars[Math.floor(Math.random() * chars.length)];
+        }
+
+        const exists = await User.findOne({ key });
+        if (!exists) return key;
     }
-    return key;
 }
+
 
 const signup2=async(req,res)=>{
     try{
@@ -72,7 +78,7 @@ const login2 = async (req, res) => {
                 success: false
             });
         }
-
+        const key=user.key
         const passMatch = await bcrypt.compare(password, user.password);
         if (!passMatch) {
             return res.status(409).json({
@@ -91,6 +97,7 @@ const login2 = async (req, res) => {
             success: true,
             jwtToke,
             email,
+            key,
             user:user.name,
         });
 
