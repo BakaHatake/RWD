@@ -170,11 +170,17 @@ document.getElementById('dish').addEventListener('click', async (e) => {
 document.querySelectorAll(".kcard").forEach(card => {
   card.addEventListener("click", () => {
     const kitchen = card.dataset.kitchen;
+    const gmail = localStorage.getItem("gmail");
 
     window.location.href =
-      "https://rwd-tau.vercel.app/?kitchen=" +
-      encodeURIComponent(kitchen);
-    //   "http://localhost:5173/?kitchen="+
-    //   encodeURIComponent(kitchen);
+      "https://rwd-eight.vercel.app/?" +
+      "kitchen=" + encodeURIComponent(kitchen) +
+      "&gmail=" + encodeURIComponent(gmail);
+
+    // window.location.href =
+    //   "http://localhost:5173/?" +
+    //   "kitchen=" + encodeURIComponent(kitchen) +
+    //   "&gmail=" + encodeURIComponent(gmail);
   });
 });
+

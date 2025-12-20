@@ -7,7 +7,7 @@ function Canteen() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
-
+  const gmail = searchParams.get("gmail");
   const kitchen = searchParams.get("kitchen");
 
   const kitchenImages = {
@@ -22,7 +22,11 @@ function Canteen() {
   };
 
   const heroImage = kitchenImages[kitchen] || kitchenImages["Main Course"];
-
+useEffect(() => {
+  if (gmail) {
+    localStorage.setItem("gmail", gmail);
+  }
+}, [gmail]);
   useEffect(() => {
     if (!kitchen) return;
 
