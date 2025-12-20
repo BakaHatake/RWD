@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let cartItems = []; 
     const userEmail = localStorage.getItem("gmail");
     
-    // if (!userEmail) {
-    //     alert("Please log in to view your cart.");
-    //     window.location.href = "login.html";
-    // } else {
-    //     loadCart();
-    // }
+    if (!userEmail) {
+        alert("Please log in to view your cart.");
+        window.location.href = "login.html";
+    } else {
+        loadCart();
+    }
     
    const chips = document.querySelectorAll(".time-chips .chip");
    const timeText = document.querySelector(".footer-note .orange-text");
