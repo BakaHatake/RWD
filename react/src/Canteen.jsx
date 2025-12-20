@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Navbar from "./navbar"; 
+import Navbar from "./navbar";
 import "./canteen.css";
 
 function Canteen() {
@@ -11,10 +11,14 @@ function Canteen() {
   const kitchen = searchParams.get("kitchen");
 
   const kitchenImages = {
-    "Main Course": "https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875597/WhatsApp_Image_2025-12-15_at_21.23.13_86254f98_qe7fjr.jpg",
-    "Quick Bites": "https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875779/WhatsApp_Image_2025-12-15_at_21.30.24_dd9efbca_lzredk.jpg",
-    "Beverages": "https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875779/WhatsApp_Image_2025-12-15_at_21.30.24_dd9efbca_lzredk.jpg",
-    "Sweet Tooth": "https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875779/WhatsApp_Image_2025-12-15_at_21.30.24_dd9efbca_lzredk.jpg",
+    "Main Course":
+      "https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875597/WhatsApp_Image_2025-12-15_at_21.23.13_86254f98_qe7fjr.jpg",
+    "Quick Bites":
+      "https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875779/WhatsApp_Image_2025-12-15_at_21.30.24_dd9efbca_lzredk.jpg",
+    "Beverages":
+      "https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875779/WhatsApp_Image_2025-12-15_at_21.30.24_dd9efbca_lzredk.jpg",
+    "Sweet Tooth":
+      "https://res.cloudinary.com/dxijfcgpw/image/upload/v1765875779/WhatsApp_Image_2025-12-15_at_21.30.24_dd9efbca_lzredk.jpg"
   };
 
   const heroImage = kitchenImages[kitchen] || kitchenImages["Main Course"];
@@ -25,46 +29,90 @@ function Canteen() {
     async function fetchItems() {
       try {
         setLoading(true);
-        const res = await fetch("https://rwd.up.railway.app/auth/filter", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ category: kitchen }),
-        });
 
-        if (!res.ok) throw new Error("Network response was not ok");
+        const res = await fetch(
+          "https://rwd.up.railway.app/auth/filter",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ category: kitchen })
+          }
+        );
+
+        if (!res.ok) throw new Error("Network error");
 
         const data = await res.json();
-        console.log("DATA:",data)
-        if (Array.isArray(data)) {
-          setItems(data);
-        } else if (data.items) {
-          setItems(data.items);
-        } else {
-          setItems([]);
-        }
-      } catch (error) {
-        console.error(error);
+
+        if (Array.isArray(data)) setItems(data);
+        else if (data.items) setItems(data.items);
+        else setItems([]);
+      } catch (err) {
+        console.error(err);
+        setItems([]);
       } finally {
         setLoading(false);
       }
     }
+
     fetchItems();
   }, [kitchen]);
 
-  if (!kitchen) return <div className="para">Please select a kitchen</div>;
+  const add2cart = async (item) => {
+    try {
+      let gamil = localStorage.getItem("gmail");
+
+        if (!gamil) {
+            alert("Invalid User. Please Login first!");
+            window.location.href = "https://rwd-eight.vercel.app/html/login.html";
+            return;
+        }
+            // const url = "http://localhost:8080/auth/add2cart";
+            const url = "https://rwd.up.railway.app/auth/add2cart";
+            let price = item.price;
+            let src = item.imageUrl; 
+            let name = item.name;
+            const Body = JSON.stringify({
+                user: gamil,
+                itemprice: price,
+                itemsrc: src,
+                itemname: name,
+            });
+      const res = await fetch(url,
+
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: Body
+        }
+      );
+
+      const data = await res.json();
+
+      if (!data.success) {
+        alert(data.message || "Failed to add item");
+        return;
+      }
+
+      console.log("Added to cart:", item.name);
+    } catch (err) {
+      console.error("Add to cart failed:", err);
+    }
+  };
+
+  if (!kitchen) {
+    return <div className="para">Please select a kitchen</div>;
+  }
 
   return (
     <>
-      {/* 1. Add Navbar here */}
       <Navbar />
 
-      {/* 2. Hero Section */}
       <div
         className="hero"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="hero-overlay">
-           <h1 className="hero-title">{kitchen}</h1>
+          <h1 className="hero-title">{kitchen}</h1>
         </div>
       </div>
 
@@ -76,18 +124,23 @@ function Canteen() {
         <div className="dish">
           {items.length > 0 ? (
             items.map((item) => (
-              <div className="acard" key={item._id || Math.random()}>
+              <div className="acard" key={item._id}>
                 <div className="card">
                   <div className="image">
-                    <img 
-                      src={item.imageUrl || "https://via.placeholder.com/250"} 
-                      alt={item.name} 
+                    <img
+                      src={item.imageUrl || "https://via.placeholder.com/250"}
+                      alt={item.name}
                     />
                   </div>
                   <div className="card-body">
                     <h4 className="dish-name">{item.name}</h4>
                     <p className="paisa">₹{item.price}</p>
-                    <button className="add-btn">Add +</button>
+                    <button
+                      className="add-btn"
+                      onClick={() => add2cart(item)}
+                    >
+                      Add +
+                    </button>
                   </div>
                 </div>
               </div>
