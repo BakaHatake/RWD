@@ -162,7 +162,7 @@ const goToCart = () => {
       )}
     </>
   );
-  
+
 }
 
 export default Canteen;
