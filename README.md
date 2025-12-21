@@ -25,11 +25,12 @@ Shopkeepers can manage orders and update item availability.
 
 ---
 
-## Tech Stack
+## MERN Stack
 
 ### Frontend
 - HTML  
-- CSS  
+- CSS
+- React
 - JavaScript (Fetch API)
 
 ### Backend
