@@ -80,7 +80,7 @@
   align-items: center;
   color: white;
   font-size:45px;
-  background: linear-gradient(90deg,#ff5622f2,#ff5622d6);
+background: linear-gradient(135deg, #eb9f2dd0, #E98B3A);
   position: absolute;
   top: 13%;
   left: 31%;
@@ -103,9 +103,9 @@
 }
 .cards{
   display: flex;
-  justify-content:center;
+  /* justify-content:center; */
   align-items: center;
-  gap: 30px;
+  gap:30px;
   flex-direction: column;
 }
 .dish-card{
@@ -136,6 +136,8 @@
   gap: 0px;
 }
 .dishname{
+  display: flex;
+  gap:7px;
   margin-left: 20px;
   /* margin-top: 20px; */
   margin-bottom: 0px;

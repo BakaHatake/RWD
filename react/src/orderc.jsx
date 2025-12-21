@@ -46,7 +46,26 @@ function Order() {
       
       <img src="https://res.cloudinary.com/dxijfcgpw/image/upload/v1766209278/canteen_mess_banner_whztni.png" alt="yoooo" />
       <div className="texts">
-      <p className="dishname">Chicken Biriyani</p>
+      <p className="dishname">
+        <svg
+      width={20}
+      height={20}
+      viewBox="0 0 24 24"
+      aria-label="Veg"
+    >
+      <rect
+        x="2"
+        y="2"
+        width="20"
+        height="20"
+        rx="4"
+        fill="none"
+        stroke="#4CAF50"
+        strokeWidth="2"
+      />
+      <circle cx="12" cy="12" r="5" fill="#4CAF50" />
+    </svg>
+    <span> Chicken Biriyani </span></p>
       <p className="catagory">From:Central Mess</p>
       </div>
       <p className="amt">$120</p>
