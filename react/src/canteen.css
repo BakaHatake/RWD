@@ -256,6 +256,11 @@ body {
   font-weight: lighter;
   cursor: pointer;
  }
+ .hero-content svg{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+ }
  .add-btn:hover{
   background-color: #FF7043;
   color: white;
