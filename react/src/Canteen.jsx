@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
 import Hero from "./Hero";
 import "./canteen.css";
 
+
+
 function Canteen() {
+  const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
@@ -122,13 +126,13 @@ const goToCart = () => {
         className="hero"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <button className="trial-btn" onClick={() => navigate(-1)}>
+        <button className="trial-btn" onClick={() => navigate("https://rwd-eight.vercel.app/html/menu.html")}>
     <svg width="50" height="80" viewBox="0 0 80 130">
       <circle cx="40" cy="40" r="40" fill="#F47C4F" />
       <path
         d="M45 24 L29 40 L45 56 M29 40 H55"
         fill="none"
-        stroke="#FFE6DB"
+        stroke="#ffffffff"
         strokeWidth="6"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -138,6 +142,14 @@ const goToCart = () => {
 
         <div className="hero-overlay">
           <h1 className="hero-title">{kitchen}</h1>
+          <p className="hero-subtitle">
+        North Indian • South Indian • Lunch & Dinner
+      </p>
+
+      <div className="hero-info">
+        <button className="open-btn">Open Now</button>
+        <span className="rating">⭐ 4.5</span>
+        </div>
         </div>
       </div>
 

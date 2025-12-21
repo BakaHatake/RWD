@@ -105,6 +105,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* position: relative; */
 }
 
 .hero-title {
@@ -123,6 +124,9 @@ body {
   margin-top: 20px;
   color: #ffffff;
   font-weight: lighter;
+  position: absolute;
+  top: 57%;
+  left: 5%;
 }
 
 .hero-info {
@@ -135,15 +139,17 @@ body {
 
 .rating {
   font-weight: bold;
-  height: 30px;
-  width: 90px;
+  height:12%;
+  width: 100px;
   border-radius: 18px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0%;
-
+  position: absolute;
+  top: 78%;
+  left: 15.5%;
 }
 
 .open-btn {
@@ -153,11 +159,14 @@ body {
   color: white;
   border-radius: 20px;
   cursor: pointer;
-  height: 50%;
+  height: 13%;
+  width: 140px;
   font-size: 1.2rem;
   font-weight: lighter;
   /* margin-bottom: 45%; */
-  
+  position: absolute;
+  top: 78%;
+  left: 5%;
 }
 .open-btn:hover {
   background-color: #27ae60;
@@ -347,11 +356,15 @@ body {
   .hero-title {
     font-size: 28px;
     margin-top: 0;
+
   }
 
   .hero-subtitle {
     font-size: 14px;
     margin-top: 10px;
+     position: absolute;
+    top: 40%;
+    left: 30;
   }
 
   .hero-info {

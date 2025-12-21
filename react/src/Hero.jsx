@@ -11,7 +11,7 @@ function Hero() {
           <path
             d="M45 24 L29 40 L45 56 M29 40 H55"
             fill="none"
-            stroke="#FFE6DB"
+            stroke="#ffffffff"
             strokeWidth="6"
             strokeLinecap="round"
             strokeLinejoin="round"
