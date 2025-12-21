@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "./navbar";
+import Hero from "./Hero";
 import "./canteen.css";
 
 function Canteen() {
@@ -108,9 +109,9 @@ const goToCart = () => {
     }
   };
 
-  if (!kitchen) {
-    return <div className="para">Please select a kitchen</div>;
-  }
+  // if (!kitchen) {
+  //   return <div className="para">Please select a kitchen</div>;
+  // }
 
   return (
     <>
@@ -121,6 +122,20 @@ const goToCart = () => {
         className="hero"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
+        <button className="trial-btn" onClick={() => navigate(-1)}>
+    <svg width="50" height="80" viewBox="0 0 80 130">
+      <circle cx="40" cy="40" r="40" fill="#F47C4F" />
+      <path
+        d="M45 24 L29 40 L45 56 M29 40 H55"
+        fill="none"
+        stroke="#FFE6DB"
+        strokeWidth="6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </button>
+
         <div className="hero-overlay">
           <h1 className="hero-title">{kitchen}</h1>
         </div>
