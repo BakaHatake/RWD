@@ -14,6 +14,41 @@ function Order() {
     <main className="main-white">
          <img src="https://res.cloudinary.com/dxijfcgpw/image/upload/v1766212708/Screenshot_2025-12-20_120733_fj4tnn.png" alt="picc" />
     </main>
+    <svg className="back-btn"
+  width={55}
+  height={55}
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M30 12L18 24L30 36"
+    stroke="#F47C4F"
+    strokeWidth="3" 
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  />
+  <line
+    x1="20"
+    y1="24"
+    x2="55"
+    y2="24"
+    stroke="#F47C4F"
+    strokeWidth="3"
+    strokeLinecap="round"
+  />
+</svg>
+<h1>Order Confirmed</h1>
+<div className="ordered">
+  <p className="para">Items Ordered</p>
+  <div className="cards">
+    <div className="dish-card">
+      
+      <img src="https://res.cloudinary.com/dxijfcgpw/image/upload/v1766209278/canteen_mess_banner_whztni.png" alt="yoooo" />
+      <p className="dishname">Chicken Biriyani</p>
+    </div>
+  </div>
+</div>
     </>
   );
 }
