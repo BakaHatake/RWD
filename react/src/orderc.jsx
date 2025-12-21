@@ -38,9 +38,9 @@ function Order() {
     strokeLinecap="round"
   />
 </svg>
-<h1>Order Confirmed</h1>
+<h1 className="h1order-confirmed">Order Confirmed</h1>
 <div className="ordered">
-  <p className="para">Items Ordered</p>
+  <p className="para-order">Items Ordered</p>
   <div className="cards">
     <div className="dish-card">
       

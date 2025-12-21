@@ -70,7 +70,7 @@
     top: 15%;
     left: 5%;
 }
-h1{
+.h1order-confirmed{
   height: 88px;
   width: 500px;
   /* border: 2px solid black; */
@@ -96,8 +96,10 @@ h1{
   z-index: 2;
   background-color: #FFF8F0;
 }
-.para{
+.para-order{
   font-size: xx-large;
+  margin-left: 25px;
+  font-weight: bold;
 }
 .cards{
   display: flex;
