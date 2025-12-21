@@ -1,3 +1,4 @@
+import "./canteen.css";
 import { useNavigate } from "react-router-dom";
 function Hero() {
     const navigate = useNavigate();

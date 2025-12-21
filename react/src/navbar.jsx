@@ -1,3 +1,4 @@
+import "./canteen.css";
 function Navbar({ onCartClick }) {
 
   return (
