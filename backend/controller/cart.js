@@ -19,14 +19,14 @@ const add2cart=async (req,res)=>{
                 cart.items.push({ itemname, itemsrc, itemprice, quantity: 1 });
             }
             await cart.save();
-            return res.status(200).json({ success: true, message: "Cart updated", cart });
+            return res.status(200).json({ success: true, message: "Cart updated" });
         }
         else{
             const newcart=await Cart.create({
                 user,
                 items:[{itemname,itemsrc,itemprice,quantity:1}]
             });
-            return res.status(200).json({ success: true, message: "New cart created", cart: newcart });
+            return res.status(200).json({ success: true, message: "New cart created" });
         }
     }catch(error){
         console.log(error);
@@ -66,7 +66,7 @@ const deleteItem = async (req, res) => {
         cart.items = cart.items.filter(item => item.itemname !== itemname);
 
         await cart.save();
-        return res.status(200).json({ success: true, message: "Item deleted", cart });
+        return res.status(200).json({ success: true, message: "Item deleted", });
 
     } catch (error) {
         console.log(error);
@@ -93,7 +93,7 @@ const removeQuantity = async (req, res) => {
             }
             
             await cart.save();
-            return res.status(200).json({ success: true, message: "Quantity updated", cart });
+            return res.status(200).json({ success: true, message: "Quantity updated"});
         } else {
             return res.status(404).json({ success: false, message: "Item not found in cart" });
         }
