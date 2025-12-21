@@ -113,9 +113,9 @@ const goToCart = () => {
     }
   };
 
-  // if (!kitchen) {
-  //   return <div className="para">Please select a kitchen</div>;
-  // }
+  if (!kitchen) {
+    return <div className="para">Please select a kitchen</div>;
+  }
 
   return (
     <>

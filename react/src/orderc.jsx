@@ -45,7 +45,11 @@ function Order() {
     <div className="dish-card">
       
       <img src="https://res.cloudinary.com/dxijfcgpw/image/upload/v1766209278/canteen_mess_banner_whztni.png" alt="yoooo" />
+      <div className="texts">
       <p className="dishname">Chicken Biriyani</p>
+      <p className="catagory">From:Central Mess</p>
+      </div>
+      <p className="amt">$120</p>
     </div>
   </div>
 </div>

@@ -71,7 +71,7 @@
     left: 5%;
 }
 .h1order-confirmed{
-  height: 88px;
+  height: 80px;
   width: 500px;
   /* border: 2px solid black; */
   border-radius: 28px;
@@ -82,12 +82,12 @@
   font-size:45px;
   background: linear-gradient(90deg,#ff5622f2,#ff5622d6);
   position: absolute;
-  top: 10%;
+  top: 13%;
   left: 31%;
 }
 .ordered{
   position: absolute;
-  top: 80%;
+  top: 115%;
   left: 11.5%;
   height: 400px;
   width: 1112px;
@@ -103,26 +103,64 @@
 }
 .cards{
   display: flex;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
+  gap: 30px;
+  flex-direction: column;
 }
 .dish-card{
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  gap: 20px;
   height: 170px;
-  width: 950px;
+  width: 950px; 
   border-radius: 24px;
   /* border: 2px solid black; */
   background-color: white;
-  padding: 24px 24px 24px opx;
+  /* padding: 24px; */
+  margin-right: 10px;
+
 } 
 .dish-card img{
   height: 110px;
   width: 110px;
   object-fit: cover;
   margin-left: 20px;
-  margin-top: 26px;
+  /* margin-top: 26px; */
   border-radius: 24px;
+}
+.texts{
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
 .dishname{
   margin-left: 20px;
-  margin-top: 26px;
+  /* margin-top: 20px; */
+  margin-bottom: 0px;
+  font-size: large;
+
+  font-weight: bold;
+
+}
+.catagory{
+  margin-left: 20px;
+  margin-bottom: 55px;
+  margin-top: 10px;
+  font-size: 15px;
+  color: gray;
+}
+.amt{
+  height: 37px;
+  width: 100px;
+  /* border: 2px solid black; */
+  border-radius: 70px;
+  background-color: #FFF8F0;
+  color: #f76032;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 45%;
+  font-weight: bolder;
 }
