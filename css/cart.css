@@ -381,6 +381,7 @@ body {
     align-items: center;
     gap: 10px;
     box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    text-decoration: none;
 }
 .cta-button:hover {
     background: #E65100;

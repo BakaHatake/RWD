@@ -5,18 +5,29 @@ function Order() {
   const [transactions, setTransactions] = useState([]);
   const [loadingWallet, setLoadingWallet] = useState(true);
   const [walletError, setWalletError] = useState("");
+  
 
+  const [orders, setOrders] = useState([]);
+const [loading, setLoading] = useState(true);
   // 🔹 Fetch wallet balance
   useEffect(() => {
     async function fetchWallet() {
       try {
-        const key = localStorage.getItem("USER_UNIQUE_KEY"); 
+        const key = localStorage.getItem("gamil"); 
 
         if (!key) {
           setWalletError("User key not found");
           return;
         }
-
+        let price = item.price;
+            let src = item.imageUrl; 
+            let name = item.name;
+            const Body = JSON.stringify({
+                user: gamil,
+                itemprice: price,
+                itemsrc: src,
+                itemname: name,
+            });
         const res = await fetch(
           "https://rwd.up.railway.app/auth/getwallet",
           {
@@ -24,7 +35,7 @@ function Order() {
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({ key })
+            body: Body
           }
         );
 
@@ -35,7 +46,7 @@ function Order() {
           return;
         }
 
-        // ✅ SUCCESS
+        // ✅ SUCCESS̀
         setBalance(data.balance);
         setTransactions(data.transactions || []);
 
@@ -92,12 +103,12 @@ function Order() {
       <p className="para-order">Items Ordered</p>
 
       {loading ? (
-        <p style={{ padding: "20px" }}>Loading orders...</p>
+        <p style={{ padding: "30px",fontWeight:"600",fontSize:"21px" }}>Loading orders...</p>
       ) : (
         <div className="cards">
           {orders.map((item, index) => (
             <div className="dish-card" key={index}>
-              <img src={item.itemsrc} alt={item.itemname} />
+              <img src={src} alt={item.itemname} />
 
               <div className="texts">
                 <p className="dishname">
@@ -106,13 +117,13 @@ function Order() {
                     <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="#4CAF50" strokeWidth="2"/>
                     <circle cx="12" cy="12" r="5" fill="#4CAF50" />
                   </svg>
-                  <span>{item.itemname}</span>
+                  <span>{name}</span>
                 </p>
 
                 <p className="catagory">From: Central Mess</p>
               </div>
 
-              <p className="amt">₹{item.itemprice}</p>
+              <p className="amt">₹{price}</p>
             </div>
           ))}
         </div>
