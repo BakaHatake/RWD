@@ -11,55 +11,54 @@ function Order() {
 const [loading, setLoading] = useState(true);
   // 🔹 Fetch wallet balance
   useEffect(() => {
-    async function fetchWallet() {
-      try {
-        const key = localStorage.getItem("gamil"); 
+  async function fetchWallet() {
+    try {
+      const key = localStorage.getItem("USER_UNIQUE_KEY");
 
-        if (!key) {
-          setWalletError("User key not found");
-          return;
-        }
-        let price = item.price;
-            let src = item.imageUrl; 
-            let name = item.name;
-            const Body = JSON.stringify({
-                user: gamil,
-                itemprice: price,
-                itemsrc: src,
-                itemname: name,
-            });
-        const res = await fetch(
-          "https://rwd.up.railway.app/auth/getwallet",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: Body
-          }
-        );
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          setWalletError(data.message || "Failed to fetch wallet");
-          return;
-        }
-
-        // ✅ SUCCESS̀
-        setBalance(data.balance);
-        setTransactions(data.transactions || []);
-
-      } catch (err) {
-        console.error(err);
-        setWalletError("Server error");
-      } finally {
-        setLoadingWallet(false);
+      if (!key) {
+        console.warn("No USER_UNIQUE_KEY in localStorage");
+        setLoading(false);
+        return;
       }
-    }
+      const dataa = await res.json();
 
-    fetchWallet();
-  }, []);
+if (data.success) {
+  // 🔥 THIS LINE IS MANDATORY
+  localStorage.setItem("USER_UNIQUE_KEY", dataa.key);
+  localStorage.setItem("gmail", dataa.gmail); // optional but useful
+
+  // redirect to order page
+  window.location.href = "/order";
+}
+
+
+      const res = await fetch(
+        "https://rwd.up.railway.app/auth/getwallet",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ key }) // ✅ CORRECT
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error(data.message);
+        return;
+      }
+
+      setBalance(data.balance);
+      setTransactions(data.transactions || []);
+    } catch (err) {
+      console.error("Wallet fetch failed:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  fetchWallet();
+}, []);
 
   return (
     <>
@@ -108,7 +107,7 @@ const [loading, setLoading] = useState(true);
         <div className="cards">
           {orders.map((item, index) => (
             <div className="dish-card" key={index}>
-              <img src={src} alt={item.itemname} />
+              <img src={item.itemsrc} alt={item.itemsrc} />
 
               <div className="texts">
                 <p className="dishname">
@@ -117,13 +116,13 @@ const [loading, setLoading] = useState(true);
                     <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="#4CAF50" strokeWidth="2"/>
                     <circle cx="12" cy="12" r="5" fill="#4CAF50" />
                   </svg>
-                  <span>{name}</span>
+                  <span>{item.itemname}</span>
                 </p>
 
                 <p className="catagory">From: Central Mess</p>
               </div>
 
-              <p className="amt">₹{price}</p>
+              <p className="amt">₹{item.itemprice}</p>
             </div>
           ))}
         </div>
