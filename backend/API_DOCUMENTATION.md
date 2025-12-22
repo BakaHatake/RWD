@@ -1,6 +1,6 @@
 # Backend API Documentation
 
-Base URL: `http://localhost:8080` (or your deployment URL)
+Base URL: `http://localhost:8080` (or our railway URL which will be used on gobal testing)
 
 ## Authentication & User
 
