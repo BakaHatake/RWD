@@ -1,6 +1,55 @@
 import "./orderc.css";
-
+import { useEffect, useState } from "react";
 function Order() {
+   const [balance, setBalance] = useState(0);
+  const [transactions, setTransactions] = useState([]);
+  const [loadingWallet, setLoadingWallet] = useState(true);
+  const [walletError, setWalletError] = useState("");
+
+  // 🔹 Fetch wallet balance
+  useEffect(() => {
+    async function fetchWallet() {
+      try {
+        const key = localStorage.getItem("USER_UNIQUE_KEY"); 
+
+        if (!key) {
+          setWalletError("User key not found");
+          return;
+        }
+
+        const res = await fetch(
+          "https://rwd.up.railway.app/auth/getwallet",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ key })
+          }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          setWalletError(data.message || "Failed to fetch wallet");
+          return;
+        }
+
+        // ✅ SUCCESS
+        setBalance(data.balance);
+        setTransactions(data.transactions || []);
+
+      } catch (err) {
+        console.error(err);
+        setWalletError("Server error");
+      } finally {
+        setLoadingWallet(false);
+      }
+    }
+
+    fetchWallet();
+  }, []);
+
   return (
     <>
     <header className="navbar">
@@ -40,38 +89,36 @@ function Order() {
 </svg>
 <h1 className="h1order-confirmed">Order Confirmed</h1>
 <div className="ordered">
-  <p className="para-order">Items Ordered</p>
-  <div className="cards">
-    <div className="dish-card">
-      
-      <img src="https://res.cloudinary.com/dxijfcgpw/image/upload/v1766209278/canteen_mess_banner_whztni.png" alt="yoooo" />
-      <div className="texts">
-      <p className="dishname">
-        <svg
-      width={20}
-      height={20}
-      viewBox="0 0 24 24"
-      aria-label="Veg"
-    >
-      <rect
-        x="2"
-        y="2"
-        width="20"
-        height="20"
-        rx="4"
-        fill="none"
-        stroke="#4CAF50"
-        strokeWidth="2"
-      />
-      <circle cx="12" cy="12" r="5" fill="#4CAF50" />
-    </svg>
-    <span> Chicken Biriyani </span></p>
-      <p className="catagory">From:Central Mess</p>
-      </div>
-      <p className="amt">$120</p>
+      <p className="para-order">Items Ordered</p>
+
+      {loading ? (
+        <p style={{ padding: "20px" }}>Loading orders...</p>
+      ) : (
+        <div className="cards">
+          {orders.map((item, index) => (
+            <div className="dish-card" key={index}>
+              <img src={item.itemsrc} alt={item.itemname} />
+
+              <div className="texts">
+                <p className="dishname">
+                  {/* veg icon */}
+                  <svg width={20} height={20} viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="#4CAF50" strokeWidth="2"/>
+                    <circle cx="12" cy="12" r="5" fill="#4CAF50" />
+                  </svg>
+                  <span>{item.itemname}</span>
+                </p>
+
+                <p className="catagory">From: Central Mess</p>
+              </div>
+
+              <p className="amt">₹{item.itemprice}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-  </div>
-</div>
+
     </>
   );
 }
