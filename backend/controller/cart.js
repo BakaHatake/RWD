@@ -1,6 +1,6 @@
 const Cart = require('../models/cart');
 const User = require('../models/user');
-
+const Order=require('../models/order');
 const add2cart=async (req,res)=>{
     const {user,itemprice,itemsrc,itemname}=req.body;
 
@@ -103,4 +103,31 @@ const removeQuantity = async (req, res) => {
         return res.status(500).json({ success: false, message: "Server Error" });
     }
 }
-module.exports = { add2cart, returncart, deleteItem, removeQuantity };
+
+const clearcart=async(req,res)=>{
+    const {user,items,totalItems,totalAmount}=req.body;
+    try{
+        if (!user || !items || items.length === 0) {
+      return res.status(400).json({ success: false });
+    }
+
+    await Cart.updateOne(
+        {user},
+        {$set:{items:[]}}
+    )
+    await Order.create({
+        user,
+        items,
+        totalItems,
+        totalAmount
+    });
+    return res.status(200).json({
+        success:true,
+        message:"Order Placed"
+    });
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({ success: false, message: "Server Error" });
+    }
+}
+module.exports = { add2cart, returncart, deleteItem, removeQuantity,clearcart};

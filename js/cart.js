@@ -10,13 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentFee = FEE_ASAP;
   let cartItems = [];
+  let grandTotal = 0;
   const userEmail = localStorage.getItem("gmail");
 
-  // if (!userEmail) {
-  //   alert("Please log in to view your cart.");
-  //   window.location.href = "login.html";
-  //   return;
-  // }
+  if (!userEmail) {
+    alert("Please log in to view your cart.");
+    window.location.href = "login.html";
+    return;
+  }
 
   loadCart();
 
@@ -109,13 +110,13 @@ document.addEventListener("DOMContentLoaded", () => {
       0
     );
     const tax = Math.round(itemTotal * TAX_RATE);
-    const grandTotal = itemTotal + tax + currentFee;
+    grandTotal = itemTotal + tax + currentFee;
 
     payValues[0].innerText = `₹${itemTotal}`;
     payValues[1].innerText = `₹${currentFee}`;
     payValues[2].innerText = `₹${tax}`;
     payValues[3].innerText = `₹${grandTotal}`;
-    ctaButton.innerText = `Pay & Order • ₹${grandTotal}`;
+    ctaButton.innerHTML = `Pay & Order • ₹${grandTotal} <span class="arrow">→</span>`;
   }
 
   cartContainer.addEventListener("click", (e) => {
@@ -181,62 +182,94 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "menu.html";
     });
   }
-});
-const [balance, setBalance] = useState(0);
-  const [transactions, setTransactions] = useState([]);
-  const [loadingWallet, setLoadingWallet] = useState(true);
-  const [walletError, setWalletError] = useState("");
-  
+  ctaButton.addEventListener("click", async () => {
+    const userkey = localStorage.getItem("key");
 
-  const [orders, setOrders] = useState([]);
-const [loading, setLoading] = useState(true);
-  // 🔹 Fetch wallet balance
-  useEffect(() => {
-  async function fetchWallet() {
     try {
-      const key = localStorage.getItem("key");
 
-      if (!key) {
-        console.warn("No USER_UNIQUE_KEY in localStorage");
-        setLoading(false);
-        return;
+      // const res = await fetch("http://localhost:8080/auth/getwallet", {
+
+      const res = await fetch("https://rwd.up.railway.app/auth/getwallet", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: userkey })
+      });
+
+      const data = await res.json();
+      console.log("STATUS:", res.status);
+      console.log("DATA:", data);
+
+      if (res.status === 400) {
+        return alert("Missing key");
       }
-      const dataa = await res.json();
 
-if (data.success) {
-  // 🔥 THIS LINE IS MANDATORY
-  localStorage.setItem("key", dataa.key);
-  localStorage.setItem("gmail", dataa.gmail); // optional but useful
+      if (data.balance < grandTotal) {
+        return alert("Insufficient balance");
+      }
 
-  // redirect to order page
-  window.location.href = "/order";
+      // const payRes = await fetch("http://localhost:8080/auth/updatewallet", {
+
+      const payRes = await fetch("https://rwd.up.railway.app/auth/updatewallet", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          key: userkey,
+          amount: -grandTotal,
+          utr: Date.now()
+        })
+      });
+
+      const payData = await payRes.json();
+      console.log("PAY STATUS:", payRes.status);
+      console.log("PAY DATA:", payData);
+
+      if (payRes.status === 200) {
+  const orderPlaced = await placeOrder();
+
+  if (orderPlaced) {
+    alert("Payment successful");
+    window.location.href = "menu.html";
+  } else {
+    alert("Payment done, but order failed");
+  }
 }
 
 
-      const res = await fetch(
-        "https://rwd.up.railway.app/auth/getwallet",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ key }) // ✅ CORRECT
-        }
-      );
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        console.error(data.message);
-        return;
-      }
-
-      setBalance(data.balance);
-      setTransactions(data.transactions || []);
     } catch (err) {
-      console.error("Wallet fetch failed:", err);
-    } finally {
-      setLoading(false);
+      console.error("Payment error:", err);
+      alert("Server error");
     }
-  }
+  });
+  async function placeOrder() {
+  const totalItems = cartItems.reduce(
+    (sum, i) => sum + i.quantity,
+    0
+  );
 
-  fetchWallet();
-}, []);
+  try {
+    // const url = "http://localhost:8080/auth/placeorder";
+    const url = "https://rwd.up.railway.app/auth/placeorder";
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user: userEmail,
+        items: cartItems,
+        totalItems: totalItems,
+        totalAmount: grandTotal
+      })
+    });
+
+    const data = await res.json();
+    console.log("ORDER RESPONSE:", data);
+
+    return res.ok;
+
+  } catch (err) {
+    console.error("Order placement failed", err);
+    return false;
+  }
+}
+
+});
