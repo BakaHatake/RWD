@@ -2,6 +2,33 @@
 
 Base URL: `http://localhost:8080` (or our railway URL which will be used on gobal testing)
 
+## Backend Workflows
+
+### 1. Authentication Flow
+*   **Stateless JWT**: The backend uses JSON Web Tokens (JWT) for authentication.
+*   **The "Key" System**: Each user is assigned a unique 8-character `key` upon signup. This key is used for wallet operations and internal identification.
+*   **Session**: The frontend should store the `jwtToken`, `email`, and `key` received during login.
+
+### 2. Password Reset Flow (OTP)
+1.  **Request**: User requests an OTP via `/auth/forget`. (Rate limited: 1 OTP per 5 mins).
+2.  **Verify**: User enters OTP. Backend verifies it via `/auth/verify` and temporarily authorizes the reset.
+3.  **Reset**: User provides new password via `/auth/reset`. Backend updates the hash and deletes the OTP.
+
+### 3. Order Lifecycle (Single Active Order)
+*   **One-at-a-time**: A user can only have **one active order** at a time.
+*   **Overwriting**: Placing a new order via `/auth/placeorder` will **automatically clear** any existing items in the cart and replace any previous active order for that user.
+*   **Status**: Orders start as "Placed" and move through "Accepted" -> "Preparing" -> "Ready" -> "Picked".
+
+### 4. Validation Rules
+*   **Signup**:
+    *   Name: 3 - 100 characters.
+    *   Password: 4 - 100 characters.
+    *   Email: Must be a valid email format.
+*   **Login**:
+    *   Email & Password required.
+
+---
+
 ## Authentication & User
 
 ### 1. Signup
@@ -219,6 +246,31 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
     { "success": true, "message": "Quantity updated" }
     ```
 *   **Response (Error - 404):** Cart not found OR Item not found in cart.
+*   **Response (Server Error - 500):** Server Error.
+
+---
+
+### 11. Place Order
+*   **Endpoint:** `/auth/placeorder`
+*   **Method:** `POST`
+*   **Description:** Places a new order and clears the user's cart.
+*   **Request Body:**
+    ```json
+    {
+      "user": "john@example.com",
+      "items": [ ... ],
+      "totalItems": 3,
+      "totalAmount": 450
+    }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    {
+      "success": true,
+      "message": "Order Placed"
+    }
+    ```
+*   **Response (Error - 400):** Missing user or items.
 *   **Response (Server Error - 500):** Server Error.
 
 ---
