@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let cartItems = [];
   const userEmail = localStorage.getItem("gmail");
 
-  if (!userEmail) {
-    alert("Please log in to view your cart.");
-    window.location.href = "login.html";
-    return;
-  }
+  // if (!userEmail) {
+  //   alert("Please log in to view your cart.");
+  //   window.location.href = "login.html";
+  //   return;
+  // }
 
   loadCart();
 
