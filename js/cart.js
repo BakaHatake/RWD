@@ -182,3 +182,61 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+const [balance, setBalance] = useState(0);
+  const [transactions, setTransactions] = useState([]);
+  const [loadingWallet, setLoadingWallet] = useState(true);
+  const [walletError, setWalletError] = useState("");
+  
+
+  const [orders, setOrders] = useState([]);
+const [loading, setLoading] = useState(true);
+  // 🔹 Fetch wallet balance
+  useEffect(() => {
+  async function fetchWallet() {
+    try {
+      const key = localStorage.getItem("key");
+
+      if (!key) {
+        console.warn("No USER_UNIQUE_KEY in localStorage");
+        setLoading(false);
+        return;
+      }
+      const dataa = await res.json();
+
+if (data.success) {
+  // 🔥 THIS LINE IS MANDATORY
+  localStorage.setItem("key", dataa.key);
+  localStorage.setItem("gmail", dataa.gmail); // optional but useful
+
+  // redirect to order page
+  window.location.href = "/order";
+}
+
+
+      const res = await fetch(
+        "https://rwd.up.railway.app/auth/getwallet",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ key }) // ✅ CORRECT
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error(data.message);
+        return;
+      }
+
+      setBalance(data.balance);
+      setTransactions(data.transactions || []);
+    } catch (err) {
+      console.error("Wallet fetch failed:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  fetchWallet();
+}, []);
