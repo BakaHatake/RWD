@@ -115,6 +115,7 @@ const clearcart=async(req,res)=>{
         {user},
         {$set:{items:[]}}
     )
+    await Order.deleteMany({ user });
     await Order.create({
         user,
         items,
