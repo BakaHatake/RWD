@@ -1,6 +1,7 @@
 import "./orderc.css";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 function Order() {
+  const navigate = useNavigate();
   return (
     <>
     <header className="navbar">
@@ -11,10 +12,14 @@ function Order() {
 
       <div className="profile-circle">JD</div>
     </header>
+    <div className="main1">
     <main className="main-white">
          <img src="https://res.cloudinary.com/dxijfcgpw/image/upload/v1766212708/Screenshot_2025-12-20_120733_fj4tnn.png" alt="picc" />
     </main>
+    </div>
+
     <svg className="back-btn"
+    onClick={() => navigate("https://rwd-eight.vercel.app/html/menu.html")}
   width={55}
   height={55}
   viewBox="0 0 48 48"
@@ -42,21 +47,9 @@ function Order() {
 <div className="ordered">
       <p className="para-order">Items Ordered</p>
 
-      {loading && (
-      <p style={{ padding: "30px" }}>Loading...</p>
-    )}
-
-    {walletError && (
-      <p style={{ padding: "30px", color: "red" }}>
-        {walletError}
-      </p>
-    )}
-
-    {!loading && !walletError && (
         <div className="cards">
-          {orders.map((item, index) => (
-            <div className="dish-card" key={index}>
-              <img src={item.itemsrc} alt={item.itemsrc} />
+            <div className="dish-card">
+              <img src="https://res.cloudinary.com/dxijfcgpw/image/upload/v1766212708/Screenshot_2025-12-20_120733_fj4tnn.png" alt="fuiuytyfrdexfg" />
 
               <div className="texts">
                 <p className="dishname">
@@ -65,17 +58,15 @@ function Order() {
                     <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="#4CAF50" strokeWidth="2"/>
                     <circle cx="12" cy="12" r="5" fill="#4CAF50" />
                   </svg>
-                  <span>{item.itemname}</span>
+                  <span>Chicken</span>
                 </p>
 
                 <p className="catagory">From: Central Mess</p>
               </div>
 
-              <p className="amt">₹{item.itemprice}</p>
+              <p className="amt">₹50</p>
             </div>
-          ))}
         </div>
-      )}
     </div>
 
     </>
