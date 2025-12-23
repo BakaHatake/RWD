@@ -13,7 +13,7 @@ const [loading, setLoading] = useState(true);
   useEffect(() => {
   async function fetchWallet() {
     try {
-      const key = localStorage.getItem("USER_UNIQUE_KEY");
+      const key = localStorage.getItem("key");
 
       if (!key) {
         console.warn("No USER_UNIQUE_KEY in localStorage");
@@ -24,7 +24,7 @@ const [loading, setLoading] = useState(true);
 
 if (data.success) {
   // 🔥 THIS LINE IS MANDATORY
-  localStorage.setItem("USER_UNIQUE_KEY", dataa.key);
+  localStorage.setItem("key", dataa.key);
   localStorage.setItem("gmail", dataa.gmail); // optional but useful
 
   // redirect to order page
@@ -101,9 +101,17 @@ if (data.success) {
 <div className="ordered">
       <p className="para-order">Items Ordered</p>
 
-      {loading ? (
-        <p style={{ padding: "30px",fontWeight:"600",fontSize:"21px" }}>Loading orders...</p>
-      ) : (
+      {loading && (
+      <p style={{ padding: "30px" }}>Loading...</p>
+    )}
+
+    {walletError && (
+      <p style={{ padding: "30px", color: "red" }}>
+        {walletError}
+      </p>
+    )}
+
+    {!loading && !walletError && (
         <div className="cards">
           {orders.map((item, index) => (
             <div className="dish-card" key={index}>
