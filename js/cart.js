@@ -227,6 +227,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const orderPlaced = await placeOrder();
 
   if (orderPlaced) {
+    console.log("✅ orderPlaced = true");
+
+  console.log("🛒 cartItems BEFORE save:", cartItems);
+  console.log("💰 grandTotal:", grandTotal);
+
    localStorage.setItem(
       "lastOrder",
       JSON.stringify({
@@ -236,9 +241,10 @@ document.addEventListener("DOMContentLoaded", () => {
         time: Date.now()
       })
     );
+    console.log("💾 lastOrder AFTER save:", localStorage.getItem("lastOrder"));
 
     alert("Payment successful");
-    window.location.href = "https://rwd-tau.vercel.app/order";
+    window.location.href = "/order";
   } else {
     alert("Payment done, but order failed");
   }
