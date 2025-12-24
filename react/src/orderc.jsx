@@ -11,6 +11,7 @@ function Order() {
     const data = localStorage.getItem("lastOrder");
     if (data) {
       setOrder(JSON.parse(data));
+      console.log("Loaded order:", order);
     }
   }, []);
 
@@ -83,7 +84,7 @@ function Order() {
 
               <p className="amt">₹{item.itemprice}₹50</p>
             </div>
-          ))};
+          ))}
         </div>
     </div>
 

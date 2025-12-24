@@ -227,6 +227,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const orderPlaced = await placeOrder();
 
   if (orderPlaced) {
+   localStorage.setItem(
+      "lastOrder",
+      JSON.stringify({
+        items: cartItems,
+        totalAmount: grandTotal,
+        totalItems: cartItems.reduce((s, i) => s + i.quantity, 0),
+        time: Date.now()
+      })
+    );
+
     alert("Payment successful");
     window.location.href = "https://rwd-tau.vercel.app/order";
   } else {
