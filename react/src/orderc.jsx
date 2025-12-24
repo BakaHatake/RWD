@@ -12,15 +12,9 @@ function Order() {
     if (data) {
       setOrder(JSON.parse(data));
       console.log("Loaded order:", order);
-    }
-  }, []);
-
-  if (!order) {
-    return <h2>No order found</h2>;
-  }
-
-  return (
-    <>
+      
+      return (
+        <>
     <header className="navbar">
       <div className="nav-left">
         <div className="logo-circle">C</div>
@@ -37,11 +31,11 @@ function Order() {
 
     <svg className="back-btn"
     onClick={() => navigate("https://rwd-eight.vercel.app/html/menu.html")}
-  width={55}
-  height={55}
-  viewBox="0 0 48 48"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
+    width={55}
+    height={55}
+    viewBox="0 0 48 48"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
 >
   <path
     d="M30 12L18 24L30 36"
@@ -49,7 +43,7 @@ function Order() {
     strokeWidth="3" 
     strokeLinecap="round"
     strokeLinejoin="round"
-  />
+    />
   <line
     x1="20"
     y1="24"
@@ -58,7 +52,7 @@ function Order() {
     stroke="#F47C4F"
     strokeWidth="3"
     strokeLinecap="round"
-  />
+    />
 </svg>
 <h1 className="h1order-confirmed">Order Confirmed</h1>
 <div className="ordered">
@@ -90,6 +84,11 @@ function Order() {
 
     </>
   );
+}
+}, []);
+if (!order) {
+        return <h2>No order found</h2>;
+      }
 }
 
 export default Order;
