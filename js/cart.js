@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cartContainer = document.querySelector(".cart-items-container");
   const payValues = document.querySelectorAll(".pay-value");
-  const ctaButton = document.querySelector(".cta-button");
+  let ctaButton = document.querySelector(".cta-button");
   const backBtn = document.querySelector(".back-btn");
 
   let currentFee = FEE_ASAP;
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (orderPlaced) {
     alert("Payment successful");
-    window.location.href = "menu.html";
+    window.location.href = "https://rwd-tau.vercel.app/order";
   } else {
     alert("Payment done, but order failed");
   }
@@ -273,8 +273,3 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 });
-
-cta-button.addEventListener("click",()=>{
-  window.location.href="https://rwd-tau.vercel.app/order"
-
-})
