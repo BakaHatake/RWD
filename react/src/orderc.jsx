@@ -1,7 +1,23 @@
 import "./orderc.css";
 import { useNavigate } from "react-router-dom";
+
+// import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 function Order() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const [order, setOrder] = useState(null);
+
+  useEffect(() => {
+    const data = localStorage.getItem("lastOrder");
+    if (data) {
+      setOrder(JSON.parse(data));
+    }
+  }, []);
+
+  if (!order) {
+    return <h2>No order found</h2>;
+  }
+
   return (
     <>
     <header className="navbar">
@@ -48,8 +64,9 @@ function Order() {
       <p className="para-order">Items Ordered</p>
 
         <div className="cards">
-            <div className="dish-card">
-              <img src="https://res.cloudinary.com/dxijfcgpw/image/upload/v1766212708/Screenshot_2025-12-20_120733_fj4tnn.png" alt="fuiuytyfrdexfg" />
+          {order.items.map((item) => (
+            <div className="dish-card" key={item._id}>
+              <img src={item.itemsrc} alt={item.itemname} />
 
               <div className="texts">
                 <p className="dishname">
@@ -58,14 +75,15 @@ function Order() {
                     <rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="#4CAF50" strokeWidth="2"/>
                     <circle cx="12" cy="12" r="5" fill="#4CAF50" />
                   </svg>
-                  <span>Chicken</span>
+                  <span>{item.itemname}</span>
                 </p>
 
                 <p className="catagory">From: Central Mess</p>
               </div>
 
-              <p className="amt">₹50</p>
+              <p className="amt">₹{item.itemprice}₹50</p>
             </div>
+          ))};
         </div>
     </div>
 
