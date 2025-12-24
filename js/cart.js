@@ -274,3 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+cta-button.addEventListener("click",()=>{
+  window.location.href="https://rwd-tau.vercel.app/order"
+
+})
