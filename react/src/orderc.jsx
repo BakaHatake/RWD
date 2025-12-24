@@ -16,7 +16,7 @@ function Order() {
       setOrder(parsed);
     }
   }, []);
-  if (!order) {
+  if (!Order) {
     return <h2>No order found</h2>;
   }
 
