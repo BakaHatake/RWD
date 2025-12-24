@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("💾 lastOrder AFTER save:", localStorage.getItem("lastOrder"));
 
     alert("Payment successful");
-    window.location.href = "/order";
+    window.location.href = "https://rwd-tau.vercel.app/order";
   } else {
     alert("Payment done, but order failed");
   }
