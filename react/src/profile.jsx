@@ -1,4 +1,5 @@
 import "./profile.css";
+import { useState } from "react";
 
 function Profile({ open }) {
   if (!open) return null;
