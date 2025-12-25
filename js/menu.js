@@ -116,6 +116,11 @@ document.getElementById("cart").addEventListener("click", () => {
     window.location.href = "./cart.html";
 });
 
+document.getElementById("profile-icon").addEventListener("click",()=>{
+    window.location.href="https://rwd-tau.vercel.app/profile"
+}
+)
+
 document.getElementById('dish').addEventListener('click', async (e) => {
     
     if (e.target && e.target.classList.contains('add-btn')) {
