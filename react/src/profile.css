@@ -31,7 +31,7 @@
 /* Popup card */
 .profile-popup-card {
   position: absolute;
-  top: 55px;
+  top: 68px;
   right: 0;
   width: 340px;
   padding: 18px;
@@ -43,36 +43,36 @@
 
 /* Header */
 .profile-header-card {
-  height: 50px;
-  width: auto;
+  height: 70px;
+  width:auto;
   display: flex;
   gap: 25px;
   align-items: center;
+  justify-content: left;
   background: #FF7043;
   color: white;
-  padding: 14px;
+  padding: 4.5px;
   border-radius: 53px;
 }
 
 .profile-popup-card h2 {
-    font-size:35px;
+    font-size:37px;
     font-weight:bolder;
     color: #FFF6E8;
 }
 
 .profile-avatar {
-  width: 68px;
-  height: 64px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: #fff2eb;
   color: #f47c4f;
   display: grid;
   place-items: center;
   font-size: 26px;
-  margin: 0;
+  margin-left: 0px;
 }
 
-/* Balance */
 .profile-balance-row {
   display: flex;
   justify-content: space-between;
@@ -83,8 +83,10 @@
 .balance-label {
   font-size: 15px;
   color: #f47c4f;
-  margin-left: 23px;
-  /* margin-top: 20px; */
+  margin-left: 15px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-weight: bolder;
 }
 
 .balance-amount {
@@ -94,7 +96,8 @@
   margin-top: 10px;
   line-height: 51px;
   letter-spacing: 1px;
-  margin-left: 10px;
+  margin-left: 12px;
+  margin-top: 4px;
 }
 
 .topup-btn {
@@ -134,14 +137,13 @@
 }
 
 .icon {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 6px;
   border-radius: 53px;
   height: 70px;
 
 }
 
-/* Info */
 .profile-info {
   background-color: #FFF6E8;
   border-radius: 30px;
@@ -151,9 +153,9 @@
   color: #FF7043;
   margin-top: 10px;
   border: 1.6px solid #FF7043;
+  font-size: 23px;
 }
 
-/* Logout */
 .logout-btn {
   margin-top: 16px;
   width: 100%;
