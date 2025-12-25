@@ -224,31 +224,23 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("PAY DATA:", payData);
 
       if (payRes.status === 200) {
-  const orderPlaced = await placeOrder();
+        const orderPlaced = await placeOrder();
 
-  if (orderPlaced) {
-    console.log("✅ orderPlaced = true");
+        if (orderPlaced) {
+          console.log("✅ orderPlaced = true");
 
-  console.log("🛒 cartItems BEFORE save:", cartItems);
-  console.log("💰 grandTotal:", grandTotal);
+          console.log("🛒 cartItems BEFORE save:", cartItems);
+          console.log("💰 grandTotal:", grandTotal);
 
-   localStorage.setItem(
-      "lastOrder",
-      JSON.stringify({
-        items: cartItems,
-        totalAmount: grandTotal,
-        totalItems: cartItems.reduce((s, i) => s + i.quantity, 0),
-        time: Date.now()
-      })
-    );
-    console.log("💾 lastOrder AFTER save:", localStorage.getItem("lastOrder"));
 
-    alert("Payment successful");
-    window.location.href = "https://rwd-tau.vercel.app/order";
-  } else {
-    alert("Payment done, but order failed");
-  }
-}
+          console.log("💾 lastOrder AFTER save:", localStorage.getItem("lastOrder"));
+          const uemail = localStorage.getItem("email");
+          alert("Payment successful");
+          window.location.href = "https://rwd-tau.vercel.app/order?email=" + encodeURIComponent(uemail);
+        } else {
+          alert("Payment done, but order failed");
+        }
+      }
 
 
     } catch (err) {
@@ -257,35 +249,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   async function placeOrder() {
-  const totalItems = cartItems.reduce(
-    (sum, i) => sum + i.quantity,
-    0
-  );
+    const totalItems = cartItems.reduce(
+      (sum, i) => sum + i.quantity,
+      0
+    );
 
-  try {
-    // const url = "http://localhost:8080/auth/placeorder";
-    const url = "https://rwd.up.railway.app/auth/placeorder";
+    try {
+      // const url = "http://localhost:8080/auth/placeorder";
+      const url = "https://rwd.up.railway.app/auth/placeorder";
 
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user: userEmail,
-        items: cartItems,
-        totalItems: totalItems,
-        totalAmount: grandTotal
-      })
-    });
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: userEmail,
+          items: cartItems,
+          totalItems: totalItems,
+          totalAmount: grandTotal
+        })
+      });
 
-    const data = await res.json();
-    console.log("ORDER RESPONSE:", data);
+      const data = await res.json();
+      console.log("ORDER RESPONSE:", data);
 
-    return res.ok;
+      return res.ok;
 
-  } catch (err) {
-    console.error("Order placement failed", err);
-    return false;
+    } catch (err) {
+      console.error("Order placement failed", err);
+      return false;
+    }
   }
-}
 
 });

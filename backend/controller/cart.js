@@ -131,4 +131,14 @@ const clearcart=async(req,res)=>{
         return res.status(500).json({ success: false, message: "Server Error" });
     }
 }
-module.exports = { add2cart, returncart, deleteItem, removeQuantity,clearcart};
+const getorder=async(req,res)=>{
+    const {user}=req.body;
+    try{
+        const order=await Order.find({user});
+        return res.status(200).json({success:true,data:order});
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({ success: false, message: "Server Error" });
+    }
+}
+module.exports = { add2cart, returncart, deleteItem, removeQuantity,clearcart,getorder};

@@ -253,7 +253,7 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
 ### 11. Place Order
 *   **Endpoint:** `/auth/placeorder`
 *   **Method:** `POST`
-*   **Description:** Places a new order and clears the user's cart.
+*   **Description:** Places a new order, **clears the user's cart**, and **updates the orders collection**.
 *   **Request Body:**
     ```json
     {
@@ -273,7 +273,35 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
 *   **Response (Error - 400):** Missing user or items.
 *   **Response (Server Error - 500):** Server Error.
 
+
+### 12. Get Order
+*   **Endpoint:** `/auth/getorder`
+*   **Method:** `POST`
+*   **Description:** Fetches the active order for the user.
+*   **Request Body:**
+    ```json
+    { "user": "john@example.com" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    {
+      "success": true,
+      "data": [
+        {
+          "_id": "67...",
+          "user": "john@example.com",
+          "items": [ ... ],
+          "totalItems": 3,
+          "totalAmount": 450,
+          "createdAt": "2023-10-27T..."
+        }
+      ]
+    }
+    ```
+*   **Response (Server Error - 500):** Server Error.
+
 ---
+
 
 ## Products & Search
 
