@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
 import Hero from "./Hero";
-import "./canteen.css";
+import "../css/canteen.css";
 
 
 
@@ -27,15 +27,15 @@ function Canteen() {
   };
 
   const heroImage = kitchenImages[kitchen] || kitchenImages["Main Course"];
-useEffect(() => {
-  if (gmail) {
-    localStorage.setItem("gmail", gmail);
-  }
-}, [gmail]);
-const goToCart = () => {
-  window.location.href = "https://rwd-eight.vercel.app/html/cart.html";
-  // window.location.href = "http://localhost:5173/html/cart.html";
-};
+  useEffect(() => {
+    if (gmail) {
+      localStorage.setItem("gmail", gmail);
+    }
+  }, [gmail]);
+  const goToCart = () => {
+    window.location.href = "https://rwd-eight.vercel.app/html/cart.html";
+    // window.location.href = "http://localhost:5173/html/cart.html";
+  };
 
   useEffect(() => {
     if (!kitchen) return;
@@ -75,22 +75,22 @@ const goToCart = () => {
     try {
       let gamil = localStorage.getItem("gmail");
 
-        if (!gamil) {
-            alert("Invalid User. Please Login first!");
-            window.location.href = "https://rwd-eight.vercel.app/html/login.html";
-            return;
-        }
-            // const url = "http://localhost:8080/auth/add2cart";
-            const url = "https://rwd.up.railway.app/auth/add2cart";
-            let price = item.price;
-            let src = item.imageUrl; 
-            let name = item.name;
-            const Body = JSON.stringify({
-                user: gamil,
-                itemprice: price,
-                itemsrc: src,
-                itemname: name,
-            });
+      if (!gamil) {
+        alert("Invalid User. Please Login first!");
+        window.location.href = "https://rwd-eight.vercel.app/html/login.html";
+        return;
+      }
+      // const url = "http://localhost:8080/auth/add2cart";
+      const url = "https://rwd.up.railway.app/auth/add2cart";
+      let price = item.price;
+      let src = item.imageUrl;
+      let name = item.name;
+      const Body = JSON.stringify({
+        user: gamil,
+        itemprice: price,
+        itemsrc: src,
+        itemname: name,
+      });
       const res = await fetch(url,
 
         {
@@ -127,29 +127,29 @@ const goToCart = () => {
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <button className="trial-btn" onClick={() => navigate("https://rwd-eight.vercel.app/html/menu.html")}>
-    <svg width="50" height="80" viewBox="0 0 80 130">
-      <circle cx="40" cy="40" r="40" fill="#F47C4F" />
-      <path
-        d="M45 24 L29 40 L45 56 M29 40 H55"
-        fill="none"
-        stroke="#ffffffff"
-        strokeWidth="6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </button>
+          <svg width="50" height="80" viewBox="0 0 80 130">
+            <circle cx="40" cy="40" r="40" fill="#F47C4F" />
+            <path
+              d="M45 24 L29 40 L45 56 M29 40 H55"
+              fill="none"
+              stroke="#ffffffff"
+              strokeWidth="6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
 
         <div className="hero-overlay">
           <h1 className="hero-title">{kitchen}</h1>
           <p className="hero-subtitle">
-        North Indian • South Indian • Lunch & Dinner
-      </p>
+            North Indian • South Indian • Lunch & Dinner
+          </p>
 
-      <div className="hero-info">
-        <button className="open-btn">Open Now</button>
-        <span className="rating">⭐ 4.5</span>
-        </div>
+          <div className="hero-info">
+            <button className="open-btn">Open Now</button>
+            <span className="rating">⭐ 4.5</span>
+          </div>
         </div>
       </div>
 

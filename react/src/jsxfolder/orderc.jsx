@@ -1,4 +1,4 @@
-import "./orderc.css";
+import "../css/orderc.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
