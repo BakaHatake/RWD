@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
           console.log("💾 lastOrder AFTER save:", localStorage.getItem("lastOrder"));
-          const uemail = localStorage.getItem("email");
+          const uemail = localStorage.getItem("gmail");
           alert("Payment successful");
           window.location.href = "https://rwd-tau.vercel.app/order?email=" + encodeURIComponent(uemail);
         } else {
