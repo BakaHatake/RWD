@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-/* Popup card */
+
 .profile-popup-card {
   position: fixed;
   top: 68px;
@@ -41,7 +41,7 @@
   z-index: 100000;
 }
 
-/* Header */
+
 .profile-header-card {
   height: 70px;
   width:auto;
@@ -106,7 +106,7 @@
   background: #FF7043;
   color: #FFF6E8;
   border: none;
-  /* padding: 12px 26px; */
+  
   border-radius: 53px;
   font-size: 23px;
   font-weight: 700;
@@ -118,7 +118,7 @@
     color: white;
 }
 
-/* Actions */
+
 .profile-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
