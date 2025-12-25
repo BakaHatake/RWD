@@ -52,7 +52,13 @@ const [open, setOpen] = useState(false);
                 
             </div>
 
-            <div className="profile-icon" onClick={() => setOpen(prev => !prev)}>
+            <div className="profile-icon"
+  onClick={() => {
+    setOpen(prev => {
+      console.log("Profile open toggled:", !prev);
+      return !prev;
+    });
+  }}>
                 
                 <svg width="50" height="50" viewBox="0 0 16 16" fill="#ffffff">
                     <path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z"/>
