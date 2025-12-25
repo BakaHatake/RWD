@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Canteen />} />
         <Route path="/pagetwo" element={<PageTwo />} />
-        <Route path="/order" element={<Order />} />
+        <Route path="/orderc" element={<Order />} />
       </Routes>
     </BrowserRouter>
   );
