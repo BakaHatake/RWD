@@ -4,13 +4,13 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
 
 ## 📑 Quick Navigation
 
-| Category | Description | Link |
-| :--- | :--- | :--- |
-| **Authentication & User** | Signup, Login, Password Reset, Profile | [Go to Section](#authentication--user) |
-| **Cart Operations** | Add, Remove, View Cart Items | [Go to Section](#cart-operations) |
-| **Order Management** | Place Order, View History | [Go to Section](#order-management) |
-| **Products & Search** | Filter and Search | [Go to Section](#products--search) |
-| **Wallet** | Balance and Transactions | [Go to Section](#wallet) |
+| Category | Description |
+| :--- | :--- |
+| [**Authentication & User**](#authentication--user) | Signup, Login, Password Reset, Profile |
+| [**Cart Operations**](#cart-operations) | Add, Remove, View Cart Items |
+| [**Order Management**](#order-management) | Place Order, View History |
+| [**Products & Search**](#products--search) | Filter and Search |
+| [**Wallet**](#wallet) | Balance and Transactions |
 
 ---
 
@@ -90,7 +90,7 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "user": "John Doe"
     }
     ```
-*   **Response (Error - 409):** User does not exist / Invalid password.
+*   **Response (Error - 409):** `User does not exist` or `Invalid password`.
 
 ### 3. Forgot Password
 *   **Endpoint:** `/auth/forget`
@@ -100,7 +100,10 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
     ```json
     { "email": "john@example.com" }
     ```
-*   **Response (Success - 200):** `{ "success": true, "message": "OTP sent to your email" }`
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "message": "OTP sent to your email" }
+    ```
 *   **Response (Error - 400/404/429):** Validation errors, User not found, Rate limit exceeded.
 
 ### 4. Verify OTP
@@ -114,7 +117,10 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "otp": 123456
     }
     ```
-*   **Response (Success - 200):** `{ "success": true, "message": "OTP verified successfully" }`
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "message": "OTP verified successfully" }
+    ```
 
 ### 5. Reset Password
 *   **Endpoint:** `/auth/reset`
@@ -128,7 +134,10 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "confirmPassword": "newpassword123"
     }
     ```
-*   **Response (Success - 200):** `{ "success": true, "message": "Password reset successfully" }`
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "message": "Password reset successfully" }
+    ```
 
 ### 6. Get Profile
 *   **Endpoint:** `/auth/profile`
@@ -151,7 +160,7 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       }
     }
     ```
-*   **Response (Error - 400):** Key is required / User or Wallet not found.
+*   **Response (Error - 400):** `Key is required` / `User or Wallet not found`.
 *   **Response (Server Error - 500):** Server error.
 
 ---
@@ -161,14 +170,34 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
 ### 7. Get Cart (Method A)
 *   **Endpoint:** `/auth/cart`
 *   **Method:** `POST`
-*   **Request Body:** `{ "username": "john@example.com" }`
-*   **Response (Success - 200):** `{ "message": "Cart fetched", "items": [...], "success": true }`
+*   **Request Body:**
+    ```json
+    { "username": "john@example.com" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    {
+      "message": "Cart fetched",
+      "items": [ ... ],
+      "success": true
+    }
+    ```
 
 ### 8. Get Cart (Method B)
 *   **Endpoint:** `/auth/returncart`
 *   **Method:** `POST`
-*   **Request Body:** `{ "user": "john@example.com" }`
-*   **Response (Success - 200):** `{ "items": [...], "success": true, "message": "Cart found" }`
+*   **Request Body:**
+    ```json
+    { "user": "john@example.com" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    {
+      "items": [ ... ],
+      "success": true,
+      "message": "Cart found"
+    }
+    ```
 
 ### 9. Add to Cart
 *   **Endpoint:** `/auth/add2cart`
@@ -182,19 +211,34 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "itemsrc": "http://image.url"
     }
     ```
-*   **Response (Success - 200):** `{ "success": true, "message": "Cart updated" }`
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "message": "Cart updated" }
+    ```
 
 ### 10. Delete Item
 *   **Endpoint:** `/auth/delete-item`
 *   **Method:** `POST`
-*   **Request Body:** `{ "user": "john@example.com", "itemname": "Burger" }`
-*   **Response (Success - 200):** `{ "success": true, "message": "Item deleted" }`
+*   **Request Body:**
+    ```json
+    { "user": "john@example.com", "itemname": "Burger" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "message": "Item deleted" }
+    ```
 
 ### 11. Decrease Quantity
 *   **Endpoint:** `/auth/remove-quantity`
 *   **Method:** `POST`
-*   **Request Body:** `{ "user": "john@example.com", "itemname": "Burger" }`
-*   **Response (Success - 200):** `{ "success": true, "message": "Quantity updated" }`
+*   **Request Body:**
+    ```json
+    { "user": "john@example.com", "itemname": "Burger" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "message": "Quantity updated" }
+    ```
 
 ---
 
@@ -213,14 +257,23 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "totalAmount": 450
     }
     ```
-*   **Response (Success - 200):** `{ "success": true, "message": "Order Placed" }`
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "message": "Order Placed" }
+    ```
 
 ### 13. Get Order
 *   **Endpoint:** `/auth/getorder`
 *   **Method:** `POST`
 *   **Description:** Fetches the active order.
-*   **Request Body:** `{ "user": "john@example.com" }`
-*   **Response (Success - 200):** `{ "success": true, "data": [{...}] }`
+*   **Request Body:**
+    ```json
+    { "user": "john@example.com" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "data": [{...}] }
+    ```
 
 ---
 
@@ -229,14 +282,26 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
 ### 14. Filter Products
 *   **Endpoint:** `/auth/filter`
 *   **Method:** `POST`
-*   **Request Body:** `{ "category": "All" }`
-*   **Response (Success - 200):** `{ "success": true, "items": [...] }`
+*   **Request Body:**
+    ```json
+    { "category": "All" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "items": [...] }
+    ```
 
 ### 15. Search Products
 *   **Endpoint:** `/auth/search`
 *   **Method:** `POST`
-*   **Request Body:** `{ "query": "pizza" }`
-*   **Response (Success - 200):** `{ "success": true, "items": [...] }`
+*   **Request Body:**
+    ```json
+    { "query": "pizza" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "items": [...] }
+    ```
 
 ---
 
@@ -245,8 +310,14 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
 ### 16. Get Wallet Balance
 *   **Endpoint:** `/auth/getwallet`
 *   **Method:** `POST`
-*   **Request Body:** `{ "key": "USER_KEY" }`
-*   **Response (Success - 200):** `{ "success": true, "balance": 500, "transactions": [] }`
+*   **Request Body:**
+    ```json
+    { "key": "USER_KEY" }
+    ```
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "balance": 500, "transactions": [] }
+    ```
 
 ### 17. Update Wallet
 *   **Endpoint:** `/auth/updatewallet`
@@ -259,4 +330,7 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "utr": "TRANSACTION_ID"
     }
     ```
-*   **Response (Success - 200):** `{ "success": true, "balance": 600 }`
+*   **Response (Success - 200):**
+    ```json
+    { "success": true, "balance": 600 }
+    ```
