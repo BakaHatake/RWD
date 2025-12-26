@@ -17,8 +17,8 @@
 }
 
 .profile-circle {
-  width: 42px;
-  height: 42px;
+  width: 37px;
+  height: 37px;
   background: #f47c4f;
   color: white;
   border-radius: 50%;
@@ -31,8 +31,8 @@
 
 .profile-popup-card {
   position: fixed;
-  top: 68px;
-  right: 0;
+  top: 75px;
+  right: 20px;
   width: 340px;
   padding: 18px;
   border-radius: 36px;
@@ -43,7 +43,7 @@
 
 
 .profile-header-card {
-  height: 70px;
+  height: 73px;
   width:auto;
   display: flex;
   gap: 25px;
@@ -51,7 +51,7 @@
   justify-content: left;
   background: #FF7043;
   color: white;
-  padding: 4.5px;
+  padding: 3.5px;
   border-radius: 53px;
 }
 
