@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../css/topup.css";
 
 
-function TopUp() {
+function Topup() {
     
   const [amount, setAmount] = useState(0);
   const currentBalance = 1000;
@@ -41,7 +41,7 @@ function TopUp() {
         </div>
 
         <div className="custom-amount">
-          <p>Enter Amount</p>
+          <p className="amt-para">Enter Amount</p>
           <input
             type="number"
             placeholder="₹ ____"
@@ -51,11 +51,14 @@ function TopUp() {
         </div>
       </div>
 
-      <button className="pay-btn" onClick={handlePay}>
-        PAY <span>↗</span>
-      </button>
-    </div>
+      <button class="pay-btn">
+  <span class="pay-text">PAY</span>
+  <span class="arrow-circle">
+    <span class="arrow"></span>
+  </span>
+</button>
+</div>
   );
 }
 
-export default TopUp;
+export default Topup;
