@@ -1,6 +1,7 @@
 import "../css/menu.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Profile from "./profile";
 
 function Menu() {
     const [profileOpen, setProfileOpen] = useState(false);
