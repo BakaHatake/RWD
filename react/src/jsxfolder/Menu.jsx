@@ -135,6 +135,10 @@ function Menu() {
                             <circle cx="9" cy="20" r="1" />
                             <circle cx="20" cy="20" r="1" />
                         </svg>
+                        <Profile
+                       open={profileOpen}
+                         onClose={() => setProfileOpen(false)}
+                         />
                     </div>
 
                     <div className="profile-icon" onClick={() => setProfileOpen(prev => !prev)}>
@@ -143,10 +147,6 @@ function Menu() {
                             <path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" />
                         </svg>
                     </div>
-                        <Profile
-                       open={profileOpen}
-                         onClose={() => setProfileOpen(false)}
-                         />
                 </div>
             </div>
 
