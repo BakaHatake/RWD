@@ -9,6 +9,7 @@ import ForgetPassword from "./ForgetPassword";
 import ResetPassword from "./ResetPassword";
 import Menu from "./Menu";
 import Cart from "./Cart";
+import Topup from "./topup";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/kitchen" element={<Canteen />} />
         <Route path="/pagetwo" element={<PageTwo />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/topup" element={<Topup />}/>
       </Routes>
     </BrowserRouter>
   );
