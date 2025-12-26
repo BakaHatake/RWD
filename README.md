@@ -32,7 +32,7 @@ A RESTful API built with **Node.js** and **Express**, connecting to a MongoDB da
     *   `models/`: Mongoose schemas (User, Order, Item).
     *   `routes/`: API route definitions (`auth.js`, etc.).
     *   `middleware/`: Authentication checks.
-*   **Documentation**: Detailed API references available in [`backend/API_DOCUMENTATION.md`](file:///c:/RWD/backend/API_DOCUMENTATION.md).
+*   **Documentation**: [📄 Read Backend API Documentation](backend/API_DOCUMENTATION.md)
 
 ---
 

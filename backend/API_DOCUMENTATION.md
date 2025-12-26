@@ -2,6 +2,18 @@
 
 Base URL: `http://localhost:8080` (or our railway URL which will be used on gobal testing)
 
+## 📑 Quick Navigation
+
+| Category | Description | Link |
+| :--- | :--- | :--- |
+| **Authentication & User** | Signup, Login, Password Reset, Profile | [Go to Section](#authentication--user) |
+| **Cart Operations** | Add, Remove, View Cart Items | [Go to Section](#cart-operations) |
+| **Order Management** | Place Order, View History | [Go to Section](#order-management) |
+| **Products & Search** | Filter and Search | [Go to Section](#products--search) |
+| **Wallet** | Balance and Transactions | [Go to Section](#wallet) |
+
+---
+
 ## Backend Workflows
 
 ### 1. Authentication Flow
@@ -53,19 +65,8 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "success": true
     }
     ```
-*   **Response (Error - 409):**
-    ```json
-    {
-      "message": "Email already exists",
-      "type": "email", 
-      "success": false
-    }
-    // OR "USN already exists" (type: "usn")
-    ```
-*   **Response (Server Error - 500):**
-    ```json
-    { "message": "Signup failed", "success": false }
-    ```
+*   **Response (Error - 409):** `Email already exists` or `USN already exists`.
+*   **Response (Server Error - 500):** Signup failed.
 
 ### 2. Login
 *   **Endpoint:** `/auth/login`
@@ -89,18 +90,7 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "user": "John Doe"
     }
     ```
-*   **Response (Error - 409):**
-    ```json
-    {
-      "type": "email", // or "pass"
-      "message": "User does not exist", // or "Invalid password"
-      "success": false
-    }
-    ```
-*   **Response (Server Error - 500):**
-    ```json
-    { "message": "Server error", "success": false }
-    ```
+*   **Response (Error - 409):** User does not exist / Invalid password.
 
 ### 3. Forgot Password
 *   **Endpoint:** `/auth/forget`
@@ -110,14 +100,8 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
     ```json
     { "email": "john@example.com" }
     ```
-*   **Response (Success - 200):**
-    ```json
-    { "success": true, "message": "OTP sent to your email" }
-    ```
-*   **Response (Error - 400):** Email is required.
-*   **Response (Error - 404):** User does not exist.
-*   **Response (Error - 429):** OTP already sent (rate limit).
-*   **Response (Server Error - 500):** Failed to send OTP email.
+*   **Response (Success - 200):** `{ "success": true, "message": "OTP sent to your email" }`
+*   **Response (Error - 400/404/429):** Validation errors, User not found, Rate limit exceeded.
 
 ### 4. Verify OTP
 *   **Endpoint:** `/auth/verify`
@@ -130,14 +114,7 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "otp": 123456
     }
     ```
-*   **Response (Success - 200):**
-    ```json
-    { "success": true, "message": "OTP verified successfully" }
-    ```
-*   **Response (Error - 400):** 
-    - Email and OTP are required
-    - No OTP found / Invalid OTP
-    - OTP expired
+*   **Response (Success - 200):** `{ "success": true, "message": "OTP verified successfully" }`
 
 ### 5. Reset Password
 *   **Endpoint:** `/auth/reset`
@@ -151,56 +128,49 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "confirmPassword": "newpassword123"
     }
     ```
+*   **Response (Success - 200):** `{ "success": true, "message": "Password reset successfully" }`
+
+### 6. Get Profile
+*   **Endpoint:** `/auth/profile`
+*   **Method:** `GET`
+*   **Description:** Fetch user profile details and wallet balance.
+*   **Query Params:**
+    *   `key`: The user's unique key (Required).
+*   **Example Request:**
+    `GET http://localhost:8080/auth/profile?key=A1B2C3D4`
 *   **Response (Success - 200):**
     ```json
-    { "success": true, "message": "Password reset successfully" }
+    {
+      "success": true,
+      "body": {
+        "name": "John Doe",
+        "phone": "1234567890",
+        "email": "john@example.com",
+        "key": "A1B2C3D4",
+        "balance": 500
+      }
+    }
     ```
-*   **Response (Error - 400):** Passwords do not match.
+*   **Response (Error - 400):** Key is required / User or Wallet not found.
+*   **Response (Server Error - 500):** Server error.
 
 ---
 
 ## Cart Operations
 
-### 6. Get Cart (Method A)
+### 7. Get Cart (Method A)
 *   **Endpoint:** `/auth/cart`
 *   **Method:** `POST`
-*   **Note:** This endpoint expects `username` in the body.
-*   **Request Body:**
-    ```json
-    { "username": "john@example.com" }
-    ```
-*   **Response (Success - 200):**
-    Returns cart items (or empty list if user found but no cart).
-    ```json
-    {
-      "message": "Cart fetched",
-      "items": [ ... ],
-      "success": true
-    }
-    ```
-*   **Response (Error - 400):** Username required.
-*   **Response (Server Error - 500):** Server error.
+*   **Request Body:** `{ "username": "john@example.com" }`
+*   **Response (Success - 200):** `{ "message": "Cart fetched", "items": [...], "success": true }`
 
-### 7. Get Cart (Method B - "returncart")
+### 8. Get Cart (Method B)
 *   **Endpoint:** `/auth/returncart`
 *   **Method:** `POST`
-*   **Description:** Another endpoint to fetch cart items.
-*   **Request Body:**
-    ```json
-    { "user": "john@example.com" }
-    ```
-*   **Response (Success - 200):**
-    ```json
-    {
-      "items": [ ... ],
-      "success": true,
-      "message": "Cart found"
-    }
-    ```
-*   **Response (Error - 404):** Cart Not found.
-*   **Response (Server Error - 500):** Server Error.
+*   **Request Body:** `{ "user": "john@example.com" }`
+*   **Response (Success - 200):** `{ "items": [...], "success": true, "message": "Cart found" }`
 
-### 8. Add to Cart
+### 9. Add to Cart
 *   **Endpoint:** `/auth/add2cart`
 *   **Method:** `POST`
 *   **Request Body:**
@@ -212,170 +182,81 @@ Base URL: `http://localhost:8080` (or our railway URL which will be used on goba
       "itemsrc": "http://image.url"
     }
     ```
-*   **Response (Success - 200):**
-    ```json
-    { "success": true, "message": "Cart updated" }
-    // OR { "success": true, "message": "New cart created" }
-    ```
-*   **Response (Error - 404):** User not found.
-*   **Response (Server Error - 500):** Server Error.
+*   **Response (Success - 200):** `{ "success": true, "message": "Cart updated" }`
 
-### 9. Delete Item
+### 10. Delete Item
 *   **Endpoint:** `/auth/delete-item`
 *   **Method:** `POST`
-*   **Request Body:**
-    ```json
-    { "user": "john@example.com", "itemname": "Burger" }
-    ```
-*   **Response (Success - 200):**
-    ```json
-    { "success": true, "message": "Item deleted" }
-    ```
-*   **Response (Error - 404):** Cart not found.
-*   **Response (Server Error - 500):** Server Error.
+*   **Request Body:** `{ "user": "john@example.com", "itemname": "Burger" }`
+*   **Response (Success - 200):** `{ "success": true, "message": "Item deleted" }`
 
-### 10. Decrease Quantity
+### 11. Decrease Quantity
 *   **Endpoint:** `/auth/remove-quantity`
 *   **Method:** `POST`
-*   **Request Body:**
-    ```json
-    { "user": "john@example.com", "itemname": "Burger" }
-    ```
-*   **Response (Success - 200):**
-    ```json
-    { "success": true, "message": "Quantity updated" }
-    ```
-*   **Response (Error - 404):** Cart not found OR Item not found in cart.
-*   **Response (Server Error - 500):** Server Error.
+*   **Request Body:** `{ "user": "john@example.com", "itemname": "Burger" }`
+*   **Response (Success - 200):** `{ "success": true, "message": "Quantity updated" }`
 
 ---
 
-### 11. Place Order
+## Order Management
+
+### 12. Place Order
 *   **Endpoint:** `/auth/placeorder`
 *   **Method:** `POST`
-*   **Description:** Places a new order, **clears the user's cart**, and **updates the orders collection**.
+*   **Description:** Places a new order, clears the cart.
 *   **Request Body:**
     ```json
     {
       "user": "john@example.com",
-      "items": [ ... ],
+      "items": [...],
       "totalItems": 3,
       "totalAmount": 450
     }
     ```
-*   **Response (Success - 200):**
-    ```json
-    {
-      "success": true,
-      "message": "Order Placed"
-    }
-    ```
-*   **Response (Error - 400):** Missing user or items.
-*   **Response (Server Error - 500):** Server Error.
+*   **Response (Success - 200):** `{ "success": true, "message": "Order Placed" }`
 
-
-### 12. Get Order
+### 13. Get Order
 *   **Endpoint:** `/auth/getorder`
 *   **Method:** `POST`
-*   **Description:** Fetches the active order for the user.
-*   **Request Body:**
-    ```json
-    { "user": "john@example.com" }
-    ```
-*   **Response (Success - 200):**
-    ```json
-    {
-      "success": true,
-      "data": [
-        {
-          "_id": "67...",
-          "user": "john@example.com",
-          "items": [ ... ],
-          "totalItems": 3,
-          "totalAmount": 450,
-          "createdAt": "2023-10-27T..."
-        }
-      ]
-    }
-    ```
-*   **Response (Server Error - 500):** Server Error.
+*   **Description:** Fetches the active order.
+*   **Request Body:** `{ "user": "john@example.com" }`
+*   **Response (Success - 200):** `{ "success": true, "data": [{...}] }`
 
 ---
 
-
 ## Products & Search
 
-### 11. Filter Products
+### 14. Filter Products
 *   **Endpoint:** `/auth/filter`
 *   **Method:** `POST`
-*   **Request Body:**
-    ```json
-    { "category": "All" } 
-    // or specific category like "Snacks"
-    ```
-*   **Response (Success - 200):**
-    ```json
-    {
-      "success": true,
-      "items": [ ... ]
-    }
-    ```
-*   **Response (Server Error - 500):** Server error.
+*   **Request Body:** `{ "category": "All" }`
+*   **Response (Success - 200):** `{ "success": true, "items": [...] }`
 
-### 12. Search Products
+### 15. Search Products
 *   **Endpoint:** `/auth/search`
 *   **Method:** `POST`
-*   **Request Body:**
-    ```json
-    { "query": "pizza" }
-    ```
-*   **Response (Success - 200):**
-    ```json
-    { "success": true, "items": [ ... ] }
-    ```
-*   **Response (Server Error - 500):** Server error.
+*   **Request Body:** `{ "query": "pizza" }`
+*   **Response (Success - 200):** `{ "success": true, "items": [...] }`
 
 ---
 
 ## Wallet
 
-### 13. Get Wallet Balance
+### 16. Get Wallet Balance
 *   **Endpoint:** `/auth/getwallet`
 *   **Method:** `POST`
-*   **Request Body:**
-    ```json
-    { "key": "USER_UNIQUE_KEY" }
-    ```
-*   **Response (Success - 200):**
-    ```json
-    {
-      "success": true,
-      "balance": 500,
-      "transactions": []
-    }
-    ```
-*   **Response (Error - 400):** Key is required.
-*   **Response (Error - 404):** Invalid key.
-*   **Response (Server Error - 500):** Server error.
+*   **Request Body:** `{ "key": "USER_KEY" }`
+*   **Response (Success - 200):** `{ "success": true, "balance": 500, "transactions": [] }`
 
-### 14. Update Wallet
+### 17. Update Wallet
 *   **Endpoint:** `/auth/updatewallet`
 *   **Method:** `POST`
 *   **Request Body:**
     ```json
     {
-      "key": "USER_UNIQUE_KEY",
+      "key": "USER_KEY",
       "amount": 100,
       "utr": "TRANSACTION_ID"
     }
     ```
-*   **Response (Success - 200):**
-    ```json
-    {
-      "success": true,
-      "balance": 600
-    }
-    ```
-*   **Response (Error - 400):** Valid key and non-zero amount required.
-*   **Response (Error - 404):** Invalid key.
-*   **Response (Server Error - 500):** Server error.
+*   **Response (Success - 200):** `{ "success": true, "balance": 600 }`
