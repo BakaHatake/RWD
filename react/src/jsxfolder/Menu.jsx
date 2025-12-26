@@ -1,9 +1,9 @@
 import "../css/menu.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-const [profileOpen, setProfileOpen] = useState(false);
 
 function Menu() {
+    const [profileOpen, setProfileOpen] = useState(false);
     const navigate = useNavigate();
     const [items, setItems] = useState([]);
     const [activeFilter, setActiveFilter] = useState("All");
