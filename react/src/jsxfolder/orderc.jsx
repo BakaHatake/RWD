@@ -1,9 +1,11 @@
 import "../css/orderc.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Profile from "./profile";
 
 function Order() {
     const navigate = useNavigate();
+    const [profileOpen, setProfileOpen] = useState(false);
     const [order, setOrder] = useState(null);
     const [searchParams] = useSearchParams();
     const email = searchParams.get("email");
@@ -34,22 +36,23 @@ function Order() {
     }, [email]);
 
     if (!order) return (
-        <div className="oc-page-wrapper" style={{alignItems:'center', justifyContent:'center'}}>
+        <div className="oc-page-wrapper" style={{ alignItems: 'center', justifyContent: 'center' }}>
             <h2>Loading Order...</h2>
         </div>
     );
 
     return (
-        
+
         <div className="oc-page-wrapper">
-            
+
             { }
             <header className="oc-navbar">
                 <div className="oc-nav-left">
                     <div className="oc-logo-circle">C</div>
                     <span className="oc-brand-name">Canteen Connect</span>
                 </div>
-                <div className="oc-profile-circle">JD</div>
+                <div className="oc-profile-circle" onClick={() => setProfileOpen(true)} style={{ cursor: 'pointer' }}>JD</div>
+                <Profile open={profileOpen} onClose={() => setProfileOpen(false)} />
             </header>
 
             { }
@@ -57,7 +60,7 @@ function Order() {
                 <div className="oc-back-btn-container">
                     <svg
                         className="oc-back-btn"
-                        onClick={() => navigate("/menu")} 
+                        onClick={() => navigate("/menu")}
                         width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="#F47C4F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
                     >
                         <path d="M19 12H5M12 19l-7-7 7-7" />
@@ -81,7 +84,7 @@ function Order() {
                     {order.items.map((item) => (
                         <div className="oc-item-card" key={item._id}>
                             <img src={item.itemsrc} alt={item.itemname} className="oc-item-img" />
-                            
+
                             <div className="oc-item-text">
                                 <div className="oc-item-name">
                                     { }
