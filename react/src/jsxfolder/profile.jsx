@@ -1,7 +1,6 @@
 import "../css/profile.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Topup from "./topup";
 function Profile({ open, onClose }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -37,22 +36,17 @@ function Profile({ open, onClose }) {
 
   return (
     <>
-      {/* 🔥 BACKDROP */}
-      <div className="profile-backdrop" onClick={onClose}></div>
 
-      {/* 🔥 POPUP */}
+      <div className="profile-backdrop" onClick={onClose}></div>
       <div className="profile-popup-card">
         {loading ? (
           <div style={{ textAlign: 'center', padding: '20px', fontSize: '18px', fontWeight: 'bold', color: '#FF7043' }}>Loading...</div>
         ) : (
           <>
-            {/* Header */}
             <div className="profile-header-card">
               <div className="profile-avatar">👤</div>
               <h2>{user?.name || "User"}</h2>
             </div>
-
-            {/* Balance */}
             <div className="profile-balance-row">
               <div>
                 <p className="balance-label">Current Balance</p>
@@ -61,8 +55,6 @@ function Profile({ open, onClose }) {
               <button className="topup-btn" onClick={() => navigate("/Topup")} 
               >Top-Up</button>
             </div>
-
-            {/* Actions */}
             <div className="profile-actions">
               <div className="action-card">
                 <div className="profile-action-icon">💲</div>
@@ -73,12 +65,8 @@ function Profile({ open, onClose }) {
                 Contact Us
               </div>
             </div>
-
-            {/* Info */}
             <div className="profile-info">{user?.phone || "+91 XXXXXXXXXX"}</div>
             <div className="profile-info">{user?.email || "email@example.com"}</div>
-
-            {/* Logout */}
             <button className="logout-btn" onClick={() => {
               localStorage.removeItem("key");
               localStorage.removeItem("gmail");
