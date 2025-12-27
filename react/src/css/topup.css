@@ -8,7 +8,7 @@
 
 .topup-page {
   min-height: 100vh;
-  width: 100%;
+  width: 100vw;
   background: linear-gradient(#FEEDD3, #FFE0B3);
   display: flex;
   flex-direction: column;

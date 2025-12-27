@@ -1,10 +1,11 @@
 import "../css/profile.css";
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
+import Topup from "./topup";
 function Profile({ open, onClose }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (open) {
       const fetchProfile = async () => {
@@ -57,7 +58,8 @@ function Profile({ open, onClose }) {
                 <p className="balance-label">Current Balance</p>
                 <h3 className="balance-amount">₹ {user?.balance !== undefined ? user.balance : "0"}</h3>
               </div>
-              <button className="topup-btn">Top-Up</button>
+              <button className="topup-btn" onClick={() => navigate("/Topup")} 
+              >Top-Up</button>
             </div>
 
             {/* Actions */}
