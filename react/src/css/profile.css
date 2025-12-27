@@ -32,8 +32,10 @@
 .profile-popup-card {
   position: fixed;
   top: 75px;
-  right: 20px;
+  right: 40px;
   width: 340px;
+  overflow-y: auto;
+  /* height: 70%; */
   padding: 18px;
   border-radius: 36px;
   background: linear-gradient(180deg, #FFF6E8, #ff6f43cc);
@@ -173,6 +175,13 @@
     border: 1px solid #FFF6E8; 
     background-color: #ff6f43a8;
     color: white;
+}
+
+.profile-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 99999;
 }
 
 /* Mobile Responsiveness */

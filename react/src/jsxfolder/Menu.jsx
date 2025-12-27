@@ -110,9 +110,7 @@ function Menu() {
         <div className="menu-page-wrapper">
             
             { }
-            <div className="header" >
-
-                
+            <div className="header">
                 <div className="logo" onClick={() => navigate("/")}>
                     <svg width="54" height="54" viewBox="0 0 512 512">
                         <g>
@@ -137,11 +135,6 @@ function Menu() {
                             <circle cx="9" cy="20" r="1" />
                             <circle cx="20" cy="20" r="1" />
                         </svg>
-                         <Profile
-      open={profileOpen}
-      onClose={() => setProfileOpen(false)}
-    />
-
                     </div>
 
                     <div className="profile-icon" onClick={() => setProfileOpen(prev => !prev)}>
@@ -152,6 +145,11 @@ function Menu() {
                     </div>
                 </div>
             </div>
+
+                        <Profile
+                       open={profileOpen}
+                         onClose={() => setProfileOpen(false)}
+                         />
             <div className="head">
                 <div className="search">
                     <input type="text" placeholder="Search for Biryani, Burger or Wrap..." value={searchQuery} onChange={handleSearch} />
