@@ -61,11 +61,21 @@
 }
 
 .cc-profile-badge {
-    width: 45px; height: 45px; 
+    /* width: 45px; height: 45px; 
     background: #FFD8C4; color: #FF6B35;
     border-radius: 50%; 
     display: flex; align-items: center; justify-content: center; 
-    font-weight: 600; font-size: 1rem;
+    font-weight: 600; font-size: 1rem; */
+
+    width: 45px;
+  height: 45px;
+  background-color: #FF7043;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 112, 67, 0.3);
 }
 
 
