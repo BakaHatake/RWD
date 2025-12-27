@@ -136,7 +136,7 @@
   border: 1.6px solid #FF7043;
 }
 
-.icon {
+.profile-action-icon {
   font-size: 40px;
   margin-bottom: 6px;
   border-radius: 53px;
@@ -173,4 +173,34 @@
     border: 1px solid #FFF6E8; 
     background-color: #ff6f43a8;
     color: white;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .profile-popup-card {
+    width: 90%;
+    right: 5%;
+    left: 5%;
+    top: 60px;
+    padding: 15px;
+  }
+
+  .profile-header-card h2 {
+    font-size: 24px;
+  }
+
+  .balance-amount {
+    font-size: 28px;
+  }
+
+  .topup-btn {
+    width: 120px;
+    font-size: 18px;
+    height: 45px;
+  }
+
+  .profile-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
 }

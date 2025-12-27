@@ -1,22 +1,24 @@
-import "../css/cart.css"; 
+import "../css/cart.css";
 import { useState, useEffect } from "react";
+import Profile from "./profile";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
     const navigate = useNavigate();
+    const [profileOpen, setProfileOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(true);
-    
-    
-    const [orderType, setOrderType] = useState("asap"); 
+
+
+    const [orderType, setOrderType] = useState("asap");
     const [scheduleDate, setScheduleDate] = useState("");
     const [scheduleTime, setScheduleTime] = useState("");
-    
-    
+
+
     const userEmail = localStorage.getItem("gmail");
     const userKey = localStorage.getItem("key");
 
-    
+
     const itemTotal = cartItems.reduce((acc, item) => acc + (item.itemprice * item.quantity), 0);
     const fee = orderType === 'schedule' ? 5 : 10;
     const tax = Math.round(itemTotal * 0.05);
@@ -32,7 +34,7 @@ function Cart() {
         fetchCart();
     }, [userEmail, navigate]);
 
-    
+
     const fetchCart = async () => {
         try {
             setLoading(true);
@@ -47,15 +49,15 @@ function Cart() {
         } catch (err) { console.error(err); } finally { setLoading(false); }
     };
 
-    
+
     const handleUpdate = (item, change) => {
         const newQty = item.quantity + change;
-        if(newQty < 1) { handleDelete(item); return; }
+        if (newQty < 1) { handleDelete(item); return; }
 
-        setCartItems(prev => prev.map(i => i._id === item._id ? {...i, quantity: newQty} : i));
+        setCartItems(prev => prev.map(i => i._id === item._id ? { ...i, quantity: newQty } : i));
 
         const endpoint = change > 0 ? "add2cart" : "remove-quantity";
-        const payload = change > 0 
+        const payload = change > 0
             ? { user: userEmail, itemname: item.itemname, itemprice: item.itemprice, itemsrc: item.itemsrc }
             : { user: userEmail, itemname: item.itemname };
 
@@ -66,17 +68,17 @@ function Cart() {
         }).catch(console.error);
     };
 
-    
+
     const handleDelete = (item) => {
         setCartItems(prev => prev.filter(i => i._id !== item._id));
         fetch("https://rwd.up.railway.app/auth/delete-item", {
             method: "POST",
-            headers: {"Content-Type":"application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user: userEmail, itemname: item.itemname })
         }).catch(console.error);
     };
 
-    
+
     const handlePay = async () => {
         if (!userKey) return alert("Missing user key. Please log in again.");
 
@@ -86,7 +88,7 @@ function Cart() {
         btn.disabled = true;
 
         try {
-            
+
             const res = await fetch("https://rwd.up.railway.app/auth/getwallet", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -102,7 +104,7 @@ function Cart() {
                 return;
             }
 
-            
+
             const payRes = await fetch("https://rwd.up.railway.app/auth/updatewallet", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -110,11 +112,11 @@ function Cart() {
             });
 
             if (payRes.status === 200) {
-                
+
                 const orderPlaced = await placeOrder();
                 if (orderPlaced) {
                     alert("Payment successful! Order placed.");
-                    
+
                     navigate(`/order?email=${encodeURIComponent(userEmail)}`);
                 } else {
                     alert("Money deducted but order failed. Contact support.");
@@ -126,7 +128,7 @@ function Cart() {
             console.error(err);
             alert("Server error.");
         } finally {
-            if(btn) { btn.innerHTML = originalText; btn.disabled = false; }
+            if (btn) { btn.innerHTML = originalText; btn.disabled = false; }
         }
     };
 
@@ -140,7 +142,7 @@ function Cart() {
                     items: cartItems,
                     totalItems: totalItemsCount,
                     totalAmount: grandTotal,
-                    orderType: orderType, 
+                    orderType: orderType,
                     scheduleTime: orderType === 'schedule' ? scheduleTime : null
                 })
             });
@@ -148,11 +150,11 @@ function Cart() {
         } catch (err) { return false; }
     };
 
-    
+
     const VegIcon = () => (
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="cc-veg-icon">
-            <rect x="0.5" y="0.5" width="15" height="15" rx="3.5" stroke="#22C55E"/>
-            <circle cx="8" cy="8" r="4" fill="#22C55E"/>
+            <rect x="0.5" y="0.5" width="15" height="15" rx="3.5" stroke="#22C55E" />
+            <circle cx="8" cy="8" r="4" fill="#22C55E" />
         </svg>
     );
 
@@ -181,7 +183,8 @@ function Cart() {
                     </button>
                     <h1 className="cc-page-title">My Cart ({cartItems.length} Items)</h1>
                 </div>
-                <div className="cc-profile-badge">JD</div>
+                <div className="cc-profile-badge" onClick={() => setProfileOpen(true)} style={{ cursor: 'pointer' }}>JD</div>
+                <Profile open={profileOpen} onClose={() => setProfileOpen(false)} />
             </div>
 
             <div className="cc-main-grid">
@@ -235,14 +238,14 @@ function Cart() {
                                             <label>Select Date</label>
                                             <div className="cc-fake-input">
                                                 <i className="fa-regular fa-calendar"></i>
-                                                <input type="date" value={scheduleDate} onChange={(e)=>setScheduleDate(e.target.value)} />
+                                                <input type="date" value={scheduleDate} onChange={(e) => setScheduleDate(e.target.value)} />
                                             </div>
                                         </div>
                                         <div className="cc-input-group">
                                             <label>Select Time</label>
                                             <div className="cc-fake-input">
                                                 <i className="fa-regular fa-clock"></i>
-                                                <input type="time" value={scheduleTime} onChange={(e)=>setScheduleTime(e.target.value)} />
+                                                <input type="time" value={scheduleTime} onChange={(e) => setScheduleTime(e.target.value)} />
                                             </div>
                                         </div>
                                     </div>
@@ -271,18 +274,18 @@ function Cart() {
                         <div className="cc-bill-row"><span>Taxes</span><span className="cc-val">₹{tax}</span></div>
                         <div className="cc-divider"></div>
                         <div className="cc-bill-total"><span>Grand Total</span><span>₹{grandTotal}</span></div>
-                        
+
                         <div className="cc-payment-method">
                             <i className="fa-regular fa-credit-card"></i> <span>Paying via: UPI/Wallet</span>
                         </div>
-                        
+
                         <button className="cc-pay-confirm-btn" onClick={handlePay} disabled={cartItems.length === 0}>
                             Pay & Order • ₹{grandTotal} &rarr;
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
