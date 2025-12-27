@@ -29,13 +29,11 @@
 }
 
 .balance-card {
-  width: 100%;
-  max-width: 456px;
-  height: auto;
-  min-height: 168px;
+  width: 456px;
+  height: 168px;
   background: #FF7043;
   color: #FFE0B2;
-  padding: 30px 80px;
+  padding: 30px 20px;
   border-radius: 84px;
   text-align: center;
   margin-bottom: 40px;
@@ -61,9 +59,9 @@
   display: flex;
   gap: 40px;
   margin-bottom: 40px;
-  flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  max-width: 900px;
 }
 
 .addw {
@@ -75,8 +73,7 @@
 }
 
 .quick-add {
-  width: 100%;
-  max-width: 420px;
+  width: 420px;
   height: 140px;
   background: #ff7043;
   padding: 20px;
@@ -88,8 +85,7 @@
 }
 
 .custom-amount {
-  width: 100%;
-  max-width: 420px;
+  width: 420px;
   height: 140px;
   background: #ff7043;
   padding: 10px;
@@ -128,8 +124,7 @@
 }
 
 .custom-amount input {
-  width: 100%;
-  max-width: 320px;
+  width: 320px;
   font-size: 26px;
   padding: 12px;
   border-radius: 25px;
@@ -150,8 +145,7 @@
 }
 
 .pay-btn {
-  width: 100%;
-  max-width: 456px;
+  width: 456px;
   height: 168px;
   background: #FF7043;
   color: #FEEDD3;
@@ -187,14 +181,30 @@
   transform: rotate(45deg);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 950px) {
   .topup-title {
     font-size: 40px;
     line-height: 1.2;
   }
 
+  .topup-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .balance-card,
+  .quick-add,
+  .custom-amount,
+  .pay-btn {
+    width: 100%;
+    max-width: 456px;
+  }
+  
   .balance-card {
-    padding: 30px 20px;
+    height: auto;
+    min-height: 150px;
+    padding: 30px;
   }
 
   .balance-card h2 {
@@ -227,8 +237,13 @@
     border-radius: 50px;
   }
 
+  .custom-amount input {
+    width: 100%;
+    max-width: 300px;
+  }
+
   .amount-buttons button {
     height: 50px;
     font-size: 24px;
   }
-}
+    }
